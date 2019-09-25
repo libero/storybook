@@ -5,8 +5,8 @@ dist: bionic
 services: docker
 
 install:
-  - make build-dev
+  - make build
 
 script:
-  - make start-dev
-  - make stop-dev
+  - make start
+  - make stop

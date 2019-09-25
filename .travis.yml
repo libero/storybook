@@ -6,8 +6,10 @@ services: docker
 
 install:
   - make build
+  - make compile
 
 script:
   - make start
   - make logs
   - make stop
+  - make run

@@ -13,13 +13,13 @@ Requirements
 Developing
 ----------
 
-To install dependencies locally:
+To install dependencies locally, execute:
 
 ```shell
 make install
 ```
 
-To run the development Storybook:
+To run Storybook, execute:
 
 ```shell
 make start
@@ -27,13 +27,13 @@ make start
 
 Then open http://localhost:8080/ in your browser.
 
-To follow the containers' logs, execute:
+To follow the container's log, execute:
 
 ```shell
 make watch
 ```
 
-To stop the containers, execute:
+To stop the container, execute:
 
 ```shell
 make stop

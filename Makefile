@@ -8,23 +8,23 @@ help: ## Display this help text
 install: ## Install dependencies locally
 	npm install
 
-build: ## Build the containers
+build: ## Build the container
 	${DEV} build --pull
 
-start: build ## Start the containers
+start: build ## Start the container
 	${DEV} up --detach
 
-exec: ## Execute a command on the app container
+exec: ## Execute a command on the container
 	${DEV} exec app $(cmd)
 
-sh: ## Open a shell on the app container
+sh: ## Open a shell on the container
 	${DEV} exec app sh
 
-logs: ## Show the containers' logs
+logs: ## Show the container's log
 	${DEV} logs
 
-watch: ## Follow the containers' logs
+watch: ## Follow the container's log
 	${DEV} logs --follow
 
-stop: ## Stop the containers
+stop: ## Stop the container
 	${DEV} down --volumes --remove-orphans

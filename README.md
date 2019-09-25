@@ -19,11 +19,13 @@ To install dependencies locally, execute:
 make install
 ```
 
-To run the container, execute:
+To run Storybook, execute:
 
 ```shell
 make start
 ```
+
+Then open http://localhost:8080/ in your browser.
 
 To follow the container's log, execute:
 

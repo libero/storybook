@@ -8,17 +8,17 @@ help: ## Display this help text
 install: ## Install dependencies locally
 	npm install
 
-build-dev: ## Build development environment
+build: ## Build development environment
 	${DEV} build --pull
 
-start-dev: build-dev ## Start development environment
+start: build ## Start development environment
 	${DEV} up --detach
 
-execute-dev: ## Execute a command on the development environment
+exec: ## Execute a command on the development environment
 	${DEV} exec app $(cmd)
 
-log-dev: ## Log development environment
+log: ## Log development environment
 	${DEV} logs --follow
 
-stop-dev: ## Stop development environment
+stop: ## Stop development environment
 	${DEV} down --volumes --remove-orphans

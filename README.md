@@ -15,19 +15,19 @@ make install
 Start the development environment:
 
 ```shell
-make start-dev
+make start
 ```
 
 Follow the environment logs:
 
 ```shell
-make log-dev
+make log
 ```
 
 Stop the environment:
 
 ```shell
-make stop-dev
+make stop
 ```
 
 Getting help

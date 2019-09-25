@@ -1,6 +1,8 @@
 Libero Storybook
 ================
 
+[![Build Status](https://travis-ci.com/libero/storybook.svg?branch=master)](https://travis-ci.com/libero/storybook)
+
 Getting help
 ------------
 

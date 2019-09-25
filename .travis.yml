@@ -9,5 +9,6 @@ install:
 
 script:
   - make start
+  - .scripts/docker/wait-healthy.sh storybook_app_1
   - make logs
   - make stop

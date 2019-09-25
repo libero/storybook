@@ -3,28 +3,37 @@ Libero Storybook
 
 [![Build Status](https://travis-ci.com/libero/storybook.svg?branch=master)](https://travis-ci.com/libero/storybook)
 
+Requirements
+------------
+
+- [Docker](https://www.docker.com/)
+- [GNU Make](https://www.gnu.org/software/make/)
+- [Node.js](https://nodejs.org/) (for development)
+
 Developing
 ----------
 
-Install the dependencies locally:
+To install dependencies locally:
 
 ```shell
 make install
 ```
 
-Start the development environment:
+To run the development Storybook:
 
 ```shell
 make start
 ```
 
-Follow the environment logs:
+Then open http://localhost:8080/ in your browser.
+
+To follow the containers' logs, execute:
 
 ```shell
 make watch
 ```
 
-Stop the environment:
+To stop the containers, execute:
 
 ```shell
 make stop

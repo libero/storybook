@@ -23,6 +23,7 @@ FROM node AS storybook
 
 COPY --from=npm /app/ .
 COPY .storybook/ .storybook/
+COPY src/ src/
 
 
 

@@ -14,6 +14,9 @@ build: ## Build the container
 start: build ## Start the container
 	${DEV} up --detach
 
+wait-healthy: ## Wait for the container to be healthy
+	.scripts/docker/wait-healthy.sh $$(${DEV} ps --quiet app)
+
 exec: ## Execute a command on the container
 	${DEV} exec app $(cmd)
 

@@ -25,3 +25,6 @@ ENV NODE_ENV=development
 COPY --from=npm /app/ .
 
 CMD while :; do :; done & kill -STOP $! && wait $!
+
+HEALTHCHECK --interval=5s --timeout=1s \
+    CMD node --version

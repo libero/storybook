@@ -3,6 +3,33 @@ Libero Storybook
 
 [![Build Status](https://travis-ci.com/libero/storybook.svg?branch=master)](https://travis-ci.com/libero/storybook)
 
+Developing
+----------
+
+Install the dependencies locally:
+
+```shell
+make install
+```
+
+Start the development environment:
+
+```shell
+make start-dev
+```
+
+Follow the environment logs:
+
+```shell
+make log-dev
+```
+
+Stop the environment:
+
+```shell
+make stop-dev
+```
+
 Getting help
 ------------
 

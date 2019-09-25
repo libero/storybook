@@ -1,4 +1,10 @@
 language: minimal
 
+services: docker
+
+install:
+  - make build-dev
+
 script:
-  - 'true'
+  - make start-dev
+  - make stop-dev

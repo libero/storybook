@@ -7,6 +7,7 @@
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@storybook/html": "^5.2.1",
+    "@storybook/theming": "^5.2.1",
     "babel-loader": "^8.0.6",
     "webpack": "^4.41.0"
   }

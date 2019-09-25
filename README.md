@@ -21,7 +21,7 @@ make start
 Follow the environment logs:
 
 ```shell
-make log
+make watch
 ```
 
 Stop the environment:

@@ -21,6 +21,9 @@ RUN npm install
 #
 FROM node AS storybook
 
+COPY .eslintignore \
+    .eslintrc.js \
+    ./
 COPY --from=npm /app/ .
 COPY .storybook/ .storybook/
 COPY src/ src/

@@ -5,6 +5,7 @@ NAME = storybook-${REAL_ENV}
 TAG = libero/storybook:${REAL_ENV}
 EXISTING_CONTAINERS = $$(docker ps --all --quiet --filter "name=${NAME}")
 MOUNT := $$(if [[ ${REAL_ENV} = "dev" ]]; then echo "--mount type=bind,source=$$(pwd)/src/,destination=/app/src,readonly --mount type=bind,source=$$(pwd)/.storybook/,destination=/app/.storybook,readonly"; fi)
+MOUNT_WRITE := $$(if [[ ${REAL_ENV} = "dev" ]]; then echo "--mount type=bind,source=$$(pwd)/src/,destination=/app/src --mount type=bind,source=$$(pwd)/.storybook/,destination=/app/.storybook"; fi)
 
 help: ## Display this help text
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
@@ -34,3 +35,9 @@ stop: ## Stop the container
 	@if [ -n "${EXISTING_CONTAINERS}" ]; then\
 		docker rm --force ${EXISTING_CONTAINERS};\
 	fi
+
+lint: ## Lint the code
+	docker run --rm ${MOUNT} ${TAG} npx eslint .
+
+fix: ## Trt and fix linting issues in the code
+	docker run --rm ${MOUNT_WRITE} ${TAG} npx eslint .

@@ -7,3 +7,4 @@ install:
 
 script:
   - make start wait-healthy logs stop
+  - make lint

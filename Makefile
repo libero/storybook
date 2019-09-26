@@ -1,6 +1,8 @@
 .DEFAULT_GOAL = help
 
-NAME = storybook-dev
+REAL_ENV = dev
+NAME = storybook-${REAL_ENV}
+TAG = libero/storybook:${REAL_ENV}
 EXISTING_CONTAINERS = $$(docker ps --all --quiet --filter "name=${NAME}")
 
 help: ## Display this help text
@@ -10,10 +12,10 @@ install: ## Install dependencies locally
 	npm install
 
 build: ## Build the container
-	docker build --target dev --tag libero/storybook:latest .
+	docker build --target ${REAL_ENV} --tag ${TAG} .
 
 start: ## Start the container
-	docker run --detach --name ${NAME} libero/storybook:latest
+	docker run --detach --name ${NAME} ${TAG}
 
 wait-healthy: ## Wait for the container to be healthy
 	.scripts/docker/wait-healthy.sh ${NAME}

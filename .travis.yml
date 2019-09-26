@@ -4,7 +4,7 @@ services: docker
 
 install:
   - ENV=dev make build
-  - ENV=prod make compile
+  - ENV=prod make build
 
 script:
   - ENV=dev make start wait-healthy logs stop

@@ -16,7 +16,7 @@ Running
 To run Storybook, execute
 
 ```shell
-make run
+ENV=prod make stop build start watch
 ```
 
 then open http://localhost:8080/ in your browser.

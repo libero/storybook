@@ -1,4 +1,4 @@
-import {configure} from '@storybook/html';
+import { configure } from '@storybook/html';
 
 const context = require.context('../src', true, /\.stories\.js$/);
 

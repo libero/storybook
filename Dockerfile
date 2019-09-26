@@ -20,7 +20,7 @@ RUN npm install
 
 
 #
-# Stage: Storybook environment
+# Stage: Basic Storybook
 #
 FROM node AS storybook
 
@@ -39,7 +39,7 @@ EXPOSE 8080
 
 CMD ["npx", "start-storybook", "--port", "8080"]
 
-HEALTHCHECK --interval=30s --timeout=1s \
+HEALTHCHECK --interval=5s --timeout=1s \
     CMD wget --quiet --tries=1 --spider http://localhost:8080/ || exit 1
 
 
@@ -63,5 +63,5 @@ EXPOSE 8080
 COPY .docker/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/build/ .
 
-HEALTHCHECK --interval=30s --timeout=1s \
+HEALTHCHECK --interval=5s --timeout=1s \
     CMD wget --quiet --tries=1 --spider http://localhost:8080/ || exit 1

@@ -4,7 +4,7 @@ REAL_ENV = dev
 NAME = storybook-${REAL_ENV}
 TAG = libero/storybook:${REAL_ENV}
 EXISTING_CONTAINERS = $$(docker ps --all --quiet --filter "name=${NAME}")
-MOUNT := $$([[ ${REAL_ENV} = "dev" ]] && echo "--mount type=bind,source=$$(pwd)/src/,destination=/app/src,readonly" || echo "")
+MOUNT := $$([[ ${REAL_ENV} = "dev" ]] && echo "--mount type=bind,source=$$(pwd)/src/,destination=/app/src,readonly --mount type=bind,source=$$(pwd)/.storybook/,destination=/app/.storybook,readonly" || echo "")
 
 help: ## Display this help text
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'

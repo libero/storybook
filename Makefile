@@ -37,7 +37,15 @@ stop: ## Stop the container
 	fi
 
 lint: ## Lint the code
+	@if [ ${REAL_ENV} != "dev" ]; then\
+		echo "Requires dev environment";\
+		exit 1;\
+	fi
 	docker run --rm ${MOUNT} ${TAG} npx eslint .
 
 fix: ## Fix linting issues in the code
+	@if [ ${REAL_ENV} != "dev" ]; then\
+		echo "Requires dev environment";\
+		exit 1;\
+	fi
 	docker run --rm ${MOUNT_WRITE} ${TAG} npx eslint --fix .

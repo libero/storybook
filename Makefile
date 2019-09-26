@@ -1,6 +1,7 @@
 .DEFAULT_GOAL = help
 
-DEV = docker-compose --file docker-compose.dev.yml
+NAME = storybook-dev
+EXISTING_CONTAINERS = $$(docker ps --all --quiet --filter "name=${NAME}")
 
 help: ## Display this help text
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
@@ -9,25 +10,24 @@ install: ## Install dependencies locally
 	npm install
 
 build: ## Build the container
-	${DEV} build
+	docker build --target dev --tag libero/storybook:latest .
 
 start: ## Start the container
-	${DEV} up --detach
+	docker run --detach --name ${NAME} libero/storybook:latest
 
 wait-healthy: ## Wait for the container to be healthy
-	.scripts/docker/wait-healthy.sh $$(${DEV} ps --quiet app)
-
-exec: ## Execute a command on the container
-	${DEV} exec app $(cmd)
+	.scripts/docker/wait-healthy.sh ${NAME}
 
 sh: ## Open a shell on the container
-	${DEV} exec app sh
+	docker exec --interactive --tty ${NAME} sh
 
 logs: ## Show the container's log
-	${DEV} logs
+	docker logs ${NAME}
 
 watch: ## Follow the container's log
-	${DEV} logs --follow
+	docker logs --follow ${NAME}
 
 stop: ## Stop the container
-	${DEV} down --volumes --remove-orphans
+	@if [ -n "${EXISTING_CONTAINERS}" ]; then\
+		docker rm --force ${EXISTING_CONTAINERS};\
+	fi

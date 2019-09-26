@@ -17,7 +17,7 @@ RUN npm install
 
 
 #
-# Stage: Storybook environment
+# Stage: Basic Storybook
 #
 FROM node AS storybook
 

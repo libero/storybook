@@ -9,7 +9,7 @@ install: ## Install dependencies locally
 	npm install
 
 build: ## Build the container
-	${DEV} build --pull
+	${DEV} build
 
 start: build ## Start the container
 	${DEV} up --detach

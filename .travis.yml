@@ -8,7 +8,4 @@ install:
   - make build
 
 script:
-  - make start
-  - make wait-healthy
-  - make logs
-  - make stop
+  - make start wait-healthy logs stop

@@ -1,13 +1,9 @@
 language: minimal
 
-dist: bionic
-
 services: docker
 
 install:
   - make build
 
 script:
-  - make start
-  - make logs
-  - make stop
+  - make start wait-healthy logs stop

@@ -64,4 +64,4 @@ COPY .docker/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/build/ .
 
 HEALTHCHECK --interval=5s --timeout=1s \
-    CMD wget --quiet --tries=1 --spider http://localhost:8080/ || exit 1
+    CMD wget --quiet --tries=1 --spider http://localhost:8080/ping || exit 1

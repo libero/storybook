@@ -39,5 +39,5 @@ stop: ## Stop the container
 lint: ## Lint the code
 	docker run --rm ${MOUNT} ${TAG} npx eslint .
 
-fix: ## Trt and fix linting issues in the code
-	docker run --rm ${MOUNT_WRITE} ${TAG} npx eslint .
+fix: ## Fix linting issues in the code
+	docker run --rm ${MOUNT_WRITE} ${TAG} npx eslint --fix .

@@ -11,7 +11,7 @@ install: ## Install dependencies locally
 build: ## Build the container
 	${DEV} build
 
-start: build ## Start the container
+start: ## Start the container
 	${DEV} up --detach
 
 wait-healthy: ## Wait for the container to be healthy

@@ -1,4 +1,9 @@
 language: minimal
 
+services: docker
+
+install:
+  - make build
+
 script:
-  - 'true'
+  - make start wait-healthy logs stop

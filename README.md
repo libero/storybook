@@ -3,6 +3,40 @@ Libero Storybook
 
 [![Build Status](https://travis-ci.com/libero/storybook.svg?branch=master)](https://travis-ci.com/libero/storybook)
 
+Requirements
+------------
+
+- [Docker](https://www.docker.com/)
+- [GNU Make](https://www.gnu.org/software/make/)
+- [Node.js](https://nodejs.org/) (for development)
+
+Developing
+----------
+
+To install dependencies locally, execute:
+
+```shell
+make install
+```
+
+To run the container, execute:
+
+```shell
+make start
+```
+
+To follow the container's log, execute:
+
+```shell
+make watch
+```
+
+To stop the container, execute:
+
+```shell
+make stop
+```
+
 Getting help
 ------------
 

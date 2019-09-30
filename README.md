@@ -19,7 +19,8 @@ To install dependencies locally, execute:
 make install
 ```
 
-Before running, you need to build the Docker container `libero/storybook:dev` locally:
+To build the Storybook container:
+
 ```shell
 make build
 ```

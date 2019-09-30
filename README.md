@@ -10,6 +10,17 @@ Requirements
 - [GNU Make](https://www.gnu.org/software/make/)
 - [Node.js](https://nodejs.org/) (for development)
 
+Running
+-------
+
+To run Storybook, execute
+
+```shell
+ENV=prod make stop build start watch
+```
+
+then open http://localhost:8080/ in your browser.
+
 Developing
 ----------
 
@@ -17,6 +28,12 @@ To install dependencies locally, execute:
 
 ```shell
 make install
+```
+
+To build the Storybook container:
+
+```shell
+make build
 ```
 
 To run Storybook, execute:

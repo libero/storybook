@@ -1,4 +1,5 @@
-import {configure} from '@storybook/html';
+import { addDecorator, configure } from '@storybook/html';
+import centered from '@storybook/addon-centered/html';
 import { twig } from 'twig';
 
 const context = require.context('../src', true, /\.stories\.js$/);
@@ -12,5 +13,7 @@ twigContext.keys().forEach(key =>
     rethrow: true,
   })
 );
+
+addDecorator(centered);
 
 configure(context, module);

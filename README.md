@@ -25,6 +25,11 @@ To run Storybook, execute:
 make start
 ```
 
+To lint the JavaScript, execute:
+```shell
+make lint
+```
+
 Then open http://localhost:8080/ in your browser.
 
 To follow the container's log, execute:

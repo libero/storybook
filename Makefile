@@ -1,6 +1,6 @@
 .DEFAULT_GOAL = help
 
-REAL_ENV = dev
+REAL_ENV = $$(if [[ $${ENV} = "prod" ]]; then echo "prod"; else echo "dev"; fi)
 NAME = storybook-${REAL_ENV}
 TAG = libero/storybook:${REAL_ENV}
 EXISTING_CONTAINERS = $$(docker ps --all --quiet --filter "name=${NAME}")

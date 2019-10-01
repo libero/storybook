@@ -3,8 +3,10 @@ language: minimal
 services: docker
 
 install:
-  - make build
+  - ENV=dev make build
+  - ENV=prod make build
 
 script:
-  - make start wait-healthy logs stop
+  - ENV=dev make start wait-healthy logs stop
+  - ENV=prod make start wait-healthy logs stop
   - make lint

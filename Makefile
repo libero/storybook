@@ -16,8 +16,8 @@ install: ## Install dependencies locally
 build: ## Build the container
 	docker build --target ${REAL_ENV} --tag ${TAG} .
 
-start: ## Start the container
-	docker run --detach --name ${NAME} --publish 8080:8080 ${MOUNT} ${TAG}
+restart: ## If the container's running, stop it, then start the container
+	make stop && docker run --detach --name ${NAME} --publish 8080:8080 ${MOUNT} ${TAG}
 
 wait-healthy: ## Wait for the container to be healthy
 	.scripts/docker/wait-healthy.sh ${NAME}
@@ -36,8 +36,8 @@ stop: ## Stop the container
 		docker rm --force ${EXISTING_CONTAINERS};\
 	fi
 
-cycle: ## Stop, build and restart the container
-	make stop build start
+rebuild: ## Stop, build and restart the container
+	make stop build restart
 
 lint: ## Lint the code
 	@if [ ${REAL_ENV} != "dev" ]; then\

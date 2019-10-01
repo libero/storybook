@@ -36,6 +36,9 @@ stop: ## Stop the container
 		docker rm --force ${EXISTING_CONTAINERS};\
 	fi
 
+cycle: ## Stop, build and restart the container
+	make stop build start
+
 lint: ## Lint the code
 	@if [ ${REAL_ENV} != "dev" ]; then\
 		echo "Requires dev environment";\

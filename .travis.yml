@@ -9,3 +9,4 @@ install:
 script:
   - ENV=dev make start wait-healthy logs stop
   - ENV=prod make start wait-healthy logs stop
+  - make lint

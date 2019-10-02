@@ -7,14 +7,12 @@ import { withA11y } from '@storybook/addon-a11y';
 const context = require.context('../src', true, /\.stories\.js$/);
 const twigContext = require.context('../src/patterns', true, /\.twig$/);
 
-twigContext.keys().forEach(key =>
-  twig({
-    allowInlineIncludes: true,
-    data: twigContext(key).tokens,
-    id: key,
-    rethrow: true,
-  })
-);
+twigContext.keys().forEach((key) => twig({
+  allowInlineIncludes: true,
+  data: twigContext(key).tokens,
+  id: key,
+  rethrow: true,
+}));
 
 addParameters({
   viewport: {

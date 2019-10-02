@@ -41,6 +41,14 @@ stop: ## Stop the container
 rebuild: ## Stop, build and restart the container
 	make stop build restart
 
+dev: ## Build and runs the container for development
+	ENV=dev make --jobs=2 stop build
+	ENV=dev make start watch
+
+prod: ## Builds and runs the container for production
+	ENV=prod make --jobs=2 stop build
+	ENV=prod make start
+
 lint: ## Lint the code
 	@if [ ${REAL_ENV} != "dev" ]; then\
 		echo "Requires dev environment";\

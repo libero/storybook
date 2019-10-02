@@ -38,9 +38,6 @@ stop: ## Stop the container
 		docker rm --force ${EXISTING_CONTAINERS};\
 	fi
 
-rebuild: ## Stop, build and restart the container
-	make stop build restart
-
 dev: ## Build and runs the container for development
 	ENV=dev make --jobs=2 stop build
 	ENV=dev make start watch

@@ -16,8 +16,10 @@ install: ## Install dependencies locally
 build: ## Build the container
 	docker build --target ${REAL_ENV} --tag ${TAG} .
 
-restart: ## If the container's running, stop it, then start the container
-	make stop && docker run --detach --name ${NAME} --publish 8080:8080 ${MOUNT} ${TAG}
+start: ## Start the container
+	docker run --detach --name ${NAME} --publish 8080:8080 ${MOUNT} ${TAG}
+
+restart: stop start  ## Stop the container if it's running, then start it
 
 wait-healthy: ## Wait for the container to be healthy
 	.scripts/docker/wait-healthy.sh ${NAME}

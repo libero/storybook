@@ -8,7 +8,7 @@ export const Basic = () => image(
   {
     image: {
       src: 'https://picsum.photos/600/400',
-      alt: ''
-    }
-  }
+      alt: '',
+    },
+  },
 );

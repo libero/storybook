@@ -4,9 +4,9 @@ export default {
   title: 'Atoms|Inline/Italic',
 };
 
-export const RN = () => italic({ text: 'Hello world.' });
+export const EN = () => italic({ text: 'Hello world.' });
 
-export const Russian = () => italic(
+export const RU = () => italic(
   {
     attributes: {
       lang: 'ru',

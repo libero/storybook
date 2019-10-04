@@ -4,7 +4,7 @@ export default {
   title: 'Atoms|Inline/Italic',
 };
 
-export const English = () => italic({ text: 'Hello world.' });
+export const RN = () => italic({ text: 'Hello world.' });
 
 export const Russian = () => italic(
   {

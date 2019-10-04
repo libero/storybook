@@ -7,8 +7,8 @@ export default {
 export const Basic = () => paragraph({
   text: [
     'It\'s not ',
-    { template: './atoms/inline/italic.twig', arguments: { text: 'just' } },
+    { template: './atoms/inline/italic/italic.twig', arguments: { text: 'just' } },
     ' a question of conquering a summit previously unknown, but of tracing ',
-    { template: './atoms/inline/italic.twig', arguments: { text: 'step by step' } },
+    { template: './atoms/inline/italic/italic.twig', arguments: { text: 'step by step' } },
     ' a new pathway to it.'],
 });

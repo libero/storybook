@@ -44,7 +44,7 @@ dev: ## Build and runs the container for development
 
 prod: ## Builds and runs the container for production
 	ENV=prod make --jobs=2 stop build
-	ENV=prod make start
+	ENV=prod make start watch
 
 lint: ## Lint the code
 	@if [ ${REAL_ENV} != "dev" ]; then\

@@ -12,6 +12,7 @@ export const Basic = () => paragraph(
       italic({ text: 'just' }),
       ' a question of conquering a summit previously unknown, but of tracing ',
       italic({ text: 'step by step' }),
-      ' a new pathway to it.'],
+      ' a new pathway to it.',
+    ],
   },
 );

@@ -16,7 +16,7 @@ Running
 To run Storybook, execute
 
 ```shell
-ENV=prod make stop build start watch
+make prod
 ```
 
 then open http://localhost:8080/ in your browser.
@@ -30,17 +30,13 @@ To install dependencies locally, execute:
 make install
 ```
 
-To build the Storybook container:
+To build and run the Storybook container, and follow the container's logs:
 
 ```shell
-make build
+make dev
 ```
 
-To run Storybook, execute:
-
-```shell
-make start
-```
+Then open http://localhost:8080/ in your browser.
 
 To lint the JavaScript (report only), execute:
 ```shell
@@ -50,20 +46,6 @@ make lint
 To lint the JavaScript (report and fix), execute:
 ```shell
 make fix
-```
-
-Then open http://localhost:8080/ in your browser.
-
-To follow the container's log, execute:
-
-```shell
-make watch
-```
-
-To stop the container, execute:
-
-```shell
-make stop
 ```
 
 Getting help

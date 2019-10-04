@@ -30,7 +30,7 @@ To install dependencies locally, execute:
 make install
 ```
 
-To build and run the Storybook container, and follow the container's logs:
+To build and run the Storybook container, and follow the container's log:
 
 ```shell
 make dev

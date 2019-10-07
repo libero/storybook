@@ -19,6 +19,8 @@ build: ## Build the container
 start: ## Start the container
 	docker run --detach --name ${NAME} --publish 8080:8080 ${MOUNT} ${TAG}
 
+restart: stop start  ## Stop the container if it's running, then start it
+
 wait-healthy: ## Wait for the container to be healthy
 	.scripts/docker/wait-healthy.sh ${NAME}
 
@@ -35,6 +37,14 @@ stop: ## Stop the container
 	@if [ -n "${EXISTING_CONTAINERS}" ]; then\
 		docker rm --force ${EXISTING_CONTAINERS};\
 	fi
+
+dev: ## Build and runs the container for development
+	ENV=dev make --jobs=2 stop build
+	ENV=dev make start watch
+
+prod: ## Builds and runs the container for production
+	ENV=prod make --jobs=2 stop build
+	ENV=prod make start watch
 
 lint: ## Lint the code
 	@if [ ${REAL_ENV} != "dev" ]; then\

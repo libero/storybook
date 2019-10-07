@@ -1,5 +1,7 @@
 const path = require('path');
-const { getOptions, stringifyRequest } = require('loader-utils');
+const {
+  getOptions,
+} = require('loader-utils');
 
 module.exports = function twigLoaderPlus(source) {
   // Get loader configuration.
@@ -12,6 +14,6 @@ module.exports = function twigLoaderPlus(source) {
   // Return the same module as `twig-loader` but with additional export for reference.
   return [
     source,
-    `module.exports.reference = function(args) { return { template: './${stringifyRequest(includePath)}', arguments: args }; };`,
+    `module.exports.reference = function(args) { return { template: './${includePath}', arguments: args }; };`,
   ].join('\n');
 };

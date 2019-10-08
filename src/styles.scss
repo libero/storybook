@@ -1,0 +1,8 @@
+@import "core-styles/base/normalize";
+@import "core-styles/base/grid";
+
+// TODO: look into sass-glob in storybook to get the compile order defined?
+//@import "patterns/**/[^_]*.scss";
+//@import "patterns/molecules/[^_]*.scss";
+//@import "patterns/organisms/[^_]*.scss";
+//@import "patterns/templates/[^_]*.scss";

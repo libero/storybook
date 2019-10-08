@@ -1,0 +1,30 @@
+/* generic */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 600;
+  font-display: fallback;
+  src:
+    url('#{$fonts-path}/NotoSans-SemiBoldItalic.generic.woff2') format('woff2');
+  unicode-range: U+2000-206F;
+}
+/* latin */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 600;
+  font-display: fallback;
+  src:
+    url('#{$fonts-path}/NotoSans-SemiBoldItalic.latin.woff2') format('woff2');
+  unicode-range: U+0000-007F,U+0080-00FF;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 600;
+  font-display: fallback;
+  src:
+    url('#{$fonts-path}/NotoSans-SemiBoldItalic.cyrillic.woff2') format('woff2');
+  unicode-range: U+0400-04FF,U+0500-052F;
+}

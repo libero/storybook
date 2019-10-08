@@ -1,0 +1,10 @@
+/* arabic */
+@font-face {
+  font-family: 'Noto Serif';
+  font-style: normal;
+  font-weight: 600;
+  font-display: fallback;
+  src:
+    url('#{$fonts-path}/NotoNaskhArabic-Bold.arabic.woff2') format('woff2');
+  unicode-range: U+0600-06FF;
+}

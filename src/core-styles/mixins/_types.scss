@@ -1,5 +1,5 @@
 @import "../settings/font";
-@import "../vendor/sass-rem/rem";
+@import "../../../node_modules/sass-rem/rem";
 
 $rem-baseline: $font-size;
 $rem-fallback: true;

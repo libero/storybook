@@ -24,7 +24,7 @@ then open http://localhost:8080/ in your browser.
 Developing
 ----------
 
-To install dependencies locally, execute:
+To install dependencies locally (this only needs to be done once), execute:
 
 ```shell
 make install

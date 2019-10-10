@@ -1,0 +1,75 @@
+@use "sass:map";
+@use "../../../core-styling/settings/baselinegrid";
+@use "../../../core-styling/settings/font";
+@use "../../../core-styling/mixins/typography";
+
+$_h1-line-height: baselinegrid.$space-medium;
+$_h2-line-height: baselinegrid.$space-small + baselinegrid.$space-smallish;
+$_default_line-height: baselinegrid.$space-small;
+$_font-family: font.$secondary;
+
+@function _get-scale-point($heading-level) {
+  $scale-point: (
+    "level1": 7,
+    "level2": 4,
+    "level3": 3,
+    "level4": 2,
+    "level5": 1,
+    "level6": 0,
+  );
+  @return map.get($scale-point, $heading-level)
+}
+
+@function _get-line-height($heading-level) {
+  $line-height: (
+    "level1": $_h1-line-height,
+    "level2": $_h2-line-height,
+    "level3": $_default_line-height,
+    "level4": $_default_line-height,
+    "level5": $_default_line-height,
+    "level6": $_default_line-height,
+  );
+  @return map.get($line-height, $heading-level)
+}
+
+@mixin _base-typography {
+  font-family: $_font-family;
+  font-weight: 600;
+}
+
+@mixin _typography($heading-level) {
+  // TODO: error if not 1 <= $heading-level <= 6
+  $scale: _get-scale-point($heading-level);
+  $line-height: _get-line-height($heading-level);
+  @include _base-typography();
+  @include typography.set-font-size-and-line-height(scale($scale), $line-height);
+}
+
+h1 {
+  @include _typography(level1);
+}
+
+h2 {
+  @include _typography(level2);
+}
+
+h3 {
+  @include _typography(level3);
+}
+
+h4 {
+  @include _typography(level4);
+}
+
+h5 {
+  @include _typography(level5);
+}
+
+h6 {
+  @include _typography(level6);
+}
+
+
+.heading__link {
+  @include typography.covert-link();
+}

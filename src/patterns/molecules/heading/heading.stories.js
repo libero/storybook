@@ -1,4 +1,5 @@
 import heading from './heading.twig';
+import './heading.scss';
 
 export default {
   title: 'Molecules|Heading',

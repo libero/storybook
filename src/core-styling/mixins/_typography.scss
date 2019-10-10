@@ -1,0 +1,24 @@
+@use "../settings/color";
+@use "../settings/baselinegrid";
+@use "types";
+@use "utilities";
+
+@mixin set-font-size-and-line-height($font-size, $block-size: baselinegrid.$space-small) {
+  @include types.rem(font-size, $font-size);
+  line-height: $block-size / $font-size;
+}
+
+@mixin covert-link($hover-color: color.$primary-dark) {
+  @include utilities.inherit-all($ensure: color text-decoration) {
+    cursor: pointer;
+    display: inline;
+  }
+
+  & {
+    @content;
+  }
+
+  &:hover {
+    color: $hover-color;
+  }
+}

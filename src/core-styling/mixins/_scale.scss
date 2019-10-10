@@ -1,0 +1,6 @@
+@use "../settings/font";
+@use "../../../node_modules/modularscale-sass/stylesheets/modularscale";
+
+@function scale($value: 0) {
+  @return round(modularscale.ms-function($value, font.$size, modularscale.$major-second));
+}

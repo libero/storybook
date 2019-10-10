@@ -3,6 +3,7 @@
 @use "../../../core-styling/settings/baselinegrid";
 @use "../../../core-styling/settings/font";
 @use "../../../core-styling/mixins/typography";
+@use "../../../core-styling/mixins/scale";
 @use "../../../core-styling/mixins/validation";
 
 $_h1-line-height: baselinegrid.$space-medium;
@@ -48,7 +49,7 @@ $_font-family: font.$secondary;
   $scale: _get-scale-point($heading-level);
   $line-height: _get-line-height($heading-level);
   @include _base-typography();
-  @include typography.set-font-size-and-line-height(scale($scale), $line-height);
+  @include typography.set-font-size-and-line-height(scale.scale($scale), $line-height);
 }
 
 h1 {

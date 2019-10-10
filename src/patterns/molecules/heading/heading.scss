@@ -1,7 +1,9 @@
+@use "sass:list";
 @use "sass:map";
 @use "../../../core-styling/settings/baselinegrid";
 @use "../../../core-styling/settings/font";
 @use "../../../core-styling/mixins/typography";
+@use "../../../core-styling/mixins/validation";
 
 $_h1-line-height: baselinegrid.$space-medium;
 $_h2-line-height: baselinegrid.$space-small + baselinegrid.$space-smallish;
@@ -38,7 +40,11 @@ $_font-family: font.$secondary;
 }
 
 @mixin _typography($heading-level) {
-  // TODO: error if not 1 <= $heading-level <= 6
+  $permitted: (level1, level2, level3, level4, level5, level6);
+  @if not list.index($permitted, $heading-level) {
+    @include validation.error("Invalid heading level supplied: #{$heading-level}");
+  }
+
   $scale: _get-scale-point($heading-level);
   $line-height: _get-line-height($heading-level);
   @include _base-typography();

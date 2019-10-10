@@ -1,0 +1,9 @@
+$_is-test: false !default;
+
+@function error($message, $capture: $_is-test) {
+  @if $capture {
+    @return $message;
+  }
+
+  @error $message;
+}

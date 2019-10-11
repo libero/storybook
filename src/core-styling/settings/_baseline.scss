@@ -29,7 +29,6 @@ $_factor-extra-large: 5; // 120px
 //----------------------------------------------------------------------------------------------------------------------
 // Spacing values are determined based on the global baseline grid.
 //
-// It is not recommended that you modify these following variables (it can break your vertical rhythm).
 
 $unit-extra-small: $_baseline-unit * $_factor-extra-small;
 $unit-small: $_baseline-unit * $_factor-small;

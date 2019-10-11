@@ -1,14 +1,13 @@
 @use "sass:list";
 @use "sass:map";
-@use "../../../core-styling/settings/baselinegrid";
 @use "../../../core-styling/settings/font";
+@use "../../../core-styling/settings/baseline";
 @use "../../../core-styling/mixins/typography";
-@use "../../../core-styling/mixins/scale";
 @use "../../../core-styling/mixins/validation";
 
-$_h1-line-height: baselinegrid.$space-medium;
-$_h2-line-height: baselinegrid.$space-small + baselinegrid.$space-smallish;
-$_default_line-height: baselinegrid.$space-small;
+$_h1-line-height: baseline.$unit-medium;
+$_h2-line-height: baseline.$unit-small + baseline.$unit-smallish;
+$_default_line-height: baseline.$unit-small;
 $_font-family: font.$secondary;
 
 @function _get-scale-point($heading-level) {
@@ -49,7 +48,7 @@ $_font-family: font.$secondary;
   $scale: _get-scale-point($heading-level);
   $line-height: _get-line-height($heading-level);
   @include _base-typography();
-  @include typography.set-font-size-and-line-height(scale.scale($scale), $line-height);
+  @include typography.set-font-size-and-line-height(baseline.scale($scale), $line-height);
 }
 
 h1 {

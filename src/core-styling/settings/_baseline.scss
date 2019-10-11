@@ -1,0 +1,43 @@
+@use "font";
+@use "~modularscale-sass/stylesheets/modularscale";
+@use "~modularscale-sass/stylesheets/modularscale/vars" as scale-ratio;
+
+$scale-base: font.$size !default;
+$scale-ratio: scale-ratio.$major-second !default;
+
+//----------------------------------------------------------------------------------------------------------------------
+// Baseline grid lines height.
+//
+// Every spacing metric should be based on this.
+// (All commented sizes assume a font size of 16px.)
+
+$_baseline-factor: 1.5; // 24px
+
+$_baseline-unit: $scale-base * $_baseline-factor;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Each value is a unit-less number.
+
+$_factor-extra-small: 0.5; // 12px
+$_factor-small: 1; // 24px
+$_factor-smallish: 1.5; // 36px
+$_factor-medium: 2; // 48px
+$_factor-large: 3; // 72px
+$_factor-extra-large: 5; // 120px
+
+//----------------------------------------------------------------------------------------------------------------------
+// Spacing values are determined based on the global baseline grid.
+//
+// It is not recommended that you modify these following variables (it can break your vertical rhythm).
+
+$unit-extra-small: $_baseline-unit * $_factor-extra-small;
+$unit-small: $_baseline-unit * $_factor-small;
+$unit-smallish: $_baseline-unit * $_factor-smallish;
+$unit-medium: $_baseline-unit * $_factor-medium;
+$unit-large: $_baseline-unit * $_factor-large;
+$unit-extra-large: $_baseline-unit * $_factor-extra-large;
+
+@function scale($value: 0) {
+  @return round(modularscale.ms-function($value, font.$size, $scale-ratio));
+}

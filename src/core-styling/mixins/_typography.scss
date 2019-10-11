@@ -1,9 +1,9 @@
 @use "../settings/color";
-@use "../settings/baselinegrid";
+@use "../settings/baseline";
 @use "types";
 @use "utilities";
 
-@mixin set-font-size-and-line-height($font-size, $block-size: baselinegrid.$space-small) {
+@mixin set-font-size-and-line-height($font-size, $block-size: baseline.$space-small) {
   @include types.rem(font-size, $font-size);
   line-height: $block-size / $font-size;
 }

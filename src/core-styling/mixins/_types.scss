@@ -1,5 +1,5 @@
 @use "../settings/font";
-@use "../../../node_modules/sass-rem/rem";
+@use "~node_modules/sass-rem/rem";
 
 $rem-baseline: font.$size;
 $rem-fallback: true;

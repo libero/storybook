@@ -40,11 +40,6 @@ $_font-family: font.$secondary;
 }
 
 @mixin _typography($heading-level) {
-  $permitted: (level1, level2, level3, level4, level5, level6);
-  @if not list.index($permitted, $heading-level) {
-    @include validation.error("Invalid heading level supplied: #{$heading-level}");
-  }
-
   $scale: _get-scale-point($heading-level);
   $line-height: _get-line-height($heading-level);
   @include _base-typography();

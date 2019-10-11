@@ -1,4 +1,4 @@
-@use "../settings/font";
+@use "settings/font";
 @use "~sass-rem/rem" with (
   $rem-baseline: font.$size,
   $rem-fallback: false

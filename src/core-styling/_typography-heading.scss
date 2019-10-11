@@ -1,0 +1,63 @@
+@forward "typography-global";
+
+@use "sass:list";
+@use "sass:map";
+@use "settings/font";
+@use "baseline";
+@use "typography-global" as global-typography;
+
+$_h1-line-height: baseline.$unit-medium;
+$_h2-line-height: (baseline.$unit-small + baseline.$unit-smallish) / 2;
+$_default_line-height: baseline.$unit-small;
+$_font-family: font.$secondary;
+
+@mixin typography($heading-level) {
+  font-family: $_font-family;
+  font-weight: 600;
+
+  $sizes: (
+      "heading-level-1": ( "scale-point": 7, "line-height": $_h1-line-height),
+      "heading-level-2": ( "scale-point": 4, "line-height": $_h2-line-height),
+      "heading-level-3": ( "scale-point": 3, "line-height": $_default_line-height),
+      "heading-level-4": ( "scale-point": 2, "line-height": $_default_line-height),
+      "heading-level-5": ( "scale-point": 1, "line-height": $_default_line-height),
+      "heading-level-6": ( "scale-point": 0, "line-height": $_default_line-height),
+  );
+
+  $size: map.get($sizes, $heading-level);
+  $scale: map.get($size, "scale-point");
+  $line-height: map.get($size, "line-height");
+
+  @include global-typography.set-font-size-and-line-height(baseline.scale($scale), $line-height);
+}
+
+h1,
+.h1 {
+  @include typography(heading-level-1);
+}
+
+h2,
+.h2 {
+  @include typography(heading-level-2);
+}
+
+h3,
+.h3 {
+  @include typography(heading-level-3);
+}
+
+h4,
+.h4 {
+  @include typography(heading-level-4);
+}
+
+h5,
+.h5 {
+  @include typography(heading-level-5);
+}
+
+h6,
+.h6 {
+  @include typography(heading-level-6);
+}
+

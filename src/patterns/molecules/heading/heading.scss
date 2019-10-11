@@ -6,7 +6,7 @@
 @use "../../../core-styling/mixins/validation";
 
 $_h1-line-height: baseline.$unit-medium;
-$_h2-line-height: baseline.$unit-small + baseline.$unit-smallish;
+$_h2-line-height: (baseline.$unit-small + baseline.$unit-smallish) / 2;
 $_default_line-height: baseline.$unit-small;
 $_font-family: font.$secondary;
 

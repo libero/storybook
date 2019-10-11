@@ -1,5 +1,6 @@
 .DEFAULT_GOAL = help
 
+SHELL = /usr/bin/env bash
 REAL_ENV = $$(if [[ $${ENV} = "prod" ]]; then echo "prod"; else echo "dev"; fi)
 NAME = storybook-${REAL_ENV}
 TAG = libero/storybook:${REAL_ENV}

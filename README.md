@@ -7,6 +7,7 @@ Requirements
 ------------
 
 - [Docker](https://www.docker.com/)
+- [GNU Bash](https://www.gnu.org/software/bash/)
 - [GNU Make](https://www.gnu.org/software/make/)
 - [Node.js](https://nodejs.org/) (for development)
 

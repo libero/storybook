@@ -1,5 +1,0 @@
-@use "../functions/validation";
-
-@mixin error($message) {
-  _error: validation.error($message);
-}

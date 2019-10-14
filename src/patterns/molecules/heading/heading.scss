@@ -1,5 +1,8 @@
-@use "../../../core-styling/typography-heading" as typography;
+// Every non-partial must reference normalize
+@use "../../../core-styling/normalize";
+
 @use "../../../core-styling/link";
+@use "../../../core-styling/typography-heading" as typography;
 
 .heading__link {
   @include link.covert-link();

@@ -11,53 +11,57 @@ $_h2-line-height: (baseline.$unit-small + baseline.$unit-smallish) / 2;
 $_default_line-height: baseline.$unit-small;
 $_font-family: font.$secondary;
 
-@mixin typography($heading-level) {
+@mixin h1-typography() {
+  @include _typography(7, $_h1-line-height);
+}
+
+@mixin h2-typography() {
+  @include _typography(4, $_h2-line-height);
+}
+
+@mixin h3-typography() {
+  @include _typography(3, $_default_line-height);
+}
+
+@mixin h4-typography() {
+  @include _typography(2, $_default_line-height);
+}
+
+@mixin h5-typography() {
+  @include _typography(1, $_default_line-height);
+}
+
+@mixin h6-typography() {
+  @include _typography(0, $_default_line-height);
+}
+
+@mixin _typography($scale, $line-height) {
   font-family: $_font-family;
   font-weight: 600;
-
-  $sizes: (
-      "heading-level-1": ( "scale-point": 7, "line-height": $_h1-line-height),
-      "heading-level-2": ( "scale-point": 4, "line-height": $_h2-line-height),
-      "heading-level-3": ( "scale-point": 3, "line-height": $_default_line-height),
-      "heading-level-4": ( "scale-point": 2, "line-height": $_default_line-height),
-      "heading-level-5": ( "scale-point": 1, "line-height": $_default_line-height),
-      "heading-level-6": ( "scale-point": 0, "line-height": $_default_line-height),
-  );
-
-  $size: map.get($sizes, $heading-level);
-  $scale: map.get($size, "scale-point");
-  $line-height: map.get($size, "line-height");
 
   @include global-typography.set-font-size-and-line-height(baseline.scale($scale), $line-height);
 }
 
-h1,
-.h1 {
-  @include typography(heading-level-1);
+h1 {
+  @include h1-typography();
 }
 
-h2,
-.h2 {
-  @include typography(heading-level-2);
+h2 {
+  @include h2-typography();
 }
 
-h3,
-.h3 {
-  @include typography(heading-level-3);
+h3 {
+  @include h3-typography();
 }
 
-h4,
-.h4 {
-  @include typography(heading-level-4);
+h4 {
+  @include h4-typography();
 }
 
-h5,
-.h5 {
-  @include typography(heading-level-5);
+h5 {
+  @include h5-typography();
 }
 
-h6,
-.h6 {
-  @include typography(heading-level-6);
+h6 {
+  @include h6-typography();
 }
-

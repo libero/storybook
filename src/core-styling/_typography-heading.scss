@@ -35,11 +35,11 @@ $_font-family: font.$secondary;
   @include _typography(0, $_default_line-height);
 }
 
-@mixin _typography($scale, $line-height) {
+@mixin _typography($scale-point, $line-height) {
   font-family: $_font-family;
   font-weight: 600;
 
-  @include global-typography.set-font-size-and-line-height(baseline.scale($scale), $line-height);
+  @include global-typography.set-font-size-and-line-height(baseline.scale($scale-point), $line-height);
 }
 
 h1 {

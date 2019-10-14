@@ -1,7 +1,7 @@
 @use "baseline";
-@use "types";
+@use "rem";
 
 @mixin set-font-size-and-line-height($font-size, $block-size: baseline.$space-small) {
-  @include types.rem(font-size, $font-size);
+  @include rem.rem(font-size, $font-size);
   line-height: $block-size / $font-size;
 }

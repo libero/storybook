@@ -38,6 +38,6 @@ $unit-medium: $_baseline-unit * $_factor-medium;
 $unit-large: $_baseline-unit * $_factor-large;
 $unit-extra-large: $_baseline-unit * $_factor-extra-large;
 
-@function scale($value: 0) {
+@function scale($value) {
   @return math.round(modularscale.ms-function($value, font.$size, $scale-ratio));
 }

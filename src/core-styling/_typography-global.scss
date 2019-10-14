@@ -1,19 +1,7 @@
 @use "baseline";
-@use "settings/color";
 @use "types";
 
 @mixin set-font-size-and-line-height($font-size, $block-size: baseline.$space-small) {
   @include types.rem(font-size, $font-size);
   line-height: $block-size / $font-size;
-}
-
-@mixin covert-link($hover-color: color.$primary-dark) {
-  color: inherit;
-  cursor: pointer;
-  display: inline;
-  text-decoration: none;
-
-  &:hover {
-    color: color.$primary-dark;
-  }
 }

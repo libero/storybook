@@ -1,5 +1,6 @@
 @use "../../../core-styling/typography-heading" as typography;
+@use "../../../core-styling/link";
 
 .heading__link {
-  @include typography.covert-link();
+  @include link.covert-link();
 }

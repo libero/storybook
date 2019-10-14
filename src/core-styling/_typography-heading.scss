@@ -10,6 +10,7 @@ $_h1-line-height: baseline.$unit-medium;
 $_h2-line-height: (baseline.$unit-small + baseline.$unit-smallish) / 2;
 $_default_line-height: baseline.$unit-small;
 $_font-family: font.$secondary;
+$_font-weight: font.$heading-weight;
 
 @mixin h1-typography() {
   @include _typography(7, $_h1-line-height);
@@ -37,7 +38,7 @@ $_font-family: font.$secondary;
 
 @mixin _typography($scale-point, $line-height) {
   font-family: $_font-family;
-  font-weight: 600;
+  font-weight: $_font-weight;
 
   @include global-typography.set-font-size-and-line-height(baseline.scale($scale-point), $line-height);
 }

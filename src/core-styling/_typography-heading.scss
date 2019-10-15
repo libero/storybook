@@ -12,27 +12,27 @@ $_default_line-height: baseline.$unit-small;
 $_font-family: font.$secondary;
 $_font-weight: font.$heading-weight;
 
-@mixin h1-typography() {
+@mixin h1() {
   @include _typography(7, $_h1-line-height);
 }
 
-@mixin h2-typography() {
+@mixin h2() {
   @include _typography(4, $_h2-line-height);
 }
 
-@mixin h3-typography() {
+@mixin h3() {
   @include _typography(3, $_default_line-height);
 }
 
-@mixin h4-typography() {
+@mixin h4() {
   @include _typography(2, $_default_line-height);
 }
 
-@mixin h5-typography() {
+@mixin h5() {
   @include _typography(1, $_default_line-height);
 }
 
-@mixin h6-typography() {
+@mixin h6() {
   @include _typography(0, $_default_line-height);
 }
 
@@ -44,25 +44,25 @@ $_font-weight: font.$heading-weight;
 }
 
 h1 {
-  @include h1-typography();
+  @include h1();
 }
 
 h2 {
-  @include h2-typography();
+  @include h2();
 }
 
 h3 {
-  @include h3-typography();
+  @include h3();
 }
 
 h4 {
-  @include h4-typography();
+  @include h4();
 }
 
 h5 {
-  @include h5-typography();
+  @include h5();
 }
 
 h6 {
-  @include h6-typography();
+  @include h6();
 }

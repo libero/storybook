@@ -12,6 +12,13 @@ $_default_line-height: baseline.$unit-small;
 $_font-family: font.$secondary;
 $_font-weight: font.$heading-weight;
 
+@mixin _typography($scale-point, $line-height) {
+  font-family: $_font-family;
+  font-weight: $_font-weight;
+
+  @include global-typography.set-font-size-and-line-height(baseline.scale($scale-point), $line-height);
+}
+
 @mixin h1() {
   @include _typography(7, $_h1-line-height);
 }
@@ -34,13 +41,6 @@ $_font-weight: font.$heading-weight;
 
 @mixin h6() {
   @include _typography(0, $_default_line-height);
-}
-
-@mixin _typography($scale-point, $line-height) {
-  font-family: $_font-family;
-  font-weight: $_font-weight;
-
-  @include global-typography.set-font-size-and-line-height(baseline.scale($scale-point), $line-height);
 }
 
 h1 {

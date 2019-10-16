@@ -1,9 +1,9 @@
 @use "settings/font";
-@use "~sass-rem/rem"  as sass-rem with (
+@use "~sass-rem/rem" as sass-rem with (
   $rem-baseline: font.$size,
-  $rem-fallback: false
+  $rem-fallback: false,
 );
 
 @mixin specify($properties, $values...) {
-  @include sass-rem.rem($properties, $values...)
+  @include sass-rem.rem($properties, $values...);
 }

@@ -1,6 +1,6 @@
-@use "../../../styles/link";
+@use "../../../styles/links";
 @use "../../../styles/normalize";
 
 .heading__link {
-  @include link.covert();
+  @include links.covert();
 }

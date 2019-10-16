@@ -1,9 +1,5 @@
-// Every non-partial must reference normalize
 @use "../../../core-styling/normalize";
-
-// Nothing in this file uses this, but it needs to be used somewhere
 @use "../../../core-styling/typography-heading";
-
 @use "../../../core-styling/link";
 
 .heading__link {

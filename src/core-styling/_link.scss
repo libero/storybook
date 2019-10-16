@@ -1,12 +1,8 @@
 @use "settings/color";
 
-$_default-hover-color: color.$primary-dark;
-
-@mixin covert-link($hover-color: $_default-hover-color) {
+@mixin covert-link($hover-color: color.$primary-dark) {
   color: inherit;
-  cursor: pointer;
-  display: inline;
-  text-decoration: none;
+  text-decoration: inherit;
 
   &:hover {
     color: $hover-color;

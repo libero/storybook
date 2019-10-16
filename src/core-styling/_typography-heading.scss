@@ -6,7 +6,7 @@
 @use "baseline";
 @use "typography-global" as global-typography;
 
-@mixin _heading($scale-point, $line-height: baseline.$unit-small) {
+@mixin _heading($scale-point, $line-height: baseline.$small) {
   font-family: font.$secondary;
   font-weight: 600;
 
@@ -14,11 +14,11 @@
 }
 
 @mixin h1() {
-  @include _heading(7, baseline.$unit-medium);
+  @include _heading(7, baseline.$medium);
 }
 
 @mixin h2() {
-  @include _heading(4, (baseline.$unit-small + baseline.$unit-smallish) / 2);
+  @include _heading(4, (baseline.$small + baseline.$smallish) / 2);
 }
 
 @mixin h3() {

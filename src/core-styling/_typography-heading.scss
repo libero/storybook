@@ -6,41 +6,35 @@
 @use "baseline";
 @use "typography-global" as global-typography;
 
-$_h1-line-height: baseline.$unit-medium;
-$_h2-line-height: (baseline.$unit-small + baseline.$unit-smallish) / 2;
-$_default_line-height: baseline.$unit-small;
-$_font-family: font.$secondary;
-$_font-weight: 600;
-
-@mixin _typography($scale-point, $line-height) {
-  font-family: $_font-family;
-  font-weight: $_font-weight;
+@mixin _heading($scale-point, $line-height: baseline.$unit-small) {
+  font-family: font.$secondary;
+  font-weight: 600;
 
   @include global-typography.set-font-size-and-line-height(baseline.scale($scale-point), $line-height);
 }
 
 @mixin h1() {
-  @include _typography(7, $_h1-line-height);
+  @include _heading(7, baseline.$unit-medium);
 }
 
 @mixin h2() {
-  @include _typography(4, $_h2-line-height);
+  @include _heading(4, (baseline.$unit-small + baseline.$unit-smallish) / 2);
 }
 
 @mixin h3() {
-  @include _typography(3, $_default_line-height);
+  @include _heading(3);
 }
 
 @mixin h4() {
-  @include _typography(2, $_default_line-height);
+  @include _heading(2);
 }
 
 @mixin h5() {
-  @include _typography(1, $_default_line-height);
+  @include _heading(1);
 }
 
 @mixin h6() {
-  @include _typography(0, $_default_line-height);
+  @include _heading(0);
 }
 
 h1 {

@@ -1,7 +1,45 @@
 @use "baseline";
+@use "font";
 @use "rem";
+@use "scale";
 
-@mixin set-font-size-and-line-height($font-size, $block-size: baseline.$space-small) {
-  @include rem.specify(font-size, $font-size);
-  line-height: $block-size / $font-size;
+@mixin body() {
+  @include _typography();
+}
+
+@mixin h1() {
+  @include _heading(7, baseline.$medium);
+}
+
+@mixin h2() {
+  @include _heading(4, (baseline.$small + baseline.$smallish) / 2);
+}
+
+@mixin h3() {
+  @include _heading(3);
+}
+
+@mixin h4() {
+  @include _heading(2);
+}
+
+@mixin h5() {
+  @include _heading(1);
+}
+
+@mixin h6() {
+  @include _heading(0);
+}
+
+@mixin _heading($scale-point, $line-height: baseline.$small) {
+  @include _typography($scale-point, $line-height, font.$secondary, 600);
+}
+
+@mixin _typography($scale-point: 0, $block-size: baseline.$small, $font-family: font.$primary, $font-weight: 400) {
+  $_font-size: scale.at($scale-point);
+
+  font-family: $font-family;
+  font-size: rem.calculate($_font-size);
+  font-weight: $font-weight;
+  line-height: $block-size / $_font-size;
 }

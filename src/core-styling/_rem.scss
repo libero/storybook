@@ -4,6 +4,6 @@
   $rem-fallback: false,
 );
 
-@mixin specify($properties, $values...) {
-  @include sass-rem.rem($properties, $values...);
+@function calculate($values...) {
+  @return sass-rem.rem($values...);
 }

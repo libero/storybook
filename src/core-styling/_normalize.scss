@@ -1,31 +1,60 @@
-@use "heading";
+@use "font";
+@use "typography";
 
-*,
-*:before,
-*:after {
+//----------------------------------------------------------------------------------------------------------------------
+// Default box model.
+//
+
+html {
   box-sizing: border-box;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+// Spacing.
+//
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+// Typography.
+//
+
+body {
+  @include typography.body();
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+}
+
 h1 {
-  @include heading.h1();
+  @include typography.h1();
 }
 
 h2 {
-  @include heading.h2();
+  @include typography.h2();
 }
 
 h3 {
-  @include heading.h3();
+  @include typography.h3();
 }
 
 h4 {
-  @include heading.h4();
+  @include typography.h4();
 }
 
 h5 {
-  @include heading.h5();
+  @include typography.h5();
 }
 
 h6 {
-  @include heading.h6();
+  @include typography.h6();
 }

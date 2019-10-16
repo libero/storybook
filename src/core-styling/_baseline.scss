@@ -1,10 +1,9 @@
 @use "sass:math";
 @use "settings/font";
 @use "~modularscale-sass/stylesheets/modularscale";
-@use "~modularscale-sass/stylesheets/modularscale/vars" as scale-ratio;
 
 $scale-base: font.$size !default;
-$scale-ratio: scale-ratio.$major-second !default;
+$scale-ratio: modularscale.$major-second !default;
 
 //----------------------------------------------------------------------------------------------------------------------
 // Baseline grid lines height.

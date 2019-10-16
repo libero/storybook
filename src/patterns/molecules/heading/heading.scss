@@ -2,5 +2,5 @@
 @use "../../../core-styling/normalize";
 
 .heading__link {
-  @include link.covert-link();
+  @include link.covert();
 }

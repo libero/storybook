@@ -37,5 +37,5 @@ $unit-large: $_baseline-unit * $_factor-large;
 $unit-extra-large: $_baseline-unit * $_factor-extra-large;
 
 @function scale($value) {
-  @return math.round(modularscale.ms-function($value, font.$size, $scale-ratio));
+  @return math.round(modularscale.ms-function($value, $scale-base, $scale-ratio));
 }

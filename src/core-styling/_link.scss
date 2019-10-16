@@ -1,6 +1,6 @@
-@use "settings/color";
+@use "colors";
 
-@mixin covert-link($hover-color: color.$primary-dark) {
+@mixin covert-link($hover-color: colors.$primary) {
   color: inherit;
   text-decoration: inherit;
 

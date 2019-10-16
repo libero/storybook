@@ -1,14 +1,15 @@
 @use "sass:list";
 @use "sass:map";
-@use "settings/font";
 @use "baseline";
-@use "typography-global" as global-typography;
+@use "font";
+@use "scale";
+@use "typography";
 
 @mixin _heading($scale-point, $line-height: baseline.$small) {
   font-family: font.$secondary;
   font-weight: 600;
 
-  @include global-typography.set-font-size-and-line-height(baseline.scale($scale-point), $line-height);
+  @include typography.set-font-size-and-line-height(scale.at($scale-point), $line-height);
 }
 
 @mixin h1() {
@@ -33,28 +34,4 @@
 
 @mixin h6() {
   @include _heading(0);
-}
-
-h1 {
-  @include h1();
-}
-
-h2 {
-  @include h2();
-}
-
-h3 {
-  @include h3();
-}
-
-h4 {
-  @include h4();
-}
-
-h5 {
-  @include h5();
-}
-
-h6 {
-  @include h6();
 }

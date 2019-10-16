@@ -1,9 +1,5 @@
-@use "sass:math";
-@use "settings/font";
+@use "scale";
 @use "~modularscale-sass/stylesheets/modularscale";
-
-$scale-base: font.$size !default;
-$scale-ratio: modularscale.$major-second !default;
 
 //----------------------------------------------------------------------------------------------------------------------
 // Baseline grid lines height.
@@ -11,7 +7,7 @@ $scale-ratio: modularscale.$major-second !default;
 // Every spacing metric should be based on this.
 // All commented sizes assume a font size of 16px.
 //
-$_baseline-unit: $scale-base * 1.5; // 24px
+$_baseline-unit: scale.$base * 1.5; // 24px
 
 //----------------------------------------------------------------------------------------------------------------------
 // Spacing values determined by the global baseline grid.
@@ -22,7 +18,3 @@ $smallish: $_baseline-unit * 1.5; // 36px
 $medium: $_baseline-unit * 2; // 48px
 $large: $_baseline-unit * 3; // 72px
 $extra-large: $_baseline-unit * 5; // 120px
-
-@function scale($point) {
-  @return math.round(modularscale.ms($point, $scale-base, $scale-ratio));
-}

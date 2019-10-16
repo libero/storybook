@@ -1,0 +1,10 @@
+@use "sass:math";
+@use "font";
+@use "~modularscale-sass/stylesheets/modularscale";
+
+$base: font.$size;
+$ratio: modularscale.$major-second !default;
+
+@function at($point) {
+  @return math.round(modularscale.ms($point, $base, $ratio));
+}

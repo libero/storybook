@@ -1,6 +1,5 @@
-@use "../../../core-styling/normalize";
-@use "../../../core-styling/typography-heading";
 @use "../../../core-styling/link";
+@use "../../../core-styling/normalize";
 
 .heading__link {
   @include link.covert-link();

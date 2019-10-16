@@ -1,5 +1,5 @@
-@use "../../../core-styling/link";
-@use "../../../core-styling/normalize";
+@use "../../../styles/link";
+@use "../../../styles/normalize";
 
 .heading__link {
   @include link.covert();

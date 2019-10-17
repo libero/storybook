@@ -12,6 +12,10 @@ $_baseline-unit: scale.$base * 1.5; // 24px
 //----------------------------------------------------------------------------------------------------------------------
 // Spacing values determined by the global baseline grid.
 //
+@function _baseline-unit($factor) {
+  @return $_baseline-unit * $factor;
+}
+
 $size-1: _baseline-unit(0.5); // 12px
 $size-2: _baseline-unit(1); // 24px
 $size-3: _baseline-unit(1.5); // 36px
@@ -22,7 +26,3 @@ $size-7: _baseline-unit(3.5); // 84px
 $size-8: _baseline-unit(4); // 96px
 $size-9: _baseline-unit(4.5); // 108px
 $size-10: _baseline-unit(5); // 120px
-
-@function _baseline-unit($factor) {
-  @return $_baseline-unit * $factor;
-}

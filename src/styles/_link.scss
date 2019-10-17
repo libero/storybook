@@ -1,6 +1,6 @@
-@use "colors";
+@use "color";
 
-@mixin covert($hover-color: colors.$primary) {
+@mixin covert($hover-color: color.$primary) {
   color: inherit;
   text-decoration: inherit;
 

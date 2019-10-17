@@ -1,5 +1,7 @@
-@use "../../../styles/link";
+// Always use normalize before anything else
 @use "../../../styles/normalize";
+
+@use "../../../styles/link";
 
 .heading__link {
   @include link.covert();

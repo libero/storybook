@@ -7,7 +7,7 @@
 // Every spacing metric should be based on this.
 // All commented sizes assume a font size of 16px.
 //
-$_baseline-unit: scale.$base * 1.5; // 24px
+$_baseline-unit: scale.$base * 0.75; // 12px
 
 //----------------------------------------------------------------------------------------------------------------------
 // Spacing values determined by the global baseline grid.
@@ -16,13 +16,13 @@ $_baseline-unit: scale.$base * 1.5; // 24px
   @return $_baseline-unit * $factor;
 }
 
-$size-1: _baseline-unit(0.5); // 12px
-$size-2: _baseline-unit(1); // 24px
-$size-3: _baseline-unit(1.5); // 36px
-$size-4: _baseline-unit(2); // 48px
-$size-5: _baseline-unit(2.5); // 60px
-$size-6: _baseline-unit(3); // 72px
-$size-7: _baseline-unit(3.5); // 84px
-$size-8: _baseline-unit(4); // 96px
-$size-9: _baseline-unit(4.5); // 108px
-$size-10: _baseline-unit(5); // 120px
+$size-1: _baseline-unit(1); // 12px
+$size-2: _baseline-unit(2); // 24px
+$size-3: _baseline-unit(3); // 36px
+$size-4: _baseline-unit(4); // 48px
+$size-5: _baseline-unit(5); // 60px
+$size-6: _baseline-unit(6); // 72px
+$size-7: _baseline-unit(7); // 84px
+$size-8: _baseline-unit(8); // 96px
+$size-9: _baseline-unit(9); // 108px
+$size-10: _baseline-unit(10); // 120px

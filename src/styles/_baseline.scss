@@ -12,12 +12,16 @@ $_baseline-unit: scale.$base * 1.5; // 24px
 //----------------------------------------------------------------------------------------------------------------------
 // Spacing values determined by the global baseline grid.
 //
-$miniature: _baseline-unit(0.5); // 12px
-$tiny: _baseline-unit(1); // 24px
-$small: _baseline-unit(1.5); // 36px
-$medium: _baseline-unit(2); // 48px
-$large: _baseline-unit(3); // 72px
-$huge: _baseline-unit(5); // 120px
+$size-1: _baseline-unit(0.5); // 12px
+$size-2: _baseline-unit(1); // 24px
+$size-3: _baseline-unit(1.5); // 36px
+$size-4: _baseline-unit(2); // 48px
+$size-5: _baseline-unit(2.5); // 60px
+$size-6: _baseline-unit(3); // 72px
+$size-7: _baseline-unit(3.5); // 84px
+$size-8: _baseline-unit(4); // 96px
+$size-9: _baseline-unit(4.5); // 108px
+$size-10: _baseline-unit(5); // 120px
 
 @function _baseline-unit($factor) {
   @return $_baseline-unit * $factor;

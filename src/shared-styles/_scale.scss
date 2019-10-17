@@ -1,6 +1,6 @@
-@use "sass:math";
 @use "font";
 @use "~modularscale-sass/stylesheets/modularscale";
+@use "sass:math";
 
 $base: font.$size;
 $ratio: modularscale.$major-second !default;

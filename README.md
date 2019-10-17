@@ -7,36 +7,46 @@ Requirements
 ------------
 
 - [Docker](https://www.docker.com/)
+- [GNU Bash](https://www.gnu.org/software/bash/)
 - [GNU Make](https://www.gnu.org/software/make/)
 - [Node.js](https://nodejs.org/) (for development)
+
+Running
+-------
+
+To run Storybook, execute
+
+```shell
+make prod
+```
+
+then open http://localhost:8080/ in your browser.
 
 Developing
 ----------
 
-To install dependencies locally, execute:
+To install dependencies locally (this only needs to be done once), execute:
 
 ```shell
 make install
 ```
 
-To run Storybook, execute:
+To build and run the Storybook container, and follow the container's log:
 
 ```shell
-make start
+make dev
 ```
 
 Then open http://localhost:8080/ in your browser.
 
-To follow the container's log, execute:
-
+To lint the JavaScript (report only), execute:
 ```shell
-make watch
+make lint
 ```
 
-To stop the container, execute:
-
+To lint the JavaScript (report and fix), execute:
 ```shell
-make stop
+make fix
 ```
 
 Getting help

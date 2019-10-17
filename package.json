@@ -6,17 +6,15 @@
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
-    "@storybook/addon-knobs": "^5.2.1",
-    "@storybook/polymer": "^5.2.1",
-    "@storybook/preset-scss": "^1.0.2",
+    "@storybook/addon-a11y": "^5.2.1",
+    "@storybook/addon-viewport": "^5.2.1",
+    "@storybook/polymer": "^5.2.4",
     "babel-loader": "^8.0.6",
-    "css-loader": "^3.2.0",
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
     "lit-html": "^1.1.2",
-    "node-sass": "^4.12.0",
-    "normalize.css": "^8.0.1",
     "polymer-webpack-loader": "^2.0.3",
-    "sass-loader": "^8.0.0",
-    "style-loader": "^1.0.0",
     "webpack": "^4.41.0"
   }
 }

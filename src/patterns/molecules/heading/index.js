@@ -15,6 +15,10 @@ const h5 = ({ text, classes, lang }) => html`<h5 class=${classMap(classes)} lang
 
 const h6 = ({ text, classes, lang }) => html`<h6 class=${classMap(classes)} lang=${ifDefined(lang)}>${text}</h6>`;
 
+const headings = {
+  h1, h2, h3, h4, h5, h6,
+};
+
 const other = ({
   level, text, classes, lang,
 }) => html`<h6 class=${classMap(classes)} lang=${ifDefined(lang)} aria-level=${level}>${text}</h6>`;
@@ -23,6 +27,5 @@ export default (args) => {
   args.classes = { heading: true, ...args.classes };
   args.text = html`${args.href ? link({ classes: { heading__link: true }, href: args.href, text: args.text }) : args.text}`;
 
-  // eslint-disable-next-line no-nested-ternary
-  return html`${args.level === 1 ? h1(args) : args.level === 2 ? h2(args) : args.level === 3 ? h3(args) : args.level === 4 ? h4(args) : args.level === 5 ? h5(args) : args.level === 6 ? h6(args) : other(args)}`;
+  return html`${(headings[`h${args.level}`] || other)(args)}`;
 };

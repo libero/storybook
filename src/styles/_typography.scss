@@ -31,8 +31,8 @@
   @include _heading(0);
 }
 
-@mixin _heading($scale-point, $line-height: baseline.$size-2) {
-  @include _typography($scale-point, $line-height, font.$secondary, 600);
+@mixin _heading($scale-point, $block-size: baseline.$size-2) {
+  @include _typography($scale-point, $block-size, font.$secondary, 600);
 }
 
 @mixin _typography($scale-point: 0, $block-size: baseline.$size-2, $font-family: font.$primary, $font-weight: 400) {

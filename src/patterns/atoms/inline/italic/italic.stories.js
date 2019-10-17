@@ -1,4 +1,4 @@
-import italic from './';
+import italic from '.';
 
 export default {
   title: 'Atoms|Inline/Italic',

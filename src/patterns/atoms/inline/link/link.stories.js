@@ -1,4 +1,4 @@
-import link from './';
+import link from '.';
 
 export default {
   title: 'Atoms|Inline/Link',

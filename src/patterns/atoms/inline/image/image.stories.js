@@ -1,4 +1,4 @@
-import image from './';
+import image from '.';
 
 export default {
   title: 'Atoms|Inline/Image',

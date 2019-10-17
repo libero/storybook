@@ -1,4 +1,4 @@
-import paragraph from './';
+import paragraph from '.';
 import italic from '../../inline/italic';
 
 export default {

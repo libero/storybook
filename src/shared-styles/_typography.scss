@@ -8,11 +8,11 @@
 }
 
 @mixin h1() {
-  @include _heading(7, baseline.$size-4);
+  @include _heading(7, baseline.$size-8);
 }
 
 @mixin h2() {
-  @include _heading(4, (baseline.$size-3 + baseline.$size-2) / 2);
+  @include _heading(4, baseline.$size-5);
 }
 
 @mixin h3() {
@@ -31,11 +31,11 @@
   @include _heading(0);
 }
 
-@mixin _heading($scale-point, $block-size: baseline.$size-2) {
+@mixin _heading($scale-point, $block-size: baseline.$size-4) {
   @include _typography($scale-point, $block-size, font.$secondary, 600);
 }
 
-@mixin _typography($scale-point: 0, $block-size: baseline.$size-2, $font-family: font.$primary, $font-weight: 400) {
+@mixin _typography($scale-point: 0, $block-size: baseline.$size-4, $font-family: font.$primary, $font-weight: 400) {
   $_font-size: scale.at($scale-point);
 
   font-family: $font-family;

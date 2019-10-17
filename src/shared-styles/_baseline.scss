@@ -5,9 +5,9 @@
 // Baseline grid lines height.
 //
 // Every spacing metric should be based on this.
-// All commented sizes assume a font size of 16px.
+// All commented sizes assume a scale base of 16px.
 //
-$_baseline-unit: scale.$base * 0.75; // 12px
+$_baseline-unit: scale.$base * 0.375; // 6px
 
 //----------------------------------------------------------------------------------------------------------------------
 // Spacing values determined by the global baseline grid.
@@ -16,13 +16,23 @@ $_baseline-unit: scale.$base * 0.75; // 12px
   @return $_baseline-unit * $factor;
 }
 
-$size-1: _baseline-unit(1); // 12px
-$size-2: _baseline-unit(2); // 24px
-$size-3: _baseline-unit(3); // 36px
-$size-4: _baseline-unit(4); // 48px
-$size-5: _baseline-unit(5); // 60px
-$size-6: _baseline-unit(6); // 72px
-$size-7: _baseline-unit(7); // 84px
-$size-8: _baseline-unit(8); // 96px
-$size-9: _baseline-unit(9); // 108px
-$size-10: _baseline-unit(10); // 120px
+$size-1: _baseline-unit(1); // 6px
+$size-2: _baseline-unit(2); // 12px
+$size-3: _baseline-unit(3); // 18px
+$size-4: _baseline-unit(4); // 24px
+$size-5: _baseline-unit(5); // 30px
+$size-6: _baseline-unit(6); // 36px
+$size-7: _baseline-unit(7); // 42px
+$size-8: _baseline-unit(8); // 48px
+$size-9: _baseline-unit(9); // 54px
+$size-10: _baseline-unit(10); // 60px
+$size-11: _baseline-unit(11); // 66px
+$size-12: _baseline-unit(12); // 72px
+$size-13: _baseline-unit(13); // 78px
+$size-14: _baseline-unit(14); // 84px
+$size-15: _baseline-unit(15); // 90px
+$size-16: _baseline-unit(16); // 96px
+$size-17: _baseline-unit(17); // 102px
+$size-18: _baseline-unit(18); // 108px
+$size-19: _baseline-unit(19); // 114px
+$size-20: _baseline-unit(20); // 120px

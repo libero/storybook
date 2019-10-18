@@ -1,6 +1,4 @@
-// Always use normalize before anything else
-@use "../../../shared-styles/normalize";
-
+@use "../../../shared-styles/normalize"; // Always used first
 @use "../../../shared-styles/link";
 
 .heading__link {

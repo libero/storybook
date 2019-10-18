@@ -5,9 +5,8 @@
 // Baseline grid lines height.
 //
 // Every spacing metric should be based on this.
-// All commented sizes assume a scale base of 16px.
 //
-$_baseline-unit: scale.$base * 0.375; // 6px
+$_baseline-unit: scale.$base * 0.375; // 6px when scale.$base is 16px
 
 //----------------------------------------------------------------------------------------------------------------------
 // Spacing values determined by the global baseline grid.

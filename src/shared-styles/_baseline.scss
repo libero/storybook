@@ -15,4 +15,3 @@ $_baseline-unit: scale.$base * 0.375; // 6px
 @function size-from-units($factor) {
   @return $_baseline-unit * $factor;
 }
-

@@ -12,7 +12,7 @@ $_baseline-unit: scale.$base * 0.375; // 6px
 //----------------------------------------------------------------------------------------------------------------------
 // Spacing values determined by the global baseline grid.
 //
-@function calculate-size-from-units($factor) {
+@function size-from-units($factor) {
   @return $_baseline-unit * $factor;
 }
 

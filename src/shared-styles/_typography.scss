@@ -41,5 +41,5 @@
   font-family: $font-family;
   font-size: rem.calculate($_font-size);
   font-weight: $font-weight;
-  line-height: baseline.calculate-size-from-units($block-size-baseline-units) / $_font-size;
+  line-height: baseline.size-from-units($block-size-baseline-units) / $_font-size;
 }

@@ -12,27 +12,27 @@ $_baseline-unit: scale.$base * 0.375; // 6px
 //----------------------------------------------------------------------------------------------------------------------
 // Spacing values determined by the global baseline grid.
 //
-@function _baseline-unit($factor) {
+@function calculateSizeFromUnits($factor) {
   @return $_baseline-unit * $factor;
 }
 
-$size-1: _baseline-unit(1); // 6px
-$size-2: _baseline-unit(2); // 12px
-$size-3: _baseline-unit(3); // 18px
-$size-4: _baseline-unit(4); // 24px
-$size-5: _baseline-unit(5); // 30px
-$size-6: _baseline-unit(6); // 36px
-$size-7: _baseline-unit(7); // 42px
-$size-8: _baseline-unit(8); // 48px
-$size-9: _baseline-unit(9); // 54px
-$size-10: _baseline-unit(10); // 60px
-$size-11: _baseline-unit(11); // 66px
-$size-12: _baseline-unit(12); // 72px
-$size-13: _baseline-unit(13); // 78px
-$size-14: _baseline-unit(14); // 84px
-$size-15: _baseline-unit(15); // 90px
-$size-16: _baseline-unit(16); // 96px
-$size-17: _baseline-unit(17); // 102px
-$size-18: _baseline-unit(18); // 108px
-$size-19: _baseline-unit(19); // 114px
-$size-20: _baseline-unit(20); // 120px
+$_size-1: calculateSizeFromUnits(1); // 6px
+$_size-2: calculateSizeFromUnits(2); // 12px
+$_size-3: calculateSizeFromUnits(3); // 18px
+$_size-4: calculateSizeFromUnits(4); // 24px
+$_size-5: calculateSizeFromUnits(5); // 30px
+$_size-6: calculateSizeFromUnits(6); // 36px
+$_size-7: calculateSizeFromUnits(7); // 42px
+$_size-8: calculateSizeFromUnits(8); // 48px
+$_size-9: calculateSizeFromUnits(9); // 54px
+$_size-10: calculateSizeFromUnits(10); // 60px
+$_size-11: calculateSizeFromUnits(11); // 66px
+$_size-12: calculateSizeFromUnits(12); // 72px
+$_size-13: calculateSizeFromUnits(13); // 78px
+$_size-14: calculateSizeFromUnits(14); // 84px
+$_size-15: calculateSizeFromUnits(15); // 90px
+$_size-16: calculateSizeFromUnits(16); // 96px
+$_size-17: calculateSizeFromUnits(17); // 102px
+$_size-18: calculateSizeFromUnits(18); // 108px
+$_size-19: calculateSizeFromUnits(19); // 114px
+$_size-20: calculateSizeFromUnits(20); // 120px

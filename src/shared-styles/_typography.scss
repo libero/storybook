@@ -8,27 +8,27 @@
 }
 
 @mixin h1() {
-  @include _heading(7, $block-size-baseline-units: 8);
+  @include _heading($scale-point: 7, $block-size-baseline-units: 8);
 }
 
 @mixin h2() {
-  @include _heading(4, $block-size-baseline-units: 5);
+  @include _heading($scale-point: 4, $block-size-baseline-units: 5);
 }
 
 @mixin h3() {
-  @include _heading(3);
+  @include _heading($scale-point: 3);
 }
 
 @mixin h4() {
-  @include _heading(2);
+  @include _heading($scale-point: 2);
 }
 
 @mixin h5() {
-  @include _heading(1);
+  @include _heading($scale-point: 1);
 }
 
 @mixin h6() {
-  @include _heading(0);
+  @include _heading($scale-point: 0);
 }
 
 @mixin _heading($scale-point, $block-size-baseline-units: 4) {

@@ -1,0 +1,16 @@
+@use "~modularscale-sass/stylesheets/modularscale";
+@use "scale";
+
+//----------------------------------------------------------------------------------------------------------------------
+// Baseline grid lines height.
+//
+// Every spacing metric should be based on this.
+//
+$_baseline-unit: scale.$base * 0.375; // 6px when scale.$base is 16px
+
+//----------------------------------------------------------------------------------------------------------------------
+// Spacing values determined by the global baseline grid.
+//
+@function for-units($units) {
+  @return $_baseline-unit * $units;
+}

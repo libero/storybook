@@ -1,13 +1,12 @@
 language: minimal
 
-dist: bionic
-
 services: docker
 
 install:
-  - make build
+  - ENV=dev make build
+  - ENV=prod make build
 
 script:
-  - make start
-  - make logs
-  - make stop
+  - ENV=dev make start wait-healthy logs stop
+  - ENV=prod make start wait-healthy logs stop
+  - make lint

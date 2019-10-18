@@ -1,0 +1,36 @@
+@use "typography";
+
+//----------------------------------------------------------------------------------------------------------------------
+// Typography.
+//
+
+body {
+  @include typography.body();
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+}
+
+h1 {
+  @include typography.h1();
+}
+
+h2 {
+  @include typography.h2();
+}
+
+h3 {
+  @include typography.h3();
+}
+
+h4 {
+  @include typography.h4();
+}
+
+h5 {
+  @include typography.h5();
+}
+
+h6 {
+  @include typography.h6();
+}

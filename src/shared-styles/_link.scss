@@ -1,0 +1,10 @@
+@use "color";
+
+@mixin covert($hover-color: color.$primary) {
+  color: inherit;
+  text-decoration: inherit;
+
+  &:hover {
+    color: $hover-color;
+  }
+}

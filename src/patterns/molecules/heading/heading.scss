@@ -1,0 +1,6 @@
+@use "../../../shared-styles/normalize"; // Always used first
+@use "../../../shared-styles/link";
+
+.heading__link {
+  @include link.covert();
+}

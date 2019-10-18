@@ -9,12 +9,19 @@
     "@storybook/addon-a11y": "^5.2.1",
     "@storybook/addon-viewport": "^5.2.1",
     "@storybook/polymer": "^5.2.4",
+    "@storybook/preset-scss": "^1.0.2",
     "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
     "eslint": "^6.4.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
     "lit-html": "^1.1.2",
+    "modularscale-sass": "^3.0.10",
     "polymer-webpack-loader": "^2.0.3",
+    "sass": "^1.23.0",
+    "sass-loader": "^8.0.0",
+    "sass-rem": "^2.0.1",
+    "style-loader": "^1.0.0",
     "webpack": "^4.41.0"
   }
 }

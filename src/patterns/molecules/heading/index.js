@@ -2,6 +2,7 @@ import { html } from 'lit-html';
 import { classMap } from 'lit-html/directives/class-map';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import link from '../../atoms/inline/link';
+import './heading.scss';
 
 const h1 = ({ text, classes, lang }) => html`<h1 class=${classMap(classes)} lang=${ifDefined(lang)}>${text}</h1>`;
 

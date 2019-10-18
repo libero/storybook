@@ -8,11 +8,11 @@
 }
 
 @mixin h1() {
-  @include _heading($scale-point: 7, $block-size-baseline-units: 8);
+  @include _heading($scale-point: 7, $baseline-units: 8);
 }
 
 @mixin h2() {
-  @include _heading($scale-point: 4, $block-size-baseline-units: 5);
+  @include _heading($scale-point: 4, $baseline-units: 5);
 }
 
 @mixin h3() {
@@ -31,15 +31,16 @@
   @include _heading($scale-point: 0);
 }
 
-@mixin _heading($scale-point, $block-size-baseline-units: 4) {
-  @include _typography($scale-point, $block-size-baseline-units, font.$secondary, 600);
+@mixin _heading($scale-point, $baseline-units: 4) {
+  @include _typography($scale-point, $baseline-units, font.$secondary, 600);
 }
 
-@mixin _typography($scale-point: 0, $block-size-baseline-units: 4, $font-family: font.$primary, $font-weight: 400) {
-  $_font-size: scale.at($scale-point);
+@mixin _typography($scale-point: 0, $baseline-units: 4, $font-family: font.$primary, $font-weight: 400) {
+  $_font-size: scale.at-point($scale-point);
+  $_baseline-size: baseline.for-units($baseline-units);
 
   font-family: $font-family;
   font-size: rem.calculate($_font-size);
   font-weight: $font-weight;
-  line-height: baseline.size-from-units($block-size-baseline-units) / $_font-size;
+  line-height: $_baseline-size / $_font-size;
 }

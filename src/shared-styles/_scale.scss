@@ -5,6 +5,6 @@
 $base: font.$size;
 $ratio: modularscale.$major-second !default;
 
-@function at($point) {
+@function at-point($point) {
   @return math.round(modularscale.ms($point, $base, $ratio));
 }

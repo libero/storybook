@@ -11,6 +11,6 @@ $_baseline-unit: scale.$base * 0.375; // 6px when scale.$base is 16px
 //----------------------------------------------------------------------------------------------------------------------
 // Spacing values determined by the global baseline grid.
 //
-@function size-from-units($factor) {
-  @return $_baseline-unit * $factor;
+@function for-units($units) {
+  @return $_baseline-unit * $units;
 }

@@ -16,23 +16,3 @@ $_baseline-unit: scale.$base * 0.375; // 6px
   @return $_baseline-unit * $factor;
 }
 
-$_size-1: calculate-size-from-units(1); // 6px
-$_size-2: calculate-size-from-units(2); // 12px
-$_size-3: calculate-size-from-units(3); // 18px
-$_size-4: calculate-size-from-units(4); // 24px
-$_size-5: calculate-size-from-units(5); // 30px
-$_size-6: calculate-size-from-units(6); // 36px
-$_size-7: calculate-size-from-units(7); // 42px
-$_size-8: calculate-size-from-units(8); // 48px
-$_size-9: calculate-size-from-units(9); // 54px
-$_size-10: calculate-size-from-units(10); // 60px
-$_size-11: calculate-size-from-units(11); // 66px
-$_size-12: calculate-size-from-units(12); // 72px
-$_size-13: calculate-size-from-units(13); // 78px
-$_size-14: calculate-size-from-units(14); // 84px
-$_size-15: calculate-size-from-units(15); // 90px
-$_size-16: calculate-size-from-units(16); // 96px
-$_size-17: calculate-size-from-units(17); // 102px
-$_size-18: calculate-size-from-units(18); // 108px
-$_size-19: calculate-size-from-units(19); // 114px
-$_size-20: calculate-size-from-units(20); // 120px

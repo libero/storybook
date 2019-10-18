@@ -1,5 +1,4 @@
-import heading from './heading.twig';
-import './heading.scss';
+import heading from './index';
 
 export default {
   title: 'Molecules|Heading',
@@ -50,11 +49,7 @@ export const h6 = () => heading(
 export const h1Linked = () => heading(
   {
     level: 1,
-    text: {
-      text: 'Linked heading',
-      attributes: {
-        href: '#',
-      },
-    },
+    href: '#',
+    text: 'Linked heading',
   },
 );

@@ -1,5 +1,5 @@
-import paragraph from './paragraph.twig';
-import { italic } from '../../../includes';
+import paragraph from '.';
+import italic from '../../inline/italic';
 
 export default {
   title: 'Atoms|Block/Paragraph',

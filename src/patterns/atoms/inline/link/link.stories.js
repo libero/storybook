@@ -1,4 +1,4 @@
-import link from './link.twig';
+import link from '.';
 
 export default {
   title: 'Atoms|Inline/Link',
@@ -6,9 +6,7 @@ export default {
 
 export const Basic = () => link(
   {
-    attributes: {
-      href: '#',
-    },
+    href: '#',
     text: 'A link',
   },
 );

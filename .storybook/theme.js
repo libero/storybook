@@ -1,10 +1,11 @@
 import { create } from '@storybook/theming';
+import theme from './theme.scss';
 
 export default create({
   base: 'light',
   brandTitle: 'Libero Publisher',
   brandUrl: 'https://libero.pub/',
-  colorPrimary: 'rgb(2, 136, 209)',
+  colorPrimary: theme.colorPrimary,
   colorSecondary: 'rgb(2, 119, 189)',
   appBg: 'rgb(255, 255, 255)',
   appContentBg: 'rgb(255, 255, 255)',

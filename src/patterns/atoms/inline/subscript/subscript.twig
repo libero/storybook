@@ -2,8 +2,12 @@
 
 {%- set attributes = attributes|default({}) -%}
 
-<sub {{- html.attributes(attributes|default({})) }}>
+{% spaceless %}
 
-  {{- html.content(text) -}}
+  <sub {{- html.attributes(attributes|default({})) }}>
 
-</sub>
+    {{- html.content(text) -}}
+
+  </sub>
+
+{% endspaceless %}

@@ -1,0 +1,9 @@
+{%- import '../../../html.twig' as html -%}
+
+{%- set attributes = attributes|default({}) -%}
+
+<sub {{- html.attributes(attributes|default({})) }}>
+
+  {{- html.content(text) -}}
+
+</sub>

@@ -1,0 +1,18 @@
+{%- import '../../html.twig' as html -%}
+
+{%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['error']) }) -%}
+
+<div {{- html.attributes(attributes|default({})) }}>
+
+  {%- with heading only -%}
+    {%- block heading -%}
+
+      {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['error__heading'])}) -%}
+      {%- set level = level|default(2) -%}
+
+      {%- include './molecules/heading/heading.twig' -%}
+
+    {%- endblock heading -%}
+  {%- endwith -%}
+
+</div>

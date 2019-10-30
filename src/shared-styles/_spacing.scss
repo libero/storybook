@@ -1,9 +1,0 @@
-@use 'baseline';
-
-@mixin block-spacing($start: 0, $end: baseline.for-units(4)) {
-  margin: 0;
-}
-
-@mixin padding($sizes, $dimension: "") {
-  padding: 0;
-}

@@ -15,6 +15,8 @@
 
 .content-meta__item {
   display: inline-block;
+  // TODO: Added letter-spacing as part of mixin _label-typography which has font sizing which may need to be changed?
+  letter-spacing: 0.5px;
   text-transform: uppercase;
   color: color.$text-secondary;
 

@@ -34,7 +34,7 @@
 }
 
 .content-meta__link {
-  @include typography.covert-link();
+  @include link.covert();
 
   .content-meta--reverse & {
     &:hover {

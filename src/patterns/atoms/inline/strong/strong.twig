@@ -1,0 +1,11 @@
+{%- import '../../../html.twig' as html -%}
+
+{% spaceless %}
+
+  <strong {{- html.attributes(attributes|default({})) }}>
+
+    {{- html.content(text) -}}
+
+  </strong>
+
+{% endspaceless %}

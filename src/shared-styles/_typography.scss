@@ -1,8 +1,10 @@
 @use "baseline";
+@use "color";
 @use "font";
 @use "rem";
 @use "scale";
 @use "spacing";
+@use "utilities";
 
 @mixin body() {
   @include _typography();
@@ -50,4 +52,19 @@
   @include spacing.padding(0, inline-start);
   // Overflow auto is so the bullet will be still read from a screen reader and will push the bullet off screen
   overflow-x: auto;
+}
+
+@mixin covert-link($hover-color: color.$primary-dark) {
+  @include utilities.inherit-all($ensure: color text-decoration) {
+    cursor: pointer;
+    display: inline;
+  }
+
+  & {
+    @content;
+  }
+
+  &:hover {
+    color: $hover-color;
+  }
 }

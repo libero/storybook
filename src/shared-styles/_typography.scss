@@ -2,7 +2,6 @@
 @use "font";
 @use "rem";
 @use "scale";
-@use "spacing";
 
 @mixin body() {
   @include _typography();
@@ -44,10 +43,4 @@
   font-size: rem.calculate($_font-size);
   font-weight: $font-weight;
   line-height: $_baseline-size / $_font-size;
-}
-
-@mixin list-style-none() {
-  @include spacing.padding(0, inline-start);
-  // Overflow auto is so the bullet will be still read from a screen reader and will push the bullet off screen
-  overflow-x: auto;
 }

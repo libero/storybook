@@ -1,0 +1,11 @@
+{%- import '../../../html.twig' as html -%}
+
+{% spaceless %}
+
+  <sup {{- html.attributes(attributes|default({})) }}>
+
+    {{- html.content(text) -}}
+
+  </sup>
+
+{% endspaceless %}

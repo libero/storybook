@@ -6,6 +6,10 @@
 @use "spacing";
 @use "utilities";
 
+@mixin set-font-size-and-line-height($font-size, $block-size: 3) {
+  line-height: $block-size / $font-size;
+}
+
 @mixin body() {
   @include _typography();
 }
@@ -38,6 +42,25 @@
   @include _typography($scale-point, $baseline-units, font.$secondary, 600);
 }
 
+@mixin _label-typography($color, $uppercase: true) {
+  color: $color;
+  font-family: font.$secondary;
+  font-weight: normal;
+  @include set-font-size-and-line-height(scale(-3));
+  letter-spacing: font.$letterspacing-label;
+  @if $uppercase {
+    text-transform: uppercase;
+  }
+}
+
+@mixin label-content-typography($color: color.$text-secondary, $uppercase: true) {
+  @include _label-typography($color, $uppercase);
+}
+
+@mixin label-tag-typography() {
+  @include _label-typography($color-primary-normal);
+}
+
 @mixin _typography($scale-point: 0, $baseline-units: 4, $font-family: font.$primary, $font-weight: 400) {
   $_font-size: scale.at-point($scale-point);
   $_baseline-size: baseline.for-units($baseline-units);
@@ -53,3 +76,4 @@
   // Overflow auto is so the bullet will be still read from a screen reader and will push the bullet off screen
   overflow-x: auto;
 }
+

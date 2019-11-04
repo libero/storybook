@@ -8,6 +8,7 @@ module.exports = {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
     describe: false,
+    gulp: false,
     it: false,
   },
   parserOptions: {

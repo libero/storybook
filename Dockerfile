@@ -24,8 +24,10 @@ RUN npm install
 #
 FROM node AS storybook
 
-COPY .eslintignore \
+COPY .babelrc \
+    .eslintignore \
     .eslintrc.js \
+    gulpfile.babel.js \
     ./
 COPY --from=npm /app/ .
 COPY .storybook/ .storybook/
@@ -46,7 +48,7 @@ CMD ["npx", "start-storybook", "--port", "8080"]
 HEALTHCHECK --interval=5s --timeout=1s \
     CMD wget --quiet --tries=1 --spider http://localhost:8080/ || exit 1
 
-
+RUN npx gulp watchSass
 
 #
 # Stage: Production build

@@ -30,7 +30,8 @@ COPY .eslintignore \
 COPY --from=npm /app/ .
 COPY .storybook/ .storybook/
 COPY src/ src/
-
+COPY test/ test/
+RUN npx jest
 
 
 #

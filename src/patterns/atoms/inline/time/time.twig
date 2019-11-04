@@ -1,0 +1,11 @@
+{%- import '../../../html.twig' as html -%}
+
+{% spaceless %}
+
+  <time {{- html.attributes(attributes|default({})) }}>
+
+    {{- html.content(text) -}}
+
+  </time>
+
+{% endspaceless %}

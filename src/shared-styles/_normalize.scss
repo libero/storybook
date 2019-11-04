@@ -34,3 +34,8 @@ h5 {
 h6 {
   @include typography.h6();
 }
+
+b,
+strong {
+  font-weight: bolder;
+}

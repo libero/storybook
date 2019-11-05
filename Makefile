@@ -1,4 +1,5 @@
 .DEFAULT_GOAL = help
+.PHONY = help install build start restart wait-healthy sh logs watch-logs stop dev prod lint test test-watch fix
 
 SHELL = /usr/bin/env bash
 REAL_ENV = $$(if [[ $${ENV} = "prod" ]]; then echo "prod"; else echo "dev"; fi)
@@ -54,7 +55,6 @@ lint: ## Lint the code
 	fi
 	docker run --rm ${MOUNT} ${TAG} npx eslint .
 
-.PHONY: test
 test: ## Run code tests
 	@if [ ${REAL_ENV} != "dev" ]; then\
 		echo "Requires dev environment";\

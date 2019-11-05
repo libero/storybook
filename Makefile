@@ -5,7 +5,7 @@ REAL_ENV = $$(if [[ $${ENV} = "prod" ]]; then echo "prod"; else echo "dev"; fi)
 NAME = storybook-${REAL_ENV}
 TAG = libero/storybook:${REAL_ENV}
 EXISTING_CONTAINERS = $$(docker ps --all --quiet --filter "name=${NAME}")
-MOUNT := $$(if [[ ${REAL_ENV} = "dev" ]]; then echo "--mount type=bind,source=$$(pwd)/src/,destination=/app/src,readonly --mount type=bind,source=$$(pwd)/.storybook/,destination=/app/.storybook,readonly"; fi)
+MOUNT := $$(if [[ ${REAL_ENV} = "dev" ]]; then echo "--mount type=bind,source=$$(pwd)/gulpfile.babel.js,destination=/app/gulpfile.babel.js,readonly --mount type=bind,source=$$(pwd)/test/,destination=/app/test,readonly --mount type=bind,source=$$(pwd)/src/,destination=/app/src,readonly --mount type=bind,source=$$(pwd)/.storybook/,destination=/app/.storybook,readonly"; fi)
 MOUNT_WRITE := $$(if [[ ${REAL_ENV} = "dev" ]]; then echo "--mount type=bind,source=$$(pwd)/src/,destination=/app/src --mount type=bind,source=$$(pwd)/.storybook/,destination=/app/.storybook"; fi)
 
 help: ## Display this help text
@@ -53,6 +53,14 @@ lint: ## Lint the code
 		exit 1;\
 	fi
 	docker run --rm ${MOUNT} ${TAG} npx eslint .
+
+.PHONY: test
+test: ## run code tests
+	@if [ ${REAL_ENV} != "dev" ]; then\
+		echo "Requires dev environment";\
+		exit 1;\
+	fi
+	docker run --rm ${MOUNT} ${TAG} npx jest
 
 fix: ## Fix linting issues in the code
 	@if [ ${REAL_ENV} != "dev" ]; then\

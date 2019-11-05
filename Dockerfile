@@ -24,16 +24,13 @@ RUN npm install
 #
 FROM node AS storybook
 
-COPY .babelrc \
-    .eslintignore \
+COPY .eslintignore \
     .eslintrc.js \
-    gulpfile.babel.js \
     ./
 COPY --from=npm /app/ .
 COPY .storybook/ .storybook/
 COPY src/ src/
-COPY test/ test/
-RUN npx jest
+
 
 
 #
@@ -43,12 +40,17 @@ FROM storybook AS dev
 ENV NODE_ENV=development
 EXPOSE 8080
 
+COPY .babelrc \
+    gulpfile.babel.js \
+    ./
+COPY test/ test/
+
 CMD ["npx", "start-storybook", "--port", "8080"]
 
 HEALTHCHECK --interval=5s --timeout=1s \
     CMD wget --quiet --tries=1 --spider http://localhost:8080/ || exit 1
 
-RUN npx gulp watchSass
+
 
 #
 # Stage: Production build

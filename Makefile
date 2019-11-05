@@ -31,7 +31,7 @@ sh: ## Open a shell on the container
 logs: ## Show the container's log
 	docker logs ${NAME}
 
-watch: ## Follow the container's log
+watch-logs: ## Follow the container's log
 	docker logs --follow ${NAME}
 
 stop: ## Stop the container
@@ -41,11 +41,11 @@ stop: ## Stop the container
 
 dev: ## Build and runs the container for development
 	ENV=dev make --jobs=2 stop build
-	ENV=dev make start watch
+	ENV=dev make start watch-logs
 
 prod: ## Builds and runs the container for production
 	ENV=prod make --jobs=2 stop build
-	ENV=prod make start watch
+	ENV=prod make start watch-logs
 
 lint: ## Lint the code
 	@if [ ${REAL_ENV} != "dev" ]; then\
@@ -61,6 +61,13 @@ test: ## run code tests
 		exit 1;\
 	fi
 	docker run --rm ${MOUNT} ${TAG} npx jest
+
+watch-test: ## watch code for changes
+	@if [ ${REAL_ENV} != "dev" ]; then\
+		echo "Requires dev environment";\
+		exit 1;\
+	fi
+	docker run --rm ${MOUNT} ${TAG} npx gulp watchSass
 
 fix: ## Fix linting issues in the code
 	@if [ ${REAL_ENV} != "dev" ]; then\

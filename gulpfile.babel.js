@@ -9,6 +9,8 @@ const path = {
 
 export const testSass = () => gulp.src(path.sassTestsEntryPoint).pipe(jest({ reporter: 'spec' }));
 
-export const watchSass = () => gulp.watch([path.sassFiles, path.sassTests], gulp.series('testSass'));
+export const watchSass = () => gulp.watch([path.sassFiles, path.sassTests], gulp.series(testSass));
+
+export const watch = gulp.parallel(watchSass);
 
 export default () => {};

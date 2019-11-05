@@ -67,7 +67,10 @@ test-watch: ## Rerun code tests on code / test changes
 		echo "Requires dev environment";\
 		exit 1;\
 	fi
-	docker run --rm ${MOUNT} ${TAG} npx gulp watchSass
+    # Execute npx in a shell so that Ctrl+C/SIGTERM is handled (I am not sure by whom, but probably the shell
+    # even on PID 1), however, pipe to tee so that with two subprocesses are there and busybox, the shell used in the
+    # node image, cannot inline (as in with exec) the npx process as PID 1
+	docker run -it --rm ${MOUNT} ${TAG} sh -c 'npx gulp watchSass | tee'
 
 fix: ## Fix linting issues in the code
 	@if [ ${REAL_ENV} != "dev" ]; then\

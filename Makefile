@@ -55,14 +55,14 @@ lint: ## Lint the code
 	docker run --rm ${MOUNT} ${TAG} npx eslint .
 
 .PHONY: test
-test: ## run code tests
+test: ## Run code tests
 	@if [ ${REAL_ENV} != "dev" ]; then\
 		echo "Requires dev environment";\
 		exit 1;\
 	fi
 	docker run --rm ${MOUNT} ${TAG} npx jest
 
-watch-test: ## watch code for changes
+test-watch: ## Rerun code tests on code / test changes
 	@if [ ${REAL_ENV} != "dev" ]; then\
 		echo "Requires dev environment";\
 		exit 1;\

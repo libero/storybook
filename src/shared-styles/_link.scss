@@ -1,4 +1,5 @@
 @use "color";
+@use "utilities";
 
 @mixin covert($hover-color: color.$primary) {
   color: inherit;
@@ -7,4 +8,16 @@
   &:hover {
     color: $hover-color;
   }
+}
+
+@mixin subtle() {
+  @include utilities.inherit-all($ensure: color) {
+    cursor: pointer;
+    display: inline;
+    text-decoration: underline;
+  }
+}
+
+.info-bar--attention {
+  background-color: color.$attention;
 }

@@ -44,3 +44,7 @@
   font-weight: $font-weight;
   line-height: $_baseline-size / $_font-size;
 }
+
+@mixin set-font-size-and-line-height($font-size, $block-size: 3) {
+  line-height: $block-size / $font-size;
+}

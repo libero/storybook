@@ -1,0 +1,49 @@
+@use "../../../shared-styles/normalize"; // Always used first
+@use "../../../shared-styles/font";
+@use "../../../shared-styles/color";
+@use "../../../shared-styles/link";
+@use "../../../shared-styles/spacing";
+@use "../../../shared-styles/typography";
+@use "../../../shared-styles/utilities";
+
+$info-bar-gutter: 8px !default;
+$info-bar-image-offset: font.$size !default;
+
+.info-bar {
+  @include typography.set-font-size-and-line-height(scale(-1));
+  color: color.$text-reverse;
+  font-family: font.$secondary;
+  font-weight: 600;
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+
+  @supports (display: flex) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  a {
+    @include link.subtle();
+  }
+}
+
+.info-bar--attention {
+  background-color: color.$attention;
+  padding: 10px;
+}
+
+.info-bar__image {
+  vertical-align: top;
+}
+
+.info-bar__image {
+  @include block-size($baselinegrid-space-small);
+  @include margin(0 $info-bar-image-offset, inline);
+  vertical-align: top;
+
+  @supports (display: flex) {
+    @include block-size(auto);
+    @include max-block-size($baselinegrid-space-medium);
+  }
+}

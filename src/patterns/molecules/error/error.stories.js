@@ -40,7 +40,7 @@ export const ErrorEnComplete = () => error(
 
 export const ErrorAr = () => error(
   {
-    attributes: 
+    attributes:
       {
         dir: 'rtl',
         lang: 'ar',
@@ -64,7 +64,7 @@ export const ErrorAr = () => error(
 
 export const ErrorJa = () => error(
   {
-    attributes: 
+    attributes:
       {
         lang: 'ja',
       },

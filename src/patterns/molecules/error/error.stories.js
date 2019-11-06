@@ -40,6 +40,10 @@ export const ErrorEnComplete = () => error(
 
 export const ErrorAr = () => error(
   {
+    attributes: {
+        dir: 'rtl',
+        lang: 'ar',
+    },
     image:
       {
         src: image,
@@ -59,6 +63,9 @@ export const ErrorAr = () => error(
 
 export const ErrorJa = () => error(
   {
+    attributes: {
+        lang: 'ja',
+    },
     image:
       {
         src: image,

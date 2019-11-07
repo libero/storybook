@@ -1,7 +1,7 @@
 @use "breakpoint";
 @use "font";
 
-@use "vendor/sass-mq/mq" as media with (
+@use "vendor/sass-mq/mq" with (
   $mq-base-font-size: font.$size,
   $mq-breakpoints: (
       x-small: breakpoint.$extra-narrow,

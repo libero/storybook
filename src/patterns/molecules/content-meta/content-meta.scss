@@ -8,9 +8,6 @@
 .content-meta {
   @include typography.list-style-none();
   @include spacing.block-spacing();
-  color: color.$text-secondary;
-  font-family: font.$secondary;
-  font-size: 0.6875rem;
 }
 
 .content-meta__item {

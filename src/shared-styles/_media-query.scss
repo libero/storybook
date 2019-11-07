@@ -4,11 +4,11 @@
 @use "vendor/sass-mq/mq" with (
   $mq-base-font-size: font.$size,
   $mq-breakpoints: (
-      x-small: breakpoint.$extra-narrow,
-      small: breakpoint.$narrow,
+      extra-narrow: breakpoint.$extra-narrow,
+      narrow: breakpoint.$narrow,
       medium: breakpoint.$medium,
       wide: breakpoint.$wide,
-      x-wide: breakpoint.$extra-wide,
+      extra-wide: breakpoint.$extra-wide,
   ),
 );
 

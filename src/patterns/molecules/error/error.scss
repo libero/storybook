@@ -1,3 +1,38 @@
+@use "../../../shared-styles/normalize"; // Always used first
+@use "../../../shared-styles/grid";
+@use "../../../shared-styles/sizes";
+@use "../../../shared-styles/typography";
+
 .error {
   text-align: center;
+  @include sizes.max-inline-size(grid.$grid-max-width);
+  // TODO: Add margin mixin as logical properties are included.
+  // TODO: Add padding mixin as logical properties are included.
+  // TODO: Add block-spacing mixin as logical properties are included.
+  // TODO: Add mq mixin
+
+  @supports (display: flex) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  > :last-child {
+    // TODO: Add margin mixin as logical properties are included
+  }
+
+}
+
+.error__image {
+  // TODO: Add block-spacing mixin as logical properties are included.
+
+  @supports (display: flex) {
+    display: block;
+  }
+}
+
+.error__heading {
+  // TODO: Add block-spacing mixin as logical properties are included.
+  @include typography.h2();
 }

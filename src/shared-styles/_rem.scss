@@ -1,5 +1,5 @@
 @use "font";
-@use "~sass-rem/rem" as sass-rem with (
+@use "vendor/sass-rem/rem" as sass-rem with (
   $rem-baseline: font.$size,
   $rem-fallback: false,
 );

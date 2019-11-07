@@ -1,3 +1,5 @@
 !/.eslintrc.js
 !/.storybook
 /node_modules/*
+/src/shared-styles/vendor
+

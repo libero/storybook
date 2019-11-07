@@ -1,0 +1,15 @@
+@use "breakpoint";
+@use "font";
+
+@use "vendor/sass-mq/mq" as media with (
+  $mq-base-font-size: font.$size,
+  $mq-breakpoints: (
+      x-small: breakpoint.$extra-narrow,
+      small: breakpoint.$narrow,
+      medium: breakpoint.$medium,
+      wide: breakpoint.$wide,
+      x-wide: breakpoint.$extra-wide,
+  ),
+);
+
+@forward "vendor/sass-mq/mq";

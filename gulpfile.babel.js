@@ -1,5 +1,5 @@
-import jest from 'gulp-jest';
 import gulp from 'gulp';
+import jest from 'gulp-jest';
 
 const appPath = {
   sassFiles: 'src/**/*.scss',

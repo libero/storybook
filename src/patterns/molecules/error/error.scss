@@ -1,5 +1,6 @@
 @use "../../../shared-styles/normalize"; // Always used first
 @use "../../../shared-styles/grid";
+@use "../../../shared-styles/media-query";
 @use "../../../shared-styles/sizes";
 @use "../../../shared-styles/typography";
 
@@ -9,7 +10,9 @@
   // TODO: Add margin mixin as logical properties are included.
   // TODO: Add padding mixin as logical properties are included.
   // TODO: Add block-spacing mixin as logical properties are included.
-  // TODO: Add mq mixin
+  @include media-query.mq($from: medium) {
+  // TODO: Add block-spacing mixin as logical properties are included.
+  }
 
   @supports (display: flex) {
     display: flex;

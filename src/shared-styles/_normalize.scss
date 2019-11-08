@@ -44,11 +44,11 @@ sup {
 }
 
 sub {
-  bottom: -0.25em;
+  bottom: -0.25em;  /* stylelint-disable-line csstools/use-logical */
 }
 
 sup {
-  top: -0.5em;
+  top: -0.5em;  /* stylelint-disable-line csstools/use-logical */
 }
 
 b,

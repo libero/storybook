@@ -1,7 +1,6 @@
+import image from './images/attention.svg';
 import infoBar from './info-bar.twig';
 import './info-bar.scss';
-import image from './images/attention.svg';
-
 
 export default {
   title: 'Molecules|InfoBar',

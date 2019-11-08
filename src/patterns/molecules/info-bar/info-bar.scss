@@ -38,12 +38,12 @@ $info-bar-image-offset: font.$size !default;
 }
 
 .info-bar__image {
-  @include block-size($baselinegrid-space-small);
-  @include margin(0 $info-bar-image-offset, inline);
+  // TODO: Add block-size mixin as logical properties are included.
+  // TODO: Add margin mixin as logical properties are included.
   vertical-align: top;
 
   @supports (display: flex) {
-    @include block-size(auto);
-    @include max-block-size($baselinegrid-space-medium);
+    // TODO: Add block-size mixin as logical properties are included
+    // TODO: Add max-block-size mixin as logical properties are included
   }
 }

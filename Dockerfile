@@ -42,6 +42,7 @@ EXPOSE 8080
 
 COPY .babelrc \
     gulpfile.babel.js \
+    .stylelintrc \
     ./
 COPY test/ test/
 

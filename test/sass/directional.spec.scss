@@ -1,0 +1,89 @@
+@use "../../src/shared-styles/directional";
+
+@import "test";
+
+/* stylelint-disable csstools/use-logical  */
+
+@include describe("@mixin when-left-to-right") {
+
+  @include it("provides appropriate ltr selector wrappers") {
+
+    @include assert() {
+
+      @include output {
+        @include directional.when-left-to-right() {
+          .made-up {
+            --dev: "null";
+          }
+
+        }
+      }
+
+      @include expect {
+
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          .made-up {
+            --dev: "null";
+          }
+        }
+      }
+    }
+  }
+}
+
+@include describe("@mixin when-right-to-left") {
+
+  @include it("provides appropriate rtl selector wrappers") {
+
+    @include assert() {
+
+      @include output {
+        @include directional.when-right-to-left() {
+          .made-up {
+            --dev: "null";
+          }
+        }
+      }
+
+      @include expect {
+
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          .made-up {
+            --dev: "null";
+          }
+
+        }
+
+      }
+    }
+  }
+}
+
+@include describe("@mixin when-logical") {
+
+  @include it("provides appropriate specificity-busting selector wrappers") {
+
+    @include assert() {
+
+      @include output {
+        @include directional.when-logical() {
+          .made-up {
+            --dev: "null";
+          }
+        }
+      }
+
+      @include expect {
+
+        html[dir][dir] & {
+          .made-up {
+            --dev: "null";
+          }
+        }
+
+      }
+    }
+  }
+}

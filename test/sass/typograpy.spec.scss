@@ -1,0 +1,164 @@
+@use "sass:math";
+@use "../../src/shared-styles/baseline";
+@use "../../src/shared-styles/font";
+@use "../../src/shared-styles/scale";
+@use "../../src/shared-styles/typography";
+
+@function _calcExpectedFontPx($scale-point) {
+  $base-font-size: font.$size;
+  $calculatedFontSize: $base-font-size;
+  @if $scale-point > 0 {
+    @for $i from 1 through $scale-point {
+      $calculatedFontSize: $calculatedFontSize * scale.$ratio;
+    }
+  }
+  @return math.round($calculatedFontSize);
+}
+
+
+// Needs to be @import rather than @use
+@import  "test";
+
+@include describe('@mixin h1') {
+
+  @include it('has correct typography') {
+
+    @include assert() {
+
+      @include output {
+        @include typography.h1()
+      }
+
+      @include expect {
+        $expectedFontPx: _calcExpectedFontPx($scale-point: 7);
+        font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+        font-size: #{$expectedFontPx / font.$size}rem;
+        font-weight: 600;
+        line-height: baseline.for-units(8) / $expectedFontPx;
+      }
+
+    }
+
+  }
+
+}
+
+@include describe('@mixin h2') {
+
+  @include it('has correct typography') {
+
+    @include assert() {
+
+      @include output {
+        @include typography.h2()
+      }
+
+      @include expect {
+        $expectedFontPx: _calcExpectedFontPx($scale-point: 4);
+        font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+        font-size: #{$expectedFontPx / font.$size}rem;
+        font-weight: 600;
+        line-height: baseline.for-units(5) / $expectedFontPx;
+      }
+
+    }
+
+  }
+
+}
+
+@include describe('@mixin h3') {
+
+  @include it('has correct typography') {
+
+    @include assert() {
+
+      @include output {
+        @include typography.h3()
+      }
+
+      @include expect {
+        $expectedFontPx: _calcExpectedFontPx($scale-point: 3);
+        font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+        font-size: #{$expectedFontPx / font.$size}rem;
+        font-weight: 600;
+        line-height: baseline.for-units(4) / $expectedFontPx;
+      }
+
+    }
+
+  }
+
+}
+
+@include describe('@mixin h4') {
+
+  @include it('has correct typography') {
+
+    @include assert() {
+
+      @include output {
+        @include typography.h4()
+      }
+
+      @include expect {
+        $expectedFontPx: _calcExpectedFontPx($scale-point: 2);
+        font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+        font-size: #{$expectedFontPx / font.$size}rem;
+        font-weight: 600;
+        line-height: baseline.for-units(4) / $expectedFontPx;
+      }
+
+    }
+
+  }
+
+}
+
+@include describe('@mixin h5') {
+
+  @include it('has correct typography') {
+
+    @include assert() {
+
+      @include output {
+        @include typography.h5()
+      }
+
+      @include expect {
+        $expectedFontPx: _calcExpectedFontPx($scale-point: 1);
+        font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+        font-size: #{$expectedFontPx / font.$size}rem;
+        font-weight: 600;
+        line-height: baseline.for-units(4) / $expectedFontPx;
+      }
+
+    }
+
+  }
+
+}
+
+@include describe('@mixin h6') {
+
+  @include it('has correct typography') {
+
+    @include assert() {
+
+      @include output {
+        @include typography.h6()
+      }
+
+      @include expect {
+        $expectedFontPx: _calcExpectedFontPx($scale-point: 0);
+        font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+        font-size: #{$expectedFontPx / font.$size}rem;
+        font-weight: 600;
+        line-height: baseline.for-units(4) / $expectedFontPx;
+      }
+
+    }
+
+  }
+
+}

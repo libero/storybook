@@ -40,6 +40,11 @@ FROM storybook AS dev
 ENV NODE_ENV=development
 EXPOSE 8080
 
+COPY .babelrc \
+    gulpfile.babel.js \
+    ./
+COPY test/ test/
+
 CMD ["npx", "start-storybook", "--port", "8080"]
 
 HEALTHCHECK --interval=5s --timeout=1s \

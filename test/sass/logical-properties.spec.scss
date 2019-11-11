@@ -596,11 +596,43 @@
     @include assert() {
 
       @include output {
+        @include logical-properties.property(inset, all, 16px);
+      }
+
+      @include expect {
+        top: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        left: 1rem;
+        inset: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include logical-properties.property(margin, all, 16px 16px);
       }
 
       @include expect {
         margin: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-properties.property(inset, all, 16px 16px);
+      }
+
+      @include expect {
+        top: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        left: 1rem;
+        inset: 1rem;
       }
 
     }
@@ -620,11 +652,43 @@
     @include assert() {
 
       @include output {
+        @include logical-properties.property(inset, all, 16px 32px);
+      }
+
+      @include expect {
+        top: 1rem;
+        right: 2rem;
+        bottom: 1rem;
+        left: 2rem;
+        inset: 1rem 2rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include logical-properties.property(margin, all, 16px 16px 16px);
       }
 
       @include expect {
         margin: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-properties.property(inset, all, 16px 16px 16px);
+      }
+
+      @include expect {
+        top: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        left: 1rem;
+        inset: 1rem;
       }
 
     }
@@ -644,11 +708,72 @@
     @include assert() {
 
       @include output {
+        @include logical-properties.property(inset, all, 16px 16px 32px);
+      }
+
+      @include expect {
+        top: 1rem;
+        right: 1rem;
+        bottom: 2rem;
+        left: 1rem;
+        inset: 1rem 1rem 2rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-properties.property(inset, all, 16px 32px 48px 64px);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          top: 1rem;
+          right: 2rem;
+          bottom: 3rem;
+          left: 4rem;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          top: 1rem;
+          right: 4rem;
+          bottom: 3rem;
+          left: 2rem;
+        }
+        html[dir][dir] & {
+          inset-block: 1rem 3rem;
+          inset-inline: 4rem 2rem;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include logical-properties.property(margin, all, 16px 16px 16px 16px);
       }
 
       @include expect {
         margin: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-properties.property(inset, all, 16px 16px 16px 16px);
+      }
+
+      @include expect {
+        top: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        left: 1rem;
+        inset: 1rem;
       }
 
     }

@@ -1,4 +1,4 @@
-@use "../../src/shared-styles/directional";
+@use "../../src/shared-styles/direction";
 
 @import "test";
 
@@ -11,11 +11,10 @@
     @include assert() {
 
       @include output {
-        @include directional.when-left-to-right() {
+        @include direction.when-left-to-right() {
           .made-up {
             --dev: "null";
           }
-
         }
       }
 
@@ -39,7 +38,7 @@
     @include assert() {
 
       @include output {
-        @include directional.when-right-to-left() {
+        @include direction.when-right-to-left() {
           .made-up {
             --dev: "null";
           }
@@ -68,7 +67,7 @@
     @include assert() {
 
       @include output {
-        @include directional.when-logical() {
+        @include direction.when-logical() {
           .made-up {
             --dev: "null";
           }

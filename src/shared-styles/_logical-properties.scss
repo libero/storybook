@@ -1,1 +1,108 @@
+@use "direction";
 @use "rem";
+@use "validation";
+
+@function _maybe-rem($to-rem, $values) {
+  @if ($to-rem == false) {
+    @return $values;
+  } @else {
+    @return rem.rem($values...);
+  }
+}
+
+@mixin _maybe-rem($to-rem, $properties, $values: ()) {
+  @if ($to-rem == false) {
+    @if type-of($properties) == "map" {
+      @each $property in map-keys($properties) {
+        @include _maybe-rem($to-rem, $property, map-get($properties, $property));
+      }
+    } @else {
+      @each $property in $properties {
+        #{$property}: $values;
+      }
+    }
+  } @else {
+    // TODO: avoid double name
+    @include rem.rem($properties, $values...);
+  }
+}
+
+@function _get-property-prefix($property-name, $dimension) {
+  $physical: (top, right, bottom, left);
+  @if $property-name == inset and index($physical, $dimension) {
+    @return "";
+  }
+  @return "#{$property-name}-";
+}
+
+@function _property-name($parts, $dimension) {
+  @if (length($parts) == 0 or $parts == "") {
+    @return $dimension;
+  }
+
+  @if (length($parts) == 1) {
+    @return "#{_get-property-prefix($parts, $dimension)}#{$dimension}";
+  }
+
+  @return "#{_get-property-prefix(nth($parts, 1), $dimension)}#{$dimension}-#{nth($parts, 2)}";
+}
+
+@mixin property($property-name, $dimension, $arguments, $to-rem: true) {
+  @if length($property-name) > 2 {
+    @include validation.error("Expected at most two property name parts");
+  } @else if $dimension == inline {
+
+    @if type-of($arguments) == "list" and length($arguments) > 1 {
+
+      @include validation.expect-at-most($arguments, 2, "More than two arguments supplied with 'inline' dimension") {
+
+        $firstArgument: nth($arguments, 1);
+        $secondArgument: nth($arguments, 2);
+
+        @if $firstArgument == $secondArgument {
+
+          @include _maybe-rem($to-rem, (
+            #{_property-name($property-name, left)}: $firstArgument,
+            #{_property-name($property-name, right)}: $firstArgument,
+          ));
+          #{_property-name($property-name, inline)}: _maybe-rem($to-rem, $firstArgument);
+
+        } @else {
+
+          @include direction.when-left-to-right() {
+            @include _maybe-rem($to-rem, _property-name($property-name, left), $firstArgument);
+            @include _maybe-rem($to-rem, _property-name($property-name, right), $secondArgument);
+          }
+
+          @include direction.when-right-to-left() {
+            @include _maybe-rem($to-rem, _property-name($property-name, right), $firstArgument);
+            @include _maybe-rem($to-rem, _property-name($property-name, left), $secondArgument);
+          }
+
+          @include direction.when-logical() {
+
+            @if $property-name == inset {
+              #{_property-name($property-name, inline)}: _maybe-rem($to-rem, $firstArgument $secondArgument);
+            } @else {
+              #{_property-name($property-name, inline-start)}: _maybe-rem($to-rem, $firstArgument);
+              #{_property-name($property-name, inline-end)}: _maybe-rem($to-rem, $secondArgument);
+            }
+
+          }
+
+        }
+
+      }
+
+    } @else {
+
+      @include _maybe-rem($to-rem, (
+        #{_property-name($property-name, left)}: $arguments,
+        #{_property-name($property-name, right)}: $arguments,
+      ));
+      #{_property-name($property-name, inline)}: _maybe-rem($to-rem, $arguments);
+
+    }
+
+  }
+}

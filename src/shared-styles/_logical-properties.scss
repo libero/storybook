@@ -6,7 +6,7 @@
   @if ($to-rem == false) {
     @return $values;
   } @else {
-    @return rem.rem($values...);
+    @return rem.calculate($values...);
   }
 }
 
@@ -22,8 +22,7 @@
       }
     }
   } @else {
-    // TODO: avoid double name
-    @include rem.rem($properties, $values...);
+    @include rem.calculate($properties, $values...);
   }
 }
 

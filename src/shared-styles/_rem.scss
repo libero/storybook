@@ -5,8 +5,10 @@
 
 @forward "vendor/sass-rem/rem";
 
-// TODO: evaluate whether tests here would be useful
-
 @function calculate($values...) {
   @return sass-rem.rem($values...);
+}
+
+@mixin calculate($properties, $values...) {
+  @include sass-rem.rem($properties, $values...);
 }

@@ -258,7 +258,6 @@
           @include direction.when-logical() {
 
             @if $blockStart != $blockEnd {
-              // TODO: test for inset?
               @if $property-name == inset {
                 #{_property-name($property-name, block)}: _maybe-rem($to-rem, $blockStart $blockEnd);
               } @else {

@@ -2,8 +2,6 @@
 
 @import "test";
 
-/* stylelint-disable csstools/use-logical  */
-
 @include describe("@mixin when-left-to-right") {
 
   @include it("provides appropriate ltr selector wrappers") {

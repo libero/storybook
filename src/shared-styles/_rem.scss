@@ -3,8 +3,6 @@
   $rem-baseline: font.$size,
 );
 
-@forward "vendor/sass-rem/rem";
-
 @function calculate($values...) {
   @return sass-rem.rem($values...);
 }

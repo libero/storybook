@@ -724,35 +724,6 @@
     @include assert() {
 
       @include output {
-        @include logical-properties.property(inset, all, 16px 32px 48px 64px);
-      }
-
-      @include expect {
-        html[dir="ltr"] &:not([dir]),
-        &[dir="ltr"] {
-          top: 1rem;
-          right: 2rem;
-          bottom: 3rem;
-          left: 4rem;
-        }
-        html[dir="rtl"] &:not([dir]),
-        &[dir="rtl"] {
-          top: 1rem;
-          right: 4rem;
-          bottom: 3rem;
-          left: 2rem;
-        }
-        html[dir][dir] & {
-          inset-block: 1rem 3rem;
-          inset-inline: 4rem 2rem;
-        }
-      }
-
-    }
-
-    @include assert() {
-
-      @include output {
         @include logical-properties.property(margin, all, 16px 16px 16px 16px);
       }
 
@@ -821,6 +792,64 @@
           margin-block-end: 3rem;
           margin-inline-start: 4rem;
           margin-inline-end: 2rem;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-properties.property(inset, all, 16px 32px 48px 64px);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          top: 1rem;
+          right: 2rem;
+          bottom: 3rem;
+          left: 4rem;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          top: 1rem;
+          right: 4rem;
+          bottom: 3rem;
+          left: 2rem;
+        }
+        html[dir][dir] & {
+          inset-block: 1rem 3rem;
+          inset-inline: 4rem 2rem;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-properties.property(inset, all, 16px 32px 48px 64px, $to-rem: false);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          top: 16px;
+          right: 32px;
+          bottom: 48px;
+          left: 64px;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          top: 16px;
+          right: 64px;
+          bottom: 48px;
+          left: 32px;
+        }
+        html[dir][dir] & {
+          inset-block: 16px 48px;
+          inset-inline: 64px 32px;
         }
       }
 

@@ -1,5 +1,5 @@
+@use "test" as *;
 @use "../../src/shared-styles/validation" with ($is-test: true);
-@import "test";
 
 @include describe("@mxin expect-single-value") {
 

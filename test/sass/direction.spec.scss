@@ -1,6 +1,5 @@
+@use "test" as *;
 @use "../../src/shared-styles/direction";
-
-@import "test";
 
 @include describe("@mixin when-left-to-right") {
 

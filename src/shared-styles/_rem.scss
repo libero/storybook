@@ -1,7 +1,6 @@
 @use "font";
 @use "vendor/sass-rem/rem" as sass-rem with (
   $rem-baseline: font.$size,
-  $rem-fallback: false,
 );
 
 @function calculate($values...) {

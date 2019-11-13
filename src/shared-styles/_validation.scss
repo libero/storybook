@@ -1,11 +1,10 @@
-$is-test: false !default;
+$throw-errors: true !default;
 
-@function error($message, $capture: $is-test) {
-  @if $capture {
-    @return $message;
+@function error($message, $throw-errors: $throw-errors) {
+  @if $throw-errors {
+    @error $message;
   }
-
-  @error $message;
+  @return $message;
 }
 
 @mixin error($message) {

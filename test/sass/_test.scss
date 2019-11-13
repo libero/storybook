@@ -1,5 +1,4 @@
 @use "../../src/shared-styles/error" with ($throw-errors: false);
-@forward "../../src/shared-styles/error";
 
 // Needs to be @import rather than @use
 @import "../../node_modules/sass-true/sass/true";

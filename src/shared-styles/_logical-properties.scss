@@ -2,27 +2,13 @@
 @use "rem";
 @use "validation";
 
+/* stylelint-disable csstools/use-logical  */
+
 @function _maybe-rem($to-rem, $values) {
   @if ($to-rem == false) {
     @return $values;
   } @else {
     @return rem.calculate($values...);
-  }
-}
-
-@mixin _maybe-rem($to-rem, $properties, $values: ()) {
-  @if ($to-rem == false) {
-    @if type-of($properties) == "map" {
-      @each $property in map-keys($properties) {
-        @include _maybe-rem($to-rem, $property, map-get($properties, $property));
-      }
-    } @else {
-      @each $property in $properties {
-        #{$property}: $values;
-      }
-    }
-  } @else {
-    @include rem.calculate($properties, $values...);
   }
 }
 
@@ -60,22 +46,20 @@
 
         @if $firstArgument == $secondArgument {
 
-          @include _maybe-rem($to-rem, (
-            #{_property-name($property-name, left)}: $firstArgument,
-            #{_property-name($property-name, right)}: $firstArgument,
-          ));
+          #{_property-name($property-name, left)}: _maybe-rem($to-rem, $firstArgument);
+          #{_property-name($property-name, right)}: _maybe-rem($to-rem, $firstArgument);
           #{_property-name($property-name, inline)}: _maybe-rem($to-rem, $firstArgument);
 
         } @else {
 
           @include direction.when-left-to-right() {
-            @include _maybe-rem($to-rem, _property-name($property-name, left), $firstArgument);
-            @include _maybe-rem($to-rem, _property-name($property-name, right), $secondArgument);
+            #{_property-name($property-name, left)}: _maybe-rem($to-rem, $firstArgument);
+            #{_property-name($property-name, right)}: _maybe-rem($to-rem, $secondArgument);
           }
 
           @include direction.when-right-to-left() {
-            @include _maybe-rem($to-rem, _property-name($property-name, right), $firstArgument);
-            @include _maybe-rem($to-rem, _property-name($property-name, left), $secondArgument);
+            #{_property-name($property-name, right)}: _maybe-rem($to-rem, $firstArgument);
+            #{_property-name($property-name, left)}: _maybe-rem($to-rem, $secondArgument);
           }
 
           @include direction.when-logical() {
@@ -95,10 +79,8 @@
 
     } @else {
 
-      @include _maybe-rem($to-rem, (
-        #{_property-name($property-name, left)}: $arguments,
-        #{_property-name($property-name, right)}: $arguments,
-      ));
+      #{_property-name($property-name, left)}: _maybe-rem($to-rem, $arguments);
+      #{_property-name($property-name, right)}: _maybe-rem($to-rem, $arguments);
       #{_property-name($property-name, inline)}: _maybe-rem($to-rem, $arguments);
 
     }
@@ -106,11 +88,11 @@
   }  @else if $dimension == inline-start {
 
     @include direction.when-left-to-right() {
-      @include _maybe-rem($to-rem, _property-name($property-name, left), $arguments);
+      #{_property-name($property-name, left)}: _maybe-rem($to-rem, $arguments);
     }
 
     @include direction.when-right-to-left() {
-      @include _maybe-rem($to-rem, _property-name($property-name, right), $arguments);
+      #{_property-name($property-name, right)}: _maybe-rem($to-rem, $arguments);
     }
 
     @include direction.when-logical() {
@@ -120,11 +102,11 @@
   }  @else if $dimension == inline-end {
 
     @include direction.when-left-to-right() {
-      @include _maybe-rem($to-rem, _property-name($property-name, right), $arguments);
+      #{_property-name($property-name, right)}: _maybe-rem($to-rem, $arguments);
     }
 
     @include direction.when-right-to-left() {
-      @include _maybe-rem($to-rem, _property-name($property-name, left), $arguments);
+      #{_property-name($property-name, left)}: _maybe-rem($to-rem, $arguments);
     }
 
     @include direction.when-logical() {
@@ -133,7 +115,7 @@
 
   }  @else if $dimension == inline-size {
 
-    @include _maybe-rem($to-rem, _property-name($property-name, width), $arguments);
+    #{_property-name($property-name, width)}: _maybe-rem($to-rem, $arguments);
     #{_property-name($property-name, inline-size)}: _maybe-rem($to-rem, $arguments);
 
   }  @else if $dimension == block {
@@ -147,18 +129,14 @@
 
         @if $firstArgument == $secondArgument {
 
-          @include _maybe-rem($to-rem, (
-            #{_property-name($property-name, top)}: $firstArgument,
-            #{_property-name($property-name, bottom)}: $firstArgument,
-          ));
+          #{_property-name($property-name, top)}: _maybe-rem($to-rem, $firstArgument);
+          #{_property-name($property-name, bottom)}: _maybe-rem($to-rem, $firstArgument);
           #{_property-name($property-name, block)}: _maybe-rem($to-rem, $firstArgument);
 
         } @else {
 
-          @include _maybe-rem($to-rem, (
-            #{_property-name($property-name, top)}: $firstArgument,
-            #{_property-name($property-name, bottom)}: $secondArgument,
-          ));
+          #{_property-name($property-name, top)}: _maybe-rem($to-rem, $firstArgument);
+          #{_property-name($property-name, bottom)}: _maybe-rem($to-rem, $secondArgument);
 
           @if $property-name == inset {
             #{_property-name($property-name, block)}: _maybe-rem($to-rem, $firstArgument $secondArgument);
@@ -173,27 +151,25 @@
 
     } @else {
 
-      @include _maybe-rem($to-rem, (
-        #{_property-name($property-name, top)}: $arguments,
-        #{_property-name($property-name, bottom)}: $arguments,
-      ));
+      #{_property-name($property-name, top)}: _maybe-rem($to-rem, $arguments);
+      #{_property-name($property-name, bottom)}: _maybe-rem($to-rem, $arguments);
       #{_property-name($property-name, block)}: _maybe-rem($to-rem, $arguments);
 
     }
 
   } @else if $dimension == block-start {
 
-    @include _maybe-rem($to-rem, _property-name($property-name, top), $arguments);
+    #{_property-name($property-name, top)}: _maybe-rem($to-rem, $arguments);
     #{_property-name($property-name, block-start)}: _maybe-rem($to-rem, $arguments);
 
   }  @else if $dimension == block-end {
 
-    @include _maybe-rem($to-rem, _property-name($property-name, bottom), $arguments);
+    #{_property-name($property-name, bottom)}: _maybe-rem($to-rem, $arguments);
     #{_property-name($property-name, block-end)}: _maybe-rem($to-rem, $arguments);
 
   }  @else if $dimension == block-size {
 
-    @include _maybe-rem($to-rem, _property-name($property-name, height), $arguments);
+    #{_property-name($property-name, height)}: _maybe-rem($to-rem, $arguments);
     #{_property-name($property-name, block-size)}: _maybe-rem($to-rem, $arguments);
 
   }  @else if $dimension == all {
@@ -213,45 +189,60 @@
         @if $blockStart == $blockEnd and $blockStart == $inlineStart and $blockStart == $inlineEnd {
 
           @if $property-name == inset {
-            @include _maybe-rem($to-rem, (top: $blockStart, right: $blockStart, bottom: $blockStart, left: $blockStart));
+            top: _maybe-rem($to-rem, $blockStart);
+            right: _maybe-rem($to-rem, $blockStart);
+            bottom: _maybe-rem($to-rem, $blockStart);
+            left: _maybe-rem($to-rem, $blockStart);
             inset: _maybe-rem($to-rem, $blockStart);
           } @else {
-            @include _maybe-rem($to-rem, $property-name, $blockStart);
+            #{$property-name}: _maybe-rem($to-rem, $blockStart);
           }
 
         } @else if $blockStart == $blockEnd and $inlineStart == $inlineEnd {
 
           @if $property-name == inset {
-            @include _maybe-rem($to-rem, (top: $blockStart, right: $inlineStart, bottom: $blockStart, left: $inlineStart));
+            top: _maybe-rem($to-rem, $blockStart);
+            right: _maybe-rem($to-rem, $inlineStart);
+            bottom: _maybe-rem($to-rem, $blockStart);
+            left: _maybe-rem($to-rem, $inlineStart);
             inset: _maybe-rem($to-rem, $blockStart $inlineStart);
           } @else {
-            @include _maybe-rem($to-rem, $property-name, $blockStart $inlineStart);
+            #{$property-name}: _maybe-rem($to-rem, $blockStart $inlineStart);
           }
 
         } @else if $inlineStart == $inlineEnd {
 
           @if $property-name == inset {
-            @include _maybe-rem($to-rem, (top: $blockStart, right: $inlineStart, bottom: $blockEnd, left: $inlineStart));
+            top: _maybe-rem($to-rem, $blockStart);
+            right: _maybe-rem($to-rem, $inlineStart);
+            bottom: _maybe-rem($to-rem, $blockEnd);
+            left: _maybe-rem($to-rem, $inlineStart);
             inset: _maybe-rem($to-rem, $blockStart $inlineStart $blockEnd);
           } @else {
-            @include _maybe-rem($to-rem, $property-name, $blockStart $inlineEnd $blockEnd);
+            #{$property-name}: _maybe-rem($to-rem, $blockStart $inlineEnd $blockEnd);
           }
 
         } @else {
 
           @include direction.when-left-to-right() {
             @if $property-name == inset {
-              @include _maybe-rem($to-rem, (top: $blockStart, right: $inlineEnd, bottom: $blockEnd, left: $inlineStart));
+              top: _maybe-rem($to-rem, $blockStart);
+              right: _maybe-rem($to-rem, $inlineEnd);
+              bottom: _maybe-rem($to-rem, $blockEnd);
+              left: _maybe-rem($to-rem, $inlineStart);
             } @else {
-              @include _maybe-rem($to-rem, $property-name, $blockStart $inlineEnd $blockEnd $inlineStart);
+              #{$property-name}: _maybe-rem($to-rem, $blockStart $inlineEnd $blockEnd $inlineStart);
             }
           }
 
           @include direction.when-right-to-left() {
             @if $property-name == inset {
-              @include _maybe-rem($to-rem, (top: $blockStart, right: $inlineStart, bottom: $blockEnd, left: $inlineEnd));
+              top: _maybe-rem($to-rem, $blockStart);
+              right: _maybe-rem($to-rem, $inlineStart);
+              bottom: _maybe-rem($to-rem, $blockEnd);
+              left: _maybe-rem($to-rem, $inlineEnd);
             } @else {
-              @include _maybe-rem($to-rem, $property-name, $blockStart $inlineStart $blockEnd $inlineEnd);
+              #{$property-name}: _maybe-rem($to-rem, $blockStart $inlineStart $blockEnd $inlineEnd);
             }
           }
 

@@ -6,7 +6,3 @@
 @function calculate($values...) {
   @return sass-rem.rem($values...);
 }
-
-@mixin calculate($properties, $values...) {
-  @include sass-rem.rem($properties, $values...);
-}

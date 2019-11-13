@@ -1,6 +1,6 @@
 @use "test" as *;
-@use "../../src/shared-styles/validation" with ( $throw-errors: false );
 @use "../../src/shared-styles/logical";
+@use "../../src/shared-styles/validate";
 
 /* stylelint-disable csstools/use-logical  */
 

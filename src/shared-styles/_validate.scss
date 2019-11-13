@@ -1,19 +1,8 @@
-$throw-errors: true !default;
-
-@function error($message, $throw-errors: $throw-errors) {
-  @if $throw-errors {
-    @error $message;
-  }
-  @return $message;
-}
-
-@mixin error($message) {
-  _error: error($message);
-}
+@use "error";
 
 @mixin expect-at-most($value, $maxLength, $message: "Expected at most #{$maxLength} values") {
   @if length($value) > $maxLength {
-    @include error($message);
+    @include error.throw($message);
   } @else {
     @content;
   }
@@ -22,7 +11,7 @@ $throw-errors: true !default;
 
 @mixin expect-single-value($value, $message: "Expected a single value") {
   @if length($value) == 0 {
-    @include error($message);
+    @include error.throw($message);
   } @else {
     @include expect-at-most($value, 1, $message) {
       @content;

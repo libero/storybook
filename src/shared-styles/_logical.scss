@@ -1,6 +1,7 @@
 @use "direction";
+@use "error";
 @use "rem";
-@use "validation";
+@use "validate";
 
 /* stylelint-disable csstools/use-logical  */
 
@@ -34,12 +35,12 @@
 
 @mixin property($property-name, $dimension, $arguments, $to-rem: true) {
   @if length($property-name) > 2 {
-    @include validation.error("Expected at most two property name parts");
+    @include error.throw("Expected at most two property name parts");
   } @else if $dimension == inline {
 
     @if type-of($arguments) == "list" and length($arguments) > 1 {
 
-      @include validation.expect-at-most($arguments, 2, "More than two arguments supplied with 'inline' dimension") {
+      @include validate.expect-at-most($arguments, 2, "More than two arguments supplied with 'inline' dimension") {
 
         $firstArgument: nth($arguments, 1);
         $secondArgument: nth($arguments, 2);
@@ -122,7 +123,7 @@
 
     @if type-of($arguments) == "list" and length($arguments) > 1 {
 
-      @include validation.expect-at-most($arguments, 2, "More than two arguments supplied with 'block' dimension") {
+      @include validate.expect-at-most($arguments, 2, "More than two arguments supplied with 'block' dimension") {
 
         $firstArgument: nth($arguments, 1);
         $secondArgument: nth($arguments, 2);
@@ -175,12 +176,12 @@
   }  @else if $dimension == all {
 
     @if length($property-name) > 1 {
-      @include validation.error("Expected a single property name");
+      @include error.throw("Expected a single property name");
     } @else if not index(inset margin padding, $property-name) {
-      @include validation.error("Can't combine block and inline for '#{$property-name}'");
+      @include error.throw("Can't combine block and inline for '#{$property-name}'");
     } @else {
 
-      @include validation.expect-at-most($arguments, 4, "More than four arguments supplied") {
+      @include validate.expect-at-most($arguments, 4, "More than four arguments supplied") {
         $blockStart: nth($arguments, 1);
         $blockEnd: if(length($arguments) >= 3, nth($arguments, 3), $blockStart);
         $inlineEnd: if(length($arguments) >= 2, nth($arguments, 2), $blockEnd);
@@ -273,9 +274,9 @@
     }
 
   } @else if index((top, bottom, left, right, width, height), $dimension) {
-    @include validation.error("'#{$dimension}' is a physical dimension, use its logical equivilant");
+    @include error.throw("'#{$dimension}' is a physical dimension, use its logical equivilant");
   } @else {
-    @include validation.error("Unknown dimension '#{$dimension}'");
+    @include error.throw("Unknown dimension '#{$dimension}'");
   }
 
 }

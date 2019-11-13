@@ -1,5 +1,5 @@
 @use "test" as *;
-@use "../../src/shared-styles/validation" with ( $throw-errors: false );
+@use "../../src/shared-styles/validate";
 
 @include describe("@mxin expect-single-value") {
 
@@ -7,7 +7,7 @@
     @include assert() {
 
       @include output {
-        @include validation.expect-single-value(()) {
+        @include validate.expect-single-value(()) {
           --dev: "null";
         }
       }
@@ -23,7 +23,7 @@
     @include assert() {
 
       @include output {
-        @include validation.expect-single-value((1, 2)) {
+        @include validate.expect-single-value((1, 2)) {
           --dev: "null";
         }
       }
@@ -39,7 +39,7 @@
     @include assert() {
 
       @include output {
-        @include validation.expect-single-value((1)) {
+        @include validate.expect-single-value((1)) {
           --dev: "null";
         }
       }
@@ -61,7 +61,7 @@
     @include assert() {
 
       @include output {
-        @include validation.expect-at-most((1, 2, 3), 2) {
+        @include validate.expect-at-most((1, 2, 3), 2) {
           --dev: "null";
         }
       }
@@ -78,7 +78,7 @@
     @include assert() {
 
       @include output {
-        @include validation.expect-at-most((1, 2, 3), 3) {
+        @include validate.expect-at-most((1, 2, 3), 3) {
           --dev: "null";
         }
       }

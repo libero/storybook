@@ -1,0 +1,12 @@
+$throw-errors: true !default;
+
+@function throw($message, $throw-errors: $throw-errors) {
+  @if $throw-errors {
+    @error $message;
+  }
+  @return $message;
+}
+
+@mixin throw($message) {
+  _error: throw($message);
+}

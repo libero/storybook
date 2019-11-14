@@ -1,0 +1,93 @@
+@use "test" as *;
+@use "../../src/shared-styles/validate";
+
+@include describe("@mxin expect-single-value") {
+
+  @include it("errors when passed a value without a length") {
+    @include assert() {
+
+      @include output {
+        @include validate.expect-single-value(()) {
+          --dev: "null";
+        }
+      }
+
+      @include expect {
+        _error: "Expected a single value";
+      }
+    }
+  }
+
+  @include it("errors when passed more than one value") {
+
+    @include assert() {
+
+      @include output {
+        @include validate.expect-single-value((1, 2)) {
+          --dev: "null";
+        }
+      }
+
+      @include expect {
+        _error: "Expected a single value";
+      }
+    }
+  }
+
+  @include it("doesn't error when passed exactly one value") {
+
+    @include assert() {
+
+      @include output {
+        @include validate.expect-single-value((1)) {
+          --dev: "null";
+        }
+      }
+
+      @include expect {
+        --dev: "null";
+      }
+
+    }
+
+  }
+
+}
+
+@include describe("@mxin expect-at-most") {
+
+  @include it("errors when passed more than the specficied threshold number of values") {
+
+    @include assert() {
+
+      @include output {
+        @include validate.expect-at-most((1, 2, 3), 2) {
+          --dev: "null";
+        }
+      }
+
+      @include expect {
+        _error: "Expected at most 2 values";
+      }
+    }
+
+  }
+
+  @include it("does not error when passed no more than the specficied threshold number of values") {
+
+    @include assert() {
+
+      @include output {
+        @include validate.expect-at-most((1, 2, 3), 3) {
+          --dev: "null";
+        }
+      }
+
+      @include expect {
+        --dev: "null";
+      }
+    }
+
+  }
+
+}

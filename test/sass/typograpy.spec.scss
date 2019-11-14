@@ -1,4 +1,5 @@
 @use "sass:math";
+@use  "test" as *;
 @use "../../src/shared-styles/baseline";
 @use "../../src/shared-styles/font";
 @use "../../src/shared-styles/scale";
@@ -14,10 +15,6 @@
   }
   @return math.round($calculatedFontSize);
 }
-
-
-// Needs to be @import rather than @use
-@import  "test";
 
 @include describe('@mixin h1') {
 

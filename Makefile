@@ -60,7 +60,7 @@ test: ## Run code tests
 		echo "Requires dev environment";\
 		exit 1;\
 	fi
-	docker run --rm ${MOUNT} ${TAG} npx jest
+	docker run --rm ${MOUNT} ${TAG} npx gulp validateSass
 
 test-watch: ## Rerun code tests on code / test changes
 	@if [ ${REAL_ENV} != "dev" ]; then\

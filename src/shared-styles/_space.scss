@@ -91,6 +91,6 @@
   @include padding(0, $dimension);
 }
 
-@mixin block($start: 0, $end: rem.calculate(baseline.for-units(4))) {
+@mixin block($start: 0, $end: baseline.for-units(4)) {
   @include margin($start $end, block);
 }

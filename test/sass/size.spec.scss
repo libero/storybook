@@ -1,0 +1,352 @@
+@use "test" as *;
+@use "../../src/shared-styles/size";
+
+@include describe("@mixin block-size") {
+
+  @include it("generates correct fallback") {
+
+    @include assert() {
+
+      @include output {
+        @include size.block(32px);
+      }
+
+      @include expect {
+        height: 2rem;
+        block-size: 2rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include size.block(1em);
+      }
+
+      @include expect {
+        height: 1em;
+        block-size: 1em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include size.block(1rem);
+      }
+
+      @include expect {
+        height: 1rem;
+        block-size: 1rem;
+      }
+
+    }
+
+  }
+
+  @include it("errors when 2 size values passed") {
+
+    @include assert() {
+
+      @include output {
+        @include size.block(1 2);
+      }
+
+      @include expect {
+        _error: "Expected a single value";
+      }
+
+    }
+
+  }
+
+}
+
+@include describe("@mixin inline-size") {
+
+  @include it("generates correct fallback") {
+
+    @include assert() {
+
+      @include output {
+        @include size.inline(32px);
+      }
+
+      @include expect {
+        width: 2rem;
+        inline-size: 2rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include size.inline(1em);
+      }
+
+      @include expect {
+        width: 1em;
+        inline-size: 1em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include size.inline(1rem);
+      }
+
+      @include expect {
+        width: 1rem;
+        inline-size: 1rem;
+      }
+
+    }
+
+  }
+
+  @include it("errors when 2 size values passed") {
+
+    @include assert() {
+
+      @include output {
+        @include size.inline(1 2);
+      }
+
+      @include expect {
+        _error: "Expected a single value";
+      }
+
+    }
+
+  }
+
+}
+
+@include describe("@mixin max-block-size") {
+
+  @include it("generates correct fallback") {
+
+    @include assert() {
+
+      @include output {
+        @include size.max-block-size(32px);
+      }
+
+      @include expect {
+        max-height: 2rem;
+        max-block-size: 2rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include size.max-block-size(1em);
+      }
+
+      @include expect {
+        max-height: 1em;
+        max-block-size: 1em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include size.max-block-size(1rem);
+      }
+
+      @include expect {
+        max-height: 1rem;
+        max-block-size: 1rem;
+      }
+
+    }
+
+  }
+
+  @include it("errors when 2 size values passed") {
+
+    @include assert() {
+
+      @include output {
+        @include size.max-block-size(1 2);
+      }
+
+      @include expect {
+        _error: "Expected a single value";
+      }
+
+    }
+
+  }
+
+}
+
+@include describe("@mixin min-block-size") {
+
+  @include it("generates correct fallback") {
+
+    @include assert() {
+
+      @include output {
+        @include size.min-block-size(32px);
+      }
+
+      @include expect {
+        min-height: 2rem;
+        min-block-size: 2rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include size.min-block-size(1em);
+      }
+
+      @include expect {
+        min-height: 1em;
+        min-block-size: 1em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include size.min-block-size(1rem);
+      }
+
+      @include expect {
+        min-height: 1rem;
+        min-block-size: 1rem;
+      }
+
+    }
+
+  }
+
+  @include it("errors when 2 size values passed") {
+
+    @include assert() {
+
+      @include output {
+        @include size.min-block-size(1 2);
+      }
+
+      @include expect {
+        _error: "Expected a single value";
+      }
+
+    }
+
+  }
+
+}
+
+@include describe("@mixin max-inline-size") {
+
+  @include it("generates correct fallback") {
+    @include assert() {
+
+      @include output {
+        @include size.max-inline-size(32px);
+      }
+
+      @include expect {
+        max-width: 2rem;
+        max-inline-size: 2rem;
+      }
+
+    }
+  }
+
+  @include it("errors when 2 size values passed") {
+
+    @include assert() {
+
+      @include output {
+        @include size.max-inline-size(1 2);
+      }
+
+      @include expect {
+        _error: "Expected a single value";
+      }
+
+    }
+
+  }
+
+}
+
+@include describe("@mixin min-inline-size") {
+
+  @include it("generates correct fallback") {
+
+    @include assert() {
+
+      @include output {
+        @include size.min-inline-size(32px);
+      }
+
+      @include expect {
+        min-width: 2rem;
+        min-inline-size: 2rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include size.min-inline-size(1em);
+      }
+
+      @include expect {
+        min-width: 1em;
+        min-inline-size: 1em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include size.min-inline-size(1rem);
+      }
+
+      @include expect {
+        min-width: 1rem;
+        min-inline-size: 1rem;
+      }
+
+    }
+
+  }
+
+  @include it("errors when 2 size values passed") {
+
+    @include assert() {
+
+      @include output {
+        @include size.min-inline-size(1 2);
+      }
+
+      @include expect {
+        _error: "Expected a single value";
+      }
+
+    }
+
+  }
+
+}

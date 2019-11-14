@@ -90,3 +90,7 @@
   @include margin(0, $dimension);
   @include padding(0, $dimension);
 }
+
+@mixin block($start: 0, $end: rem.calculate(baseline.for-units(4))) {
+  @include margin($start $end, block);
+}

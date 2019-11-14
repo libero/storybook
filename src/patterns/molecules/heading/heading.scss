@@ -1,5 +1,26 @@
 @use "../../../shared-styles/normalize"; // Always used first
+@use "../../../shared-styles/baseline";
 @use "../../../shared-styles/link";
+@use "../../../shared-styles/space";
+
+@mixin _default-block-spacing {
+  @include space.block($end: space.calculate($block-size: baseline.for-units(4), $unit-size: baseline.for-units(8)));
+}
+
+h1 {
+  @include space.block($end: space.calculate($block-size: baseline.for-units(8)));
+}
+
+h2 {
+  @include space.block($end: space.calculate($block-size: baseline.for-units(5), $unit-size: baseline.for-units(8)));
+}
+
+h3,
+h4,
+h5,
+h6 {
+  @include _default-block-spacing();
+}
 
 .heading__link {
   @include link.covert();

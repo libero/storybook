@@ -1190,48 +1190,6 @@
 
 }
 
-@include describe("@mixin block") {
-
-  @include it("by default sets a margin of block-start 0 and block end of 4 baseline units, with fallback") {
-
-    @include assert() {
-
-      @include output {
-        @include space.block();
-      }
-
-      @include expect() {
-        margin-top: 0;
-        margin-bottom: 1.5rem;
-        margin-block-start: 0;
-        margin-block-end: 1.5rem;
-      }
-
-    }
-
-  }
-
-  @include it("allows block-start and block-end to be independently configured") {
-
-    @include assert() {
-
-      @include output {
-        @include space.block(16px, 32px);
-      }
-
-      @include expect() {
-        margin-top: 1rem;
-        margin-bottom: 2rem;
-        margin-block-start: 1rem;
-        margin-block-end: 2rem;
-      }
-
-    }
-
-  }
-
-}
-
 @include describe("@mixin margin") {
 
   @include it("generates correct rule from a single zero value and no dimension") {
@@ -2411,6 +2369,48 @@
 
       @include expect {
         _error: "Unknown dimension 'foo'";
+      }
+
+    }
+
+  }
+
+}
+
+@include describe("@mixin block") {
+
+  @include it("by default sets a margin of block-start 0 and block end of 4 baseline units, with fallback") {
+
+    @include assert() {
+
+      @include output {
+        @include space.block();
+      }
+
+      @include expect() {
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        margin-block-start: 0;
+        margin-block-end: 1.5rem;
+      }
+
+    }
+
+  }
+
+  @include it("allows block-start and block-end to be independently configured") {
+
+    @include assert() {
+
+      @include output {
+        @include space.block(16px, 32px);
+      }
+
+      @include expect() {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        margin-block-start: 1rem;
+        margin-block-end: 2rem;
       }
 
     }

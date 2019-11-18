@@ -1,3 +1,4 @@
+@use "error";
 @use "logical";
 @use "rem";
 @use "validate";
@@ -15,33 +16,26 @@
 }
 
 @mixin max-block-size($size) {
-  @include validate.expect-single-value($size) {
-    @include _constrain-block-size($size, max);
-  }
+  @include _constrain-size(max, block, $size);
 }
 
 @mixin min-block-size($size) {
-  @include validate.expect-single-value($size) {
-    @include _constrain-block-size($size, min);
-  }
+  @include _constrain-size(min, block, $size);
 }
 
 @mixin max-inline-size($size) {
-  @include validate.expect-single-value($size) {
-    @include _constrain-inline-size($size, max);
-  }
+  @include _constrain-size(max, inline, $size);
 }
 
 @mixin min-inline-size($size) {
-  @include validate.expect-single-value($size) {
-    @include _constrain-inline-size($size, min);
+  @include _constrain-size(min, inline, $size);
+}
+
+@mixin _constrain-size($extreme, $dimension, $size) {
+  @if $dimension != block and $dimension != inline {
+    @include error.throw("Expected 'block' or 'inline' but received #{$dimension}");
   }
-}
-
-@mixin _constrain-block-size($size, $extreme) {
-  @include logical.property($extreme, block-size, ($size));
-}
-
-@mixin _constrain-inline-size($size, $extreme) {
-  @include logical.property($extreme, inline-size, ($size));
+  @include validate.expect-single-value($size) {
+    @include logical.property($extreme, #{$dimension}-size, ($size));
+  }
 }

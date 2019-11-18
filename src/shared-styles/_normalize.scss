@@ -1,3 +1,4 @@
+@use "spacing";
 @use "typography";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -54,4 +55,8 @@ sup {
 b,
 strong {
   font-weight: bolder;
+}
+
+p {
+  @include spacing.block-spacing();
 }

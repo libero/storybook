@@ -1,7 +1,11 @@
 @use "test" as *;
+@use "../../src/shared-styles/font";
+@use "../../src/shared-styles/scale";
 @use "../../src/shared-styles/space";
 
 /* stylelint-disable csstools/use-logical  */
+
+$_baseline-unit: scale.$base * 0.375;
 
 @include describe("@mixin padding") {
 
@@ -2618,6 +2622,144 @@
 
       @include contains {
         _error: "Unknown dimension 'foo'";
+      }
+
+    }
+
+  }
+
+}
+
+@include describe("@mixin h1") {
+
+  @include it("specifies the correct block spacing") {
+
+    @include assert() {
+
+      @include output {
+        @include space.h1();
+      }
+
+      @include expect {
+        margin-top: 0;
+        margin-bottom: #{($_baseline-unit * 4) / font.$size}rem;
+        margin-block-start: 0;
+        margin-block-end: #{($_baseline-unit * 4) / font.$size}rem;
+      }
+
+    }
+
+  }
+
+}
+
+@include describe("@mixin h2") {
+
+  @include it("specifies the correct block spacing") {
+
+    @include assert() {
+
+      @include output {
+        @include space.h2();
+      }
+
+      @include expect {
+        margin-top: 0;
+        margin-bottom: #{($_baseline-unit * 3) / font.$size}rem;
+        margin-block-start: 0;
+        margin-block-end: #{($_baseline-unit * 3) / font.$size}rem;
+      }
+
+    }
+
+  }
+
+}
+
+@include describe("@mixin h3") {
+
+  @include it("specifies the correct block spacing") {
+
+    @include assert() {
+
+      @include output {
+        @include space.h3();
+      }
+
+      @include expect {
+        margin-top: 0;
+        margin-bottom: #{($_baseline-unit * 4) / font.$size}rem;
+        margin-block-start: 0;
+        margin-block-end: #{($_baseline-unit * 4) / font.$size}rem;
+      }
+
+    }
+
+  }
+
+}
+
+@include describe("@mixin h4") {
+
+  @include it("specifies the correct block spacing") {
+
+    @include assert() {
+
+      @include output {
+        @include space.h4();
+      }
+
+      @include expect {
+        margin-top: 0;
+        margin-bottom: #{($_baseline-unit * 4) / font.$size}rem;
+        margin-block-start: 0;
+        margin-block-end: #{($_baseline-unit * 4) / font.$size}rem;
+      }
+
+    }
+
+  }
+
+}
+
+@include describe("@mixin h5") {
+
+  @include it("specifies the correct block spacing") {
+
+    @include assert() {
+
+      @include output {
+        @include space.h5();
+      }
+
+      @include expect {
+        margin-top: 0;
+        margin-bottom: #{($_baseline-unit * 4) / font.$size}rem;
+        margin-block-start: 0;
+        margin-block-end: #{($_baseline-unit * 4) / font.$size}rem;
+      }
+
+    }
+
+  }
+
+}
+
+@include describe("@mixin h6") {
+
+  @include it("specifies the correct block spacing") {
+
+    @include assert() {
+
+      @include output {
+        @include space.h6();
+      }
+
+      @include expect {
+        margin-top: 0;
+        margin-bottom: #{($_baseline-unit * 4) / font.$size}rem;
+        margin-block-start: 0;
+        margin-block-end: #{($_baseline-unit * 4) / font.$size}rem;
       }
 
     }

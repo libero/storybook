@@ -13,7 +13,6 @@
   @include margin($start $end, block);
 }
 
-
 @mixin _spacing($sizes, $space-type, $dimension: "") {
 
   @if $dimension == "" {

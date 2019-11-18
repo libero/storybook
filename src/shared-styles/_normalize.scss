@@ -1,8 +1,14 @@
+@use "font";
+@use "space";
 @use "typography";
 
 //----------------------------------------------------------------------------------------------------------------------
 // Typography.
 //
+
+html {
+  font-size: font.$size;
+}
 
 body {
   @include typography.body();

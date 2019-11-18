@@ -16,27 +16,6 @@
   @return $unit-size;
 }
 
-// Fallbacks for CSS logical properties contained within this mixin require the following treatment of HTML dir attributes:
-//  - document level: always specified, via the HTML element
-//  - block level: specified on every element within a block describing a direction switch.
-//
-// For example:
-// <html lang="..." dir="ltr">
-// ...
-// <div>
-//   Doesn't need a dir attribute. Most cases will be like this.
-// </div>
-//
-//<div class="test" dir="rtl">
-//
-//  This block changes the text direction. Every descendant element must have its own dir attribute....
-//
-//  <div class="test" dir="rtl">... even if the direction doesn't change.</div>
-//
-//  <div class="test" dir="ltr">But obviously also when it does.</div>
-//
-//</div>
-
 @mixin padding($sizes, $dimension: "") {
   @include _spacing($sizes, padding, $dimension);
 }

@@ -49,6 +49,32 @@ To lint the JavaScript (report and fix), execute:
 make fix
 ```
 
+## Sass
+
+### A note on logical property fallbacks
+Fallbacks for [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties) are implemented for horizontal writing directions (see [`_logical.scss`](https://github.com/libero/storybook/blob/master/src/shared-styles/_logical.scss)). At the moment they require the following treatment of HTML `dir` attributes:
+  - document level: always specified, via the `<HTML>` element
+  - block level: specified on every element within a block describing a direction switch.
+
+ For example:
+ ```html
+ <html lang="..." dir="ltr">
+ ...
+ <div>
+   Doesn't need a dir attribute. Most cases will be like this.
+ </div>
+
+<div class="test" dir="rtl">
+
+  This block changes the text direction. Every descendant element must have its own dir attribute....
+
+  <div class="test" dir="rtl">... even if the direction doesn't change.</div>
+
+  <div class="test" dir="ltr">But obviously also when it does.</div>
+
+</div>
+
+```
 Getting help
 ------------
 

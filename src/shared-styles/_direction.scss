@@ -1,0 +1,19 @@
+@mixin when-left-to-right {
+  html[dir="ltr"] &:not([dir]),
+  &[dir="ltr"] {
+    @content;
+  }
+}
+
+@mixin when-right-to-left {
+  html[dir="rtl"] &:not([dir]),
+  &[dir="rtl"] {
+    @content;
+  }
+}
+
+@mixin when-logical {
+  html[dir][dir] & {
+    @content;
+  }
+}

@@ -7,6 +7,9 @@ module.exports = {
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
+    describe: false,
+    gulp: false,
+    it: false,
   },
   parserOptions: {
     ecmaVersion: 2018,
@@ -14,5 +17,8 @@ module.exports = {
   },
   rules: {
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'max-len': [
+      'error', { code: 150 },
+    ],
   },
 };

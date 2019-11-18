@@ -1,5 +1,5 @@
 @use "sass:math";
-@use "~modularscale-sass/stylesheets/modularscale";
+@use "vendor/modularscale-sass/stylesheets/modularscale";
 @use "font";
 
 $base: font.$size;

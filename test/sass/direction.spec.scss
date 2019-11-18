@@ -1,0 +1,85 @@
+@use "test" as *;
+@use "../../src/shared-styles/direction";
+
+@include describe("@mixin when-left-to-right") {
+
+  @include it("provides appropriate ltr selector wrappers") {
+
+    @include assert() {
+
+      @include output {
+        @include direction.when-left-to-right() {
+          .made-up {
+            --dev: "null";
+          }
+        }
+      }
+
+      @include expect {
+
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          .made-up {
+            --dev: "null";
+          }
+        }
+      }
+    }
+  }
+}
+
+@include describe("@mixin when-right-to-left") {
+
+  @include it("provides appropriate rtl selector wrappers") {
+
+    @include assert() {
+
+      @include output {
+        @include direction.when-right-to-left() {
+          .made-up {
+            --dev: "null";
+          }
+        }
+      }
+
+      @include expect {
+
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          .made-up {
+            --dev: "null";
+          }
+
+        }
+
+      }
+    }
+  }
+}
+
+@include describe("@mixin when-logical") {
+
+  @include it("provides appropriate specificity-busting selector wrappers") {
+
+    @include assert() {
+
+      @include output {
+        @include direction.when-logical() {
+          .made-up {
+            --dev: "null";
+          }
+        }
+      }
+
+      @include expect {
+
+        html[dir][dir] & {
+          .made-up {
+            --dev: "null";
+          }
+        }
+
+      }
+    }
+  }
+}

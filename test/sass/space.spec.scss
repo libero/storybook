@@ -30,6 +30,18 @@ $_baseline-unit: scale.$base * 0.375;
     @include assert() {
 
       @include output {
+        @include space.padding(16px, $to-rem: false);
+      }
+
+      @include expect {
+        padding: 16px;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include space.padding(16px);
       }
 
@@ -70,11 +82,35 @@ $_baseline-unit: scale.$base * 0.375;
     @include assert() {
 
       @include output {
+        @include space.padding(32px 32px, $to-rem: false);
+      }
+
+      @include expect {
+        padding: 32px;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include space.padding(32px 32px);
       }
 
       @include expect {
         padding: 2rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include space.padding(32px 48px, $to-rem: false);
+      }
+
+      @include expect {
+        padding: 32px 48px;
       }
 
     }
@@ -118,6 +154,18 @@ $_baseline-unit: scale.$base * 0.375;
   }
 
   @include it("generates correct rule from three non-zero values and no dimension") {
+
+    @include assert() {
+
+      @include output {
+        @include space.padding(32px 32px 32px, $to-rem: false);
+      }
+
+      @include expect {
+        padding: 32px;
+      }
+
+    }
 
     @include assert() {
 
@@ -186,6 +234,18 @@ $_baseline-unit: scale.$base * 0.375;
     @include assert() {
 
       @include output {
+        @include space.padding(0 48px, $to-rem: false);
+      }
+
+      @include expect {
+        padding: 0 48px;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include space.padding(0 48px);
       }
 
@@ -238,6 +298,18 @@ $_baseline-unit: scale.$base * 0.375;
     @include assert() {
 
       @include output {
+        @include space.padding(0 48px 128px, $to-rem: false);
+      }
+
+      @include expect {
+        padding: 0 48px 128px;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include space.padding(0 48px 128px);
       }
 
@@ -250,11 +322,35 @@ $_baseline-unit: scale.$base * 0.375;
     @include assert() {
 
       @include output {
+        @include space.padding(48px 0 128px, $to-rem: false);
+      }
+
+      @include expect {
+        padding: 48px 0 128px;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include space.padding(48px 0 128px);
       }
 
       @include expect {
         padding: 3rem 0 8rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include space.padding(48px 128px 0, $to-rem: false);
+      }
+
+      @include expect {
+        padding: 48px 128px 0;
       }
 
     }
@@ -310,6 +406,31 @@ $_baseline-unit: scale.$base * 0.375;
   }
 
   @include it("generates correct rules from in total four zero and/or non-zero values and no dimension") {
+
+    @include assert() {
+
+      @include output {
+        @include space.padding(0 48px 128px 256px, $to-rem: false);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          padding: 0 48px 128px 256px;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          padding: 0 256px 128px 48px;
+        }
+        html[dir][dir] & {
+          padding-block-start: 0;
+          padding-block-end: 128px;
+          padding-inline-start: 256px;
+          padding-inline-end: 48px;
+        }
+      }
+
+    }
 
     @include assert() {
 
@@ -438,6 +559,20 @@ $_baseline-unit: scale.$base * 0.375;
     @include assert() {
 
       @include output {
+        @include space.padding(16px, "inline", $to-rem: false);
+      }
+
+      @include expect {
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-inline: 16px;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include space.padding(16px, "inline");
       }
 
@@ -480,6 +615,32 @@ $_baseline-unit: scale.$base * 0.375;
   }
 
   @include it("generates correct rules from a pair of values for dimension 'inline'") {
+
+    @include assert() {
+
+      @include output {
+        @include space.padding(16px 32px, "inline", $to-rem: false);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          padding-left: 16px;
+          padding-right: 32px;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          padding-right: 16px;
+          padding-left: 32px;
+        }
+
+        html[dir][dir] & {
+          padding-inline-start: 16px;
+          padding-inline-end: 32px;
+        }
+      }
+
+    }
 
     @include assert() {
 
@@ -562,6 +723,20 @@ $_baseline-unit: scale.$base * 0.375;
     @include assert() {
 
       @include output {
+        @include space.padding(16px 16px, "inline", $to-rem: false);
+      }
+
+      @include expect {
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-inline: 16px;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include space.padding(16px 16px, "inline");
       }
 
@@ -569,6 +744,32 @@ $_baseline-unit: scale.$base * 0.375;
         padding-left: 1rem;
         padding-right: 1rem;
         padding-inline: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include space.padding(0 32px, "inline", $to-rem: false);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          padding-left: 0;
+          padding-right: 32px;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          padding-right: 0;
+          padding-left: 32px;
+        }
+
+        html[dir][dir] & {
+          padding-inline-start: 0;
+          padding-inline-end: 32px;
+        }
       }
 
     }
@@ -594,6 +795,32 @@ $_baseline-unit: scale.$base * 0.375;
         html[dir][dir] & {
           padding-inline-start: 0;
           padding-inline-end: 2rem;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include space.padding(16px 0, "inline", $to-rem: false);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          padding-left: 16px;
+          padding-right: 0;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          padding-right: 16px;
+          padding-left: 0;
+        }
+
+        html[dir][dir] & {
+          padding-inline-start: 16px;
+          padding-inline-end: 0;
         }
       }
 
@@ -685,6 +912,27 @@ $_baseline-unit: scale.$base * 0.375;
   }
 
   @include it("generates correct rules from a single non-zero value for the dimension 'inline-start'") {
+
+    @include assert() {
+
+      @include output {
+        @include space.padding(16px, "inline-start", $to-rem: false);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          padding-left: 16px;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          padding-right: 16px;
+        }
+        html[dir][dir] & {
+          padding-inline-start: 16px;
+        }
+      }
+    }
 
     @include assert() {
 
@@ -801,6 +1049,28 @@ $_baseline-unit: scale.$base * 0.375;
     @include assert() {
 
       @include output {
+        @include space.padding(16px, "inline-end", $to-rem: false);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          padding-right: 16px;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          padding-left: 16px;
+        }
+        html[dir][dir] & {
+          padding-inline-end: 16px;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include space.padding(16px, "inline-end");
       }
 
@@ -905,6 +1175,20 @@ $_baseline-unit: scale.$base * 0.375;
     @include assert() {
 
       @include output {
+        @include space.padding(16px, "block", $to-rem: false);
+      }
+
+      @include expect {
+        padding-top: 16px;
+        padding-bottom: 16px;
+        padding-block: 16px;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include space.padding(16px, "block");
       }
 
@@ -948,6 +1232,21 @@ $_baseline-unit: scale.$base * 0.375;
 
   // Vertical writing modes not yet supported
   @include it("generates correct rules from a pair of non-zero values for dimension 'block'") {
+
+    @include assert() {
+
+      @include output {
+        @include space.padding(16px 32px, "block", $to-rem: false);
+      }
+
+      @include expect {
+        padding-top: 16px;
+        padding-bottom: 32px;
+        padding-block-start: 16px;
+        padding-block-end: 32px;
+      }
+
+    }
 
     @include assert() {
 
@@ -1034,6 +1333,19 @@ $_baseline-unit: scale.$base * 0.375;
     @include assert() {
 
       @include output {
+        @include space.padding(16px, "block-start", $to-rem: false);
+      }
+
+      @include expect {
+        padding-top: 16px;
+        padding-block-start: 16px;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include space.padding(16px, "block-start");
       }
 
@@ -1106,6 +1418,19 @@ $_baseline-unit: scale.$base * 0.375;
   }
 
   @include it("generates correct rules from a single non-zero value and dimension 'block-end'") {
+
+    @include assert() {
+
+      @include output {
+        @include space.padding(16px, "block-end", $to-rem: false);
+      }
+
+      @include expect {
+        padding-bottom: 16px;
+        padding-block-end: 16px;
+      }
+
+    }
 
     @include assert() {
 
@@ -1217,6 +1542,18 @@ $_baseline-unit: scale.$base * 0.375;
     @include assert() {
 
       @include output {
+        @include space.margin(16px, $to-rem: false);
+      }
+
+      @include expect {
+        margin: 16px;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include space.margin(16px);
       }
 
@@ -1257,11 +1594,35 @@ $_baseline-unit: scale.$base * 0.375;
     @include assert() {
 
       @include output {
+        @include space.margin(32px 32px, $to-rem: false);
+      }
+
+      @include expect {
+        margin: 32px;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include space.margin(32px 32px);
       }
 
       @include expect {
         margin: 2rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include space.margin(32px 48px, $to-rem: false);
+      }
+
+      @include expect {
+        margin: 32px 48px;
       }
 
     }
@@ -1305,6 +1666,18 @@ $_baseline-unit: scale.$base * 0.375;
   }
 
   @include it("generates correct rule from three non-zero values and no dimension") {
+
+    @include assert() {
+
+      @include output {
+        @include space.margin(32px 32px 32px, $to-rem: false);
+      }
+
+      @include expect {
+        margin: 32px;
+      }
+
+    }
 
     @include assert() {
 
@@ -1373,6 +1746,18 @@ $_baseline-unit: scale.$base * 0.375;
     @include assert() {
 
       @include output {
+        @include space.margin(0 48px, $to-rem: false);
+      }
+
+      @include expect {
+        margin: 0 48px;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include space.margin(0 48px);
       }
 
@@ -1425,6 +1810,18 @@ $_baseline-unit: scale.$base * 0.375;
     @include assert() {
 
       @include output {
+        @include space.margin(0 48px 128px, $to-rem: false);
+      }
+
+      @include expect {
+        margin: 0 48px 128px;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include space.margin(0 48px 128px);
       }
 
@@ -1437,11 +1834,35 @@ $_baseline-unit: scale.$base * 0.375;
     @include assert() {
 
       @include output {
+        @include space.margin(48px 0 128px, $to-rem: false);
+      }
+
+      @include expect {
+        margin: 48px 0 128px;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include space.margin(48px 0 128px);
       }
 
       @include expect {
         margin: 3rem 0 8rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include space.margin(48px 128px 0, $to-rem: false);
+      }
+
+      @include expect {
+        margin: 48px 128px 0;
       }
 
     }
@@ -1497,6 +1918,31 @@ $_baseline-unit: scale.$base * 0.375;
   }
 
   @include it("generates correct rules from in total four zero and/or non-zero values and no dimension") {
+
+    @include assert() {
+
+      @include output {
+        @include space.margin(0 48px 128px 256px, $to-rem: false);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin: 0 48px 128px 256px;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin: 0 256px 128px 48px;
+        }
+        html[dir][dir] & {
+          margin-block-start: 0;
+          margin-block-end: 128px;
+          margin-inline-start: 256px;
+          margin-inline-end: 48px;
+        }
+      }
+
+    }
 
     @include assert() {
 
@@ -1625,6 +2071,20 @@ $_baseline-unit: scale.$base * 0.375;
     @include assert() {
 
       @include output {
+        @include space.margin(16px, "inline", $to-rem: false);
+      }
+
+      @include expect {
+        margin-left: 16px;
+        margin-right: 16px;
+        margin-inline: 16px;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include space.margin(16px, "inline");
       }
 
@@ -1667,6 +2127,32 @@ $_baseline-unit: scale.$base * 0.375;
   }
 
   @include it("generates correct rules from a pair of values for dimension 'inline'") {
+
+    @include assert() {
+
+      @include output {
+        @include space.margin(16px 32px, "inline", $to-rem: false);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin-left: 16px;
+          margin-right: 32px;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin-right: 16px;
+          margin-left: 32px;
+        }
+
+        html[dir][dir] & {
+          margin-inline-start: 16px;
+          margin-inline-end: 32px;
+        }
+      }
+
+    }
 
     @include assert() {
 
@@ -1749,6 +2235,20 @@ $_baseline-unit: scale.$base * 0.375;
     @include assert() {
 
       @include output {
+        @include space.margin(16px 16px, "inline", $to-rem: false);
+      }
+
+      @include expect {
+        margin-left: 16px;
+        margin-right: 16px;
+        margin-inline: 16px;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include space.margin(16px 16px, "inline");
       }
 
@@ -1756,6 +2256,32 @@ $_baseline-unit: scale.$base * 0.375;
         margin-left: 1rem;
         margin-right: 1rem;
         margin-inline: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include space.margin(0 32px, "inline", $to-rem: false);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin-left: 0;
+          margin-right: 32px;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin-right: 0;
+          margin-left: 32px;
+        }
+
+        html[dir][dir] & {
+          margin-inline-start: 0;
+          margin-inline-end: 32px;
+        }
       }
 
     }
@@ -1785,6 +2311,33 @@ $_baseline-unit: scale.$base * 0.375;
       }
 
     }
+
+    @include assert() {
+
+      @include output {
+        @include space.margin(16px 0, "inline", $to-rem: false);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin-left: 16px;
+          margin-right: 0;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin-right: 16px;
+          margin-left: 0;
+        }
+
+        html[dir][dir] & {
+          margin-inline-start: 16px;
+          margin-inline-end: 0;
+        }
+      }
+
+    }
+
 
     @include assert() {
 
@@ -1872,6 +2425,27 @@ $_baseline-unit: scale.$base * 0.375;
   }
 
   @include it("generates correct rules from a single non-zero value for the dimension 'inline-start'") {
+
+    @include assert() {
+
+      @include output {
+        @include space.margin(16px, "inline-start", $to-rem: false);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin-left: 16px;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin-right: 16px;
+        }
+        html[dir][dir] & {
+          margin-inline-start: 16px;
+        }
+      }
+    }
 
     @include assert() {
 
@@ -1988,6 +2562,28 @@ $_baseline-unit: scale.$base * 0.375;
     @include assert() {
 
       @include output {
+        @include space.margin(16px, "inline-end", $to-rem: false);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin-right: 16px;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin-left: 16px;
+        }
+        html[dir][dir] & {
+          margin-inline-end: 16px;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include space.margin(16px, "inline-end");
       }
 
@@ -2092,6 +2688,20 @@ $_baseline-unit: scale.$base * 0.375;
     @include assert() {
 
       @include output {
+        @include space.margin(16px, "block", $to-rem: false);
+      }
+
+      @include expect {
+        margin-top: 16px;
+        margin-bottom: 16px;
+        margin-block: 16px;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include space.margin(16px, "block");
       }
 
@@ -2135,6 +2745,21 @@ $_baseline-unit: scale.$base * 0.375;
 
   // Vertical writing modes not yet supported
   @include it("generates correct rules from a pair of non-zero values for dimension 'block'") {
+
+    @include assert() {
+
+      @include output {
+        @include space.margin(16px 32px, "block", $to-rem: false);
+      }
+
+      @include expect {
+        margin-top: 16px;
+        margin-bottom: 32px;
+        margin-block-start: 16px;
+        margin-block-end: 32px;
+      }
+
+    }
 
     @include assert() {
 
@@ -2221,6 +2846,19 @@ $_baseline-unit: scale.$base * 0.375;
     @include assert() {
 
       @include output {
+        @include space.margin(16px, "block-start", $to-rem: false);
+      }
+
+      @include expect {
+        margin-top: 16px;
+        margin-block-start: 16px;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include space.margin(16px, "block-start");
       }
 
@@ -2293,6 +2931,19 @@ $_baseline-unit: scale.$base * 0.375;
   }
 
   @include it("generates correct rules from a single non-zero value and dimension 'block-end'") {
+
+    @include assert() {
+
+      @include output {
+        @include space.margin(16px, "block-end", $to-rem: false);
+      }
+
+      @include expect {
+        margin-bottom: 16px;
+        margin-block-end: 16px;
+      }
+
+    }
 
     @include assert() {
 

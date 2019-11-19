@@ -16,12 +16,12 @@
   @return $unit-size;
 }
 
-@mixin padding($sizes, $dimension: "") {
-  @include _spacing($sizes, padding, $dimension);
+@mixin padding($sizes, $dimension: "", $to-rem: true) {
+  @include _spacing($sizes, padding, $dimension, $to-rem);
 }
 
-@mixin margin($sizes, $dimension: "") {
-  @include _spacing($sizes, margin, $dimension);
+@mixin margin($sizes, $dimension: "", $to-rem: true) {
+  @include _spacing($sizes, margin, $dimension, $to-rem);
 }
 
 @mixin none($dimension: "") {
@@ -61,48 +61,48 @@
   @include block($end: $end);
 }
 
-@mixin _spacing($sizes, $space-type, $dimension: "") {
+@mixin _spacing($sizes, $space-type, $dimension: "", $to-rem: true) {
 
   @if $dimension == "" {
 
     @include validate.expect-at-most($sizes, 4, "More than four sizes supplied when no dimension") {
-      @include logical.property($space-type, all, $sizes);
+      @include logical.property($space-type, all, $sizes, $to-rem);
     }
 
   } @else if $dimension == inline {
 
     @include validate.expect-at-most($sizes, 2, "More than two sizes supplied with 'inline' dimension") {
-      @include logical.property($space-type, $dimension, $sizes);
+      @include logical.property($space-type, $dimension, $sizes, $to-rem);
     }
 
   } @else if $dimension == inline-start {
 
     @include validate.expect-single-value($sizes, "More than one size supplied with 'inline-start' dimension") {
-      @include logical.property($space-type, $dimension, $sizes);
+      @include logical.property($space-type, $dimension, $sizes, $to-rem);
     }
 
   } @else if $dimension == inline-end {
 
     @include validate.expect-single-value($sizes, "More than one size supplied with 'inline-end' dimension") {
-      @include logical.property($space-type, $dimension, $sizes);
+      @include logical.property($space-type, $dimension, $sizes, $to-rem);
     }
 
   } @else if $dimension == block {
 
     @include validate.expect-at-most($sizes, 2, "More than two sizes supplied with 'block' dimension") {
-      @include logical.property($space-type, $dimension, $sizes);
+      @include logical.property($space-type, $dimension, $sizes, $to-rem);
     }
 
   } @else if $dimension == block-start {
 
     @include validate.expect-single-value($sizes, "More than one size supplied with 'block-start' dimension") {
-      @include logical.property($space-type, $dimension, $sizes);
+      @include logical.property($space-type, $dimension, $sizes, $to-rem);
     }
 
   } @else if $dimension == block-end {
 
     @include validate.expect-single-value($sizes, "More than one size supplied with 'block-end' dimension") {
-      @include logical.property($space-type, $dimension, $sizes);
+      @include logical.property($space-type, $dimension, $sizes, $to-rem);
     }
 
   } @else if index((top, bottom, left, right), $dimension) {

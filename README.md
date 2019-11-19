@@ -51,6 +51,8 @@ make fix
 
 ## Sass
 
+`padding` and `margin` mixins convert px to rem by default, to get the specified px values into the compiled CSS without conversion, pass `$to-rem: false` as the last argument to these mixins. 
+
 ### A note on logical property fallbacks
 Fallbacks for [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties) are implemented for horizontal writing directions (see [`_logical.scss`](https://github.com/libero/storybook/blob/master/src/shared-styles/_logical.scss)). At the moment they require the following treatment of HTML `dir` attributes:
   - document level: always specified, via the `<HTML>` element

@@ -4,9 +4,9 @@
 @use "../../../shared-styles/space";
 
 .content-grid {
-  --primary-column-width: #{grid.get-overall-width(grid.$main_column_count)};
+  --primary-column-inline-size: #{grid.get-overall-inline-size(grid.$main_column_count)};
 
-  @include grid.base(grid.$max_width);
+  @include grid.base(grid.$max-inline-size);
   &.page-grid__start {
     @include space.padding(0, inline);
   }
@@ -14,29 +14,29 @@
   grid-template-areas:
     ". menu    ."
     ". primary .";
-  grid-template-columns: [full-start] 1fr [main-start] var(--primary-column-width) [main-end] 1fr [full-end];
+  grid-template-columns: [full-start] 1fr [main-start] var(--primary-column-inline-size) [main-end] 1fr [full-end];
   grid-column-gap: var(--GRID-COLUMN-GAP);
 
   @include media-query.mq($from: wide) {
     $_primary-column-count: grid.$main_column_count - 2;
     $_secondary-column-count: floor((grid.$main_column_count - $_primary-column-count) / 2);
     $_menu-column-count: grid.$main_column_count - $_primary-column-count - $_secondary-column-count;
-    --primary-column-width: #{grid.get-overall-width($_primary-column-count)};
-    --secondary-column-width: #{get-overall-width($_secondary-column-count)};
-    --menu-column-width: #{get-overall-width($_menu-column-count)};
+    --primary-column-inline-size: #{grid.get-overall-inline-size($_primary-column-count)};
+    --secondary-column-inline-size: #{get-overall-inline-size($_secondary-column-count)};
+    --menu-column-inline-size: #{get-overall-inline-size($_menu-column-count)};
     grid-template-areas:
       ". . menu    . ."
       ". . primary . .";
-    grid-template-columns: [full-start] 1fr [main-start] var(--menu-column-width) var(--primary-column-width) var(--secondary-column-width) [main-end] 1fr [full-end];
+    grid-template-columns: [full-start] 1fr [main-start] var(--menu-column-inline-size) var(--primary-column-inline-size) var(--secondary-column-inline-size) [main-end] 1fr [full-end];
   }
 
   @include media-query.mq($from: extra-wide) {
     $_primary-column-count: floor(grid.$main_column_count * 0.7);
     $_secondary-column-count: floor((grid.$main_column_count - $_primary-column-count) / 2);
     $_menu-column-count: grid.$main_column_count - $_primary-column-count - $_secondary-column-count;
-    --primary-column-width: #{grid.get-overall-width($_primary-column-count)};
-    --secondary-column-width: #{grid.get-overall-width($_secondary-column-count)};
-    --menu-column-width: #{grid.get-overall-width($_menu-column-count)};
+    --primary-column-inline-size: #{grid.get-overall-inline-size($_primary-column-count)};
+    --secondary-column-inline-size: #{grid.get-overall-inline-size($_secondary-column-count)};
+    --menu-column-inline-size: #{grid.get-overall-inline-size($_menu-column-count)};
     grid-template-areas: ". menu primary . .";
   }
 }
@@ -50,23 +50,23 @@
   @include media-query.mq($from: wide) {
     $_primary-column-count: floor(grid.$main_column_count * 0.7);
     $_secondary-column-count: grid.$main_column_count - $_primary-column-count;
-    --primary-column-width: #{grid.get-overall-width($_primary-column-count)};
-    --secondary-column-width: #{grid.get-overall-width($_secondary-column-count)};
+    --primary-column-inline-size: #{grid.get-overall-inline-size($_primary-column-count)};
+    --secondary-column-inline-size: #{grid.get-overall-inline-size($_secondary-column-count)};
     grid-template-areas:
       ". menu    menu      ."
       ". primary secondary .";
-    grid-template-columns: [full-start] 1fr [main-start] var(--primary-column-width) var(--secondary-column-width) [main-end] 1fr [full-end];
+    grid-template-columns: [full-start] 1fr [main-start] var(--primary-column-inline-size) var(--secondary-column-inline-size) [main-end] 1fr [full-end];
   }
 
   @include media-query.mq($from: extra-wide) {
     $_primary-column-count: floor(grid.$main_column_count * 0.6);
     $_secondary-column-count: floor(grid.$main_column_count * 0.25);
     $_menu-column-count: grid.$main_column_count - $_primary-column-count - $_secondary-column-count;
-    --primary-column-width: #{grid.get-overall-width($_primary-column-count)};
-    --secondary-column-width: #{grid.get-overall-width($_secondary-column-count)};
-    --menu-column-width: #{grid.get-overall-width($_menu-column-count)};
+    --primary-column-inline-size: #{grid.get-overall-inline-size($_primary-column-count)};
+    --secondary-column-inline-size: #{grid.get-overall-inline-size($_secondary-column-count)};
+    --menu-column-inline-size: #{grid.get-overall-inline-size($_menu-column-count)};
     grid-template-areas: ". menu primary secondary .";
-    grid-template-columns: [full-start] 1fr [main-start] var(--menu-column-width) var(--primary-column-width) var(--secondary-column-width) [main-end] 1fr [full-end];
+    grid-template-columns: [full-start] 1fr [main-start] var(--menu-column-inline-size) var(--primary-column-inline-size) var(--secondary-column-inline-size) [main-end] 1fr [full-end];
   }
 }
 

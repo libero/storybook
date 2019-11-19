@@ -8,12 +8,11 @@ $divider_size: 1px !default;
 $edge_space-large: 14vw !default;
 $edge_space-medium: 7vw !default;
 $main_column_count: 12 !default;
-// TODO: Refactor names to logical property axis namess
-$max_width: 1114px !default;
-$min_width: 320px !default;
+$max-inline-size: 1114px !default;
+$min-inline-size: 320px !default;
 
-@function get-overall-width($columns) {
-  @return calc((#{$columns} * var(--GRID-COLUMN-WIDTH)) + (#{$columns - 1} * var(--GRID-COLUMN-GAP)));
+@function get-overall-inline-size($columns) {
+  @return calc((#{$columns} * var(--GRID-COLUMN-INLINE-SIZE)) + (#{$columns - 1} * var(--GRID-COLUMN-GAP)));
 }
 
 @mixin base($max-inline-size) {
@@ -35,16 +34,16 @@ $min_width: 320px !default;
 :root {
   --GRID-COLUMN-GAP: #{$column_gap};
   --GRID-EDGE-SPACE: #{$edge_space-medium};
-  --GRID-COLUMN-WIDTH: calc((100% - (var(--GRID-EDGE-SPACE) * 2) - (var(--GRID-COLUMN-GAP) * #{$main_column_count - 1})) / #{$main_column_count});
+  --GRID-COLUMN-INLINE-SIZE: calc((100% - (var(--GRID-EDGE-SPACE) * 2) - (var(--GRID-COLUMN-GAP) * #{$main_column_count - 1})) / #{$main_column_count});
 
   @include media-query.mq($from: medium) {
     --GRID-EDGE-SPACE: #{$edge_space-large};
   }
 
   @include media-query.mq($from: extra-wide) {
-    --GRID-COLUMN-GAP: #{($max_width * $column_gap) / 100%};
-    --GRID-COLUMN-WIDTH: calc((#{$max_width} - (var(--GRID-COLUMN-GAP) * #{$main_column_count - 1})) / #{$main_column_count});
+    --GRID-COLUMN-GAP: #{($max-inline-size * $column_gap) / 100%};
+    --GRID-COLUMN-INLINE-SIZE: calc((#{$max-inline-size} - (var(--GRID-COLUMN-GAP) * #{$main_column_count - 1})) / #{$main_column_count});
   }
 
-  @include logical.property(min, inline-size, $min_width, $to-rem: false);
+  @include logical.property(min, inline-size, $min-inline-size, $to-rem: false);
 }

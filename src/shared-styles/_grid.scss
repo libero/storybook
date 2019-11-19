@@ -1,0 +1,50 @@
+@use "logical";
+@use "media-query";
+@use "size";
+@use "space";
+
+$column_gap: 1.6% !default;
+$divider_size: 1px !default;
+$edge_space-large: 14vw !default;
+$edge_space-medium: 7vw !default;
+$main_column_count: 12 !default;
+// TODO: Refactor names to logical property axis namess
+$max_width: 1114px !default;
+$min_width: 320px !default;
+
+@function get-overall-width($columns) {
+  @return calc((#{$columns} * var(--GRID-COLUMN-WIDTH)) + (#{$columns - 1} * var(--GRID-COLUMN-GAP)));
+}
+
+@mixin base($max-inline-size) {
+  @include size.max-inline-size($max-inline-size);
+  @include space.block($end: 0);
+  @include space.margin(auto, inline);
+  @include space.padding($column_gap, inline);
+  box-sizing: content-box;
+
+  @supports (display: grid) and (--custom: property) {
+    display: grid;
+    @include size.max-inline-size(unset);
+    @include space.margin(unset, inline);
+    @include space.padding(unset, inline);
+    box-sizing: border-box;
+  }
+}
+
+:root {
+  --GRID-COLUMN-GAP: #{$column_gap};
+  --GRID-EDGE-SPACE: #{$edge_space-medium};
+  --GRID-COLUMN-WIDTH: calc((100% - (var(--GRID-EDGE-SPACE) * 2) - (var(--GRID-COLUMN-GAP) * #{$main_column_count - 1})) / #{$main_column_count});
+
+  @include media-query.mq($from: medium) {
+    --GRID-EDGE-SPACE: #{$edge_space-large};
+  }
+
+  @include media-query.mq($from: extra-wide) {
+    --GRID-COLUMN-GAP: #{($max_width * $column_gap) / 100%};
+    --GRID-COLUMN-WIDTH: calc((#{$max_width} - (var(--GRID-COLUMN-GAP) * #{$main_column_count - 1})) / #{$main_column_count});
+  }
+
+  @include logical.property(min, inline-size, $min_width, $to-rem: false);
+}

@@ -1,0 +1,92 @@
+@use "../../../shared-styles/normalize"; // Always used first
+@use "../../../shared-styles/grid.scss";
+@use "../../../shared-styles/media-query";
+@use "../../../shared-styles/space";
+
+.content-grid {
+  --primary-column-width: #{grid.get-overall-width(grid.$main_column_count)};
+
+  @include grid.base(grid.$max_width);
+  &.page-grid__start {
+    @include space.padding(0, inline);
+  }
+
+  grid-template-areas:
+    ". menu    ."
+    ". primary .";
+  grid-template-columns: [full-start] 1fr [main-start] var(--primary-column-width) [main-end] 1fr [full-end];
+  grid-column-gap: var(--GRID-COLUMN-GAP);
+
+  @include media-query.mq($from: wide) {
+    $_primary-column-count: grid.$main_column_count - 2;
+    $_secondary-column-count: floor((grid.$main_column_count - $_primary-column-count) / 2);
+    $_menu-column-count: grid.$main_column_count - $_primary-column-count - $_secondary-column-count;
+    --primary-column-width: #{grid.get-overall-width($_primary-column-count)};
+    --secondary-column-width: #{get-overall-width($_secondary-column-count)};
+    --menu-column-width: #{get-overall-width($_menu-column-count)};
+    grid-template-areas:
+      ". . menu    . ."
+      ". . primary . .";
+    grid-template-columns: [full-start] 1fr [main-start] var(--menu-column-width) var(--primary-column-width) var(--secondary-column-width) [main-end] 1fr [full-end];
+  }
+
+  @include media-query.mq($from: extra-wide) {
+    $_primary-column-count: floor(grid.$main_column_count * 0.7);
+    $_secondary-column-count: floor((grid.$main_column_count - $_primary-column-count) / 2);
+    $_menu-column-count: grid.$main_column_count - $_primary-column-count - $_secondary-column-count;
+    --primary-column-width: #{grid.get-overall-width($_primary-column-count)};
+    --secondary-column-width: #{grid.get-overall-width($_secondary-column-count)};
+    --menu-column-width: #{grid.get-overall-width($_menu-column-count)};
+    grid-template-areas: ". menu primary . .";
+  }
+}
+
+.content-grid--has-secondary {
+  grid-template-areas:
+    ". menu      ."
+    ". primary   ."
+    ". secondary .";
+
+  @include media-query.mq($from: wide) {
+    $_primary-column-count: floor(grid.$main_column_count * 0.7);
+    $_secondary-column-count: grid.$main_column_count - $_primary-column-count;
+    --primary-column-width: #{grid.get-overall-width($_primary-column-count)};
+    --secondary-column-width: #{grid.get-overall-width($_secondary-column-count)};
+    grid-template-areas:
+      ". menu    menu      ."
+      ". primary secondary .";
+    grid-template-columns: [full-start] 1fr [main-start] var(--primary-column-width) var(--secondary-column-width) [main-end] 1fr [full-end];
+  }
+
+  @include media-query.mq($from: extra-wide) {
+    $_primary-column-count: floor(grid.$main_column_count * 0.6);
+    $_secondary-column-count: floor(grid.$main_column_count * 0.25);
+    $_menu-column-count: grid.$main_column_count - $_primary-column-count - $_secondary-column-count;
+    --primary-column-width: #{grid.get-overall-width($_primary-column-count)};
+    --secondary-column-width: #{grid.get-overall-width($_secondary-column-count)};
+    --menu-column-width: #{grid.get-overall-width($_menu-column-count)};
+    grid-template-areas: ". menu primary secondary .";
+    grid-template-columns: [full-start] 1fr [main-start] var(--menu-column-width) var(--primary-column-width) var(--secondary-column-width) [main-end] 1fr [full-end];
+  }
+}
+
+.content-grid__item,
+.content-grid__item--main {
+  grid-column: main;
+}
+
+.content-grid__item--full {
+  grid-column: full;
+}
+
+.content-grid__item--primary {
+  grid-column: primary;
+}
+
+.content-grid__item--secondary {
+  grid-column: secondary;
+}
+
+.content-grid__item--menu {
+  grid-column: menu;
+}

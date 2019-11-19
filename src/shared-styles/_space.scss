@@ -1,0 +1,114 @@
+@use "baseline";
+@use "error";
+@use "logical";
+@use "media-query";
+@use "rem";
+@use "size";
+@use "validate";
+
+@function calculate($block-size, $unit-size: baseline.for-units(4)) {
+  $remaining: $unit-size - $block-size;
+
+  @if ($remaining > 0) {
+    @return $remaining;
+  }
+
+  @return $unit-size;
+}
+
+@mixin padding($sizes, $dimension: "", $to-rem: true) {
+  @include _spacing($sizes, padding, $dimension, $to-rem);
+}
+
+@mixin margin($sizes, $dimension: "", $to-rem: true) {
+  @include _spacing($sizes, margin, $dimension, $to-rem);
+}
+
+@mixin none($dimension: "") {
+  @include margin(0, $dimension);
+  @include padding(0, $dimension);
+}
+
+@mixin block($start: 0, $end: baseline.for-units(4)) {
+  @include margin($start $end, block);
+}
+
+@mixin h1() {
+  @include _heading($end: calculate($block-size: baseline.for-units(8)));
+}
+
+@mixin h2() {
+  @include _heading($end: calculate($block-size: baseline.for-units(5), $unit-size: baseline.for-units(8)));
+}
+
+@mixin h3() {
+  @include _heading();
+}
+
+@mixin h4() {
+  @include _heading();
+}
+
+@mixin h5() {
+  @include _heading();
+}
+
+@mixin h6() {
+  @include _heading();
+}
+
+@mixin _heading($end: calculate($block-size: baseline.for-units(4), $unit-size: baseline.for-units(8))) {
+  @include block($end: $end);
+}
+
+@mixin _spacing($sizes, $space-type, $dimension: "", $to-rem: true) {
+
+  @if $dimension == "" {
+
+    @include validate.expect-at-most($sizes, 4, "More than four sizes supplied when no dimension") {
+      @include logical.property($space-type, all, $sizes, $to-rem);
+    }
+
+  } @else if $dimension == inline {
+
+    @include validate.expect-at-most($sizes, 2, "More than two sizes supplied with 'inline' dimension") {
+      @include logical.property($space-type, $dimension, $sizes, $to-rem);
+    }
+
+  } @else if $dimension == inline-start {
+
+    @include validate.expect-single-value($sizes, "More than one size supplied with 'inline-start' dimension") {
+      @include logical.property($space-type, $dimension, $sizes, $to-rem);
+    }
+
+  } @else if $dimension == inline-end {
+
+    @include validate.expect-single-value($sizes, "More than one size supplied with 'inline-end' dimension") {
+      @include logical.property($space-type, $dimension, $sizes, $to-rem);
+    }
+
+  } @else if $dimension == block {
+
+    @include validate.expect-at-most($sizes, 2, "More than two sizes supplied with 'block' dimension") {
+      @include logical.property($space-type, $dimension, $sizes, $to-rem);
+    }
+
+  } @else if $dimension == block-start {
+
+    @include validate.expect-single-value($sizes, "More than one size supplied with 'block-start' dimension") {
+      @include logical.property($space-type, $dimension, $sizes, $to-rem);
+    }
+
+  } @else if $dimension == block-end {
+
+    @include validate.expect-single-value($sizes, "More than one size supplied with 'block-end' dimension") {
+      @include logical.property($space-type, $dimension, $sizes, $to-rem);
+    }
+
+  } @else if index((top, bottom, left, right), $dimension) {
+    @include error.throw("'#{$dimension}' is a physical dimension, use its logical equivilant");
+  } @else {
+    @include error.throw("Unknown dimension '#{$dimension}'");
+  }
+
+}

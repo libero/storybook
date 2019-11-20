@@ -5,17 +5,17 @@
 @use "../../../shared-styles/rem";
 @use "../../../shared-styles/scale";
 @use "../../../shared-styles/size";
-@use "../../../shared-styles/spacing";
+@use "../../../shared-styles/space";
 @use "../../../shared-styles/typography";
 
 .error {
   text-align: center;
   @include size.max-inline-size(grid.$grid-max-width);
-  @include spacing.margin(auto, inline);
+  @include space.margin(auto, inline);
   // TODO: Add padding mixin as grid needs to be done first.
-  @include spacing.block-spacing($start: rem.calculate(baseline.for-units(12)), $end: rem.calculate(baseline.for-units(12)));
+  @include space.block($start: rem.calculate(baseline.for-units(12)), $end: rem.calculate(baseline.for-units(12)));
   @include media-query.mq($from: medium) {
-    @include spacing.block-spacing($start: rem.calculate(baseline.for-units(20)), $end: rem.calculate(baseline.for-units(20)));
+    @include space.block($start: rem.calculate(baseline.for-units(20)), $end: rem.calculate(baseline.for-units(20)));
   }
 
   @supports (display: flex) {
@@ -26,13 +26,13 @@
   }
 
   > :last-child {
-    @include spacing.margin(0, block-end);
+    @include space.margin(0, block-end);
   }
 
 }
 
 .error__image {
-  @include spacing.block-spacing($end: baseline.for-units(4));
+  @include space.block($end: baseline.for-units(4));
 
   @supports (display: flex) {
     display: block;
@@ -40,6 +40,6 @@
 }
 
 .error__heading {
-  @include spacing.block-spacing($end: rem.calculate(baseline.for-units(2)));
+  @include space.block($end: rem.calculate(baseline.for-units(2)));
   @include typography.h2();
 }

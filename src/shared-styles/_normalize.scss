@@ -69,5 +69,5 @@ strong {
 }
 
 p {
-  @include spacing.block-spacing();
+  @include space.block();
 }

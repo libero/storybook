@@ -15,6 +15,17 @@ twigContext.keys().forEach((key) => twig({
 }));
 
 addParameters({
+  options: {
+    storySort: (a, b) => {
+      if (a[1].id.indexOf('grids') === 0) {
+        return 1;
+      }
+      if (b[1].id.indexOf('grids') === 0) {
+        return -1;
+      }
+      return a[1].id.localeCompare(b[1].id);
+    },
+  },
   viewport: {
     viewports: INITIAL_VIEWPORTS,
   },

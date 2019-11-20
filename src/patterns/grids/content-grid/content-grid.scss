@@ -1,0 +1,92 @@
+@use "../../../shared-styles/normalize"; // Always used first
+@use "../../../shared-styles/grid.scss";
+@use "../../../shared-styles/media-query";
+@use "../../../shared-styles/space";
+
+.content-grid {
+  --primary-column-inline-size: #{grid.get-overall-inline-size(grid.$main-column-count)};
+
+  @include grid.base(grid.$max-inline-size);
+  &.page-grid__start {
+    @include space.padding(0, inline);
+  }
+
+  grid-template-areas:
+    ". menu    ."
+    ". primary .";
+  grid-template-columns: [full-start] 1fr [main-start] var(--primary-column-inline-size) [main-end] 1fr [full-end];
+  grid-column-gap: var(--GRID-COLUMN-GAP);
+
+  @include media-query.mq($from: wide) {
+    $_primary-column-count: grid.$main-column-count - 2;
+    $_secondary-column-count: floor((grid.$main-column-count - $_primary-column-count) / 2);
+    $_menu-column-count: grid.$main-column-count - $_primary-column-count - $_secondary-column-count;
+    --primary-column-inline-size: #{grid.get-overall-inline-size($_primary-column-count)};
+    --secondary-column-inline-size: #{get-overall-inline-size($_secondary-column-count)};
+    --menu-column-inline-size: #{get-overall-inline-size($_menu-column-count)};
+    grid-template-areas:
+      ". . menu    . ."
+      ". . primary . .";
+    grid-template-columns: [full-start] 1fr [main-start] var(--menu-column-inline-size) var(--primary-column-inline-size) var(--secondary-column-inline-size) [main-end] 1fr [full-end];
+  }
+
+  @include media-query.mq($from: extra-wide) {
+    $_primary-column-count: floor(grid.$main-column-count * 0.7);
+    $_secondary-column-count: floor((grid.$main-column-count - $_primary-column-count) / 2);
+    $_menu-column-count: grid.$main-column-count - $_primary-column-count - $_secondary-column-count;
+    --primary-column-inline-size: #{grid.get-overall-inline-size($_primary-column-count)};
+    --secondary-column-inline-size: #{grid.get-overall-inline-size($_secondary-column-count)};
+    --menu-column-inline-size: #{grid.get-overall-inline-size($_menu-column-count)};
+    grid-template-areas: ". menu primary . .";
+  }
+}
+
+.content-grid--has-secondary {
+  grid-template-areas:
+    ". menu      ."
+    ". primary   ."
+    ". secondary .";
+
+  @include media-query.mq($from: wide) {
+    $_primary-column-count: floor(grid.$main-column-count * 0.7);
+    $_secondary-column-count: grid.$main-column-count - $_primary-column-count;
+    --primary-column-inline-size: #{grid.get-overall-inline-size($_primary-column-count)};
+    --secondary-column-inline-size: #{grid.get-overall-inline-size($_secondary-column-count)};
+    grid-template-areas:
+      ". menu    menu      ."
+      ". primary secondary .";
+    grid-template-columns: [full-start] 1fr [main-start] var(--primary-column-inline-size) var(--secondary-column-inline-size) [main-end] 1fr [full-end];
+  }
+
+  @include media-query.mq($from: extra-wide) {
+    $_primary-column-count: floor(grid.$main-column-count * 0.6);
+    $_secondary-column-count: floor(grid.$main-column-count * 0.25);
+    $_menu-column-count: grid.$main-column-count - $_primary-column-count - $_secondary-column-count;
+    --primary-column-inline-size: #{grid.get-overall-inline-size($_primary-column-count)};
+    --secondary-column-inline-size: #{grid.get-overall-inline-size($_secondary-column-count)};
+    --menu-column-inline-size: #{grid.get-overall-inline-size($_menu-column-count)};
+    grid-template-areas: ". menu primary secondary .";
+    grid-template-columns: [full-start] 1fr [main-start] var(--menu-column-inline-size) var(--primary-column-inline-size) var(--secondary-column-inline-size) [main-end] 1fr [full-end];
+  }
+}
+
+.content-grid__item,
+.content-grid__item--main {
+  grid-column: main;
+}
+
+.content-grid__item--full {
+  grid-column: full;
+}
+
+.content-grid__item--primary {
+  grid-column: primary;
+}
+
+.content-grid__item--secondary {
+  grid-column: secondary;
+}
+
+.content-grid__item--menu {
+  grid-column: menu;
+}

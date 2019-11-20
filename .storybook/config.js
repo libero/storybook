@@ -17,10 +17,6 @@ twigContext.keys().forEach((key) => twig({
 addParameters({
   options: {
     storySort: (a, b) => {
-      // eslint-disable-next-line no-console
-      console.table('a', a);
-      // eslint-disable-next-line no-console
-      console.table('b', b);
       if (a[1].id.indexOf('grids') === 0) {
         return 1;
       }

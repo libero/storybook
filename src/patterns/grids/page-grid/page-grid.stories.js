@@ -5,7 +5,7 @@ import { contentGrid } from '../../includes';
 import './page-grid.scss';
 
 export default {
-  title: 'Templates|Page grid',
+  title: 'Grids|Page grid',
 };
 
 export const all = () => pageGrid(

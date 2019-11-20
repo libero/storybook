@@ -4,7 +4,7 @@ import contentGrid from './content-grid.twig';
 import './content-grid.scss';
 
 export default {
-  title: 'Templates|Content grid',
+  title: 'Grids|Content grid',
 };
 
 export const primaryOnly = () => contentGrid(

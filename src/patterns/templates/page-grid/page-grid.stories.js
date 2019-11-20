@@ -2,6 +2,7 @@
 
 import pageGrid from './page-grid.twig';
 import { contentGrid } from '../../includes';
+import './page-grid.scss';
 
 export default {
   title: 'Templates|Page grid',

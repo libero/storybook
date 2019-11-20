@@ -177,7 +177,7 @@
 
     @if length($property-name) > 1 {
       @include error.throw("Expected a single property name");
-    } @else if not index(inset margin padding, $property-name) {
+    } @else if not index(inset margin padding border, $property-name) {
       @include error.throw("Can't combine block and inline for '#{$property-name}'");
     } @else {
 

@@ -72,5 +72,5 @@ export const all = () => contentGrid(
         content: 'main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main main',
       },
     ],
-  }
+  },
 );

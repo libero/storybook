@@ -5,6 +5,8 @@
 
 $column-gap: 1.6% !default;
 $divider-size: 1px !default;
+$edge-space-medium: 7vw !default;
+$edge-space-wide: 14vw !default;
 $main-column-count: 12 !default;
 $max-inline-size: 1114px !default;
 $min-inline-size: 320px !default;
@@ -30,14 +32,12 @@ $min-inline-size: 320px !default;
 }
 
 :root {
-  $_edge-space-large: 14vw !default;
-  $_edge-space-medium: 7vw !default;
   --GRID-COLUMN-GAP: #{$column-gap};
-  --GRID-EDGE-SPACE: #{$_edge-space-medium};
+  --GRID-EDGE-SPACE: #{$edge-space-medium};
   --GRID-COLUMN-INLINE-SIZE: calc((100% - (var(--GRID-EDGE-SPACE) * 2) - (var(--GRID-COLUMN-GAP) * #{$main-column-count - 1})) / #{$main-column-count});
 
   @include media-query.mq($from: medium) {
-    --GRID-EDGE-SPACE: #{$_edge-space-large};
+    --GRID-EDGE-SPACE: #{$edge-space-wide};
   }
 
   @include media-query.mq($from: extra-wide) {

@@ -4,7 +4,7 @@
 @use "../../../shared-styles/space";
 
 .content-grid {
-  --primary-column-inline-size: #{grid.get-overall-inline-size(grid.$main_column_count)};
+  --primary-column-inline-size: #{grid.get-overall-inline-size(grid.$main-column-count)};
 
   @include grid.base(grid.$max-inline-size);
   &.page-grid__start {
@@ -18,9 +18,9 @@
   grid-column-gap: var(--GRID-COLUMN-GAP);
 
   @include media-query.mq($from: wide) {
-    $_primary-column-count: grid.$main_column_count - 2;
-    $_secondary-column-count: floor((grid.$main_column_count - $_primary-column-count) / 2);
-    $_menu-column-count: grid.$main_column_count - $_primary-column-count - $_secondary-column-count;
+    $_primary-column-count: grid.$main-column-count - 2;
+    $_secondary-column-count: floor((grid.$main-column-count - $_primary-column-count) / 2);
+    $_menu-column-count: grid.$main-column-count - $_primary-column-count - $_secondary-column-count;
     --primary-column-inline-size: #{grid.get-overall-inline-size($_primary-column-count)};
     --secondary-column-inline-size: #{get-overall-inline-size($_secondary-column-count)};
     --menu-column-inline-size: #{get-overall-inline-size($_menu-column-count)};
@@ -31,9 +31,9 @@
   }
 
   @include media-query.mq($from: extra-wide) {
-    $_primary-column-count: floor(grid.$main_column_count * 0.7);
-    $_secondary-column-count: floor((grid.$main_column_count - $_primary-column-count) / 2);
-    $_menu-column-count: grid.$main_column_count - $_primary-column-count - $_secondary-column-count;
+    $_primary-column-count: floor(grid.$main-column-count * 0.7);
+    $_secondary-column-count: floor((grid.$main-column-count - $_primary-column-count) / 2);
+    $_menu-column-count: grid.$main-column-count - $_primary-column-count - $_secondary-column-count;
     --primary-column-inline-size: #{grid.get-overall-inline-size($_primary-column-count)};
     --secondary-column-inline-size: #{grid.get-overall-inline-size($_secondary-column-count)};
     --menu-column-inline-size: #{grid.get-overall-inline-size($_menu-column-count)};
@@ -48,8 +48,8 @@
     ". secondary .";
 
   @include media-query.mq($from: wide) {
-    $_primary-column-count: floor(grid.$main_column_count * 0.7);
-    $_secondary-column-count: grid.$main_column_count - $_primary-column-count;
+    $_primary-column-count: floor(grid.$main-column-count * 0.7);
+    $_secondary-column-count: grid.$main-column-count - $_primary-column-count;
     --primary-column-inline-size: #{grid.get-overall-inline-size($_primary-column-count)};
     --secondary-column-inline-size: #{grid.get-overall-inline-size($_secondary-column-count)};
     grid-template-areas:
@@ -59,9 +59,9 @@
   }
 
   @include media-query.mq($from: extra-wide) {
-    $_primary-column-count: floor(grid.$main_column_count * 0.6);
-    $_secondary-column-count: floor(grid.$main_column_count * 0.25);
-    $_menu-column-count: grid.$main_column_count - $_primary-column-count - $_secondary-column-count;
+    $_primary-column-count: floor(grid.$main-column-count * 0.6);
+    $_secondary-column-count: floor(grid.$main-column-count * 0.25);
+    $_menu-column-count: grid.$main-column-count - $_primary-column-count - $_secondary-column-count;
     --primary-column-inline-size: #{grid.get-overall-inline-size($_primary-column-count)};
     --secondary-column-inline-size: #{grid.get-overall-inline-size($_secondary-column-count)};
     --menu-column-inline-size: #{grid.get-overall-inline-size($_menu-column-count)};

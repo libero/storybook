@@ -3,11 +3,9 @@
 @use "size";
 @use "space";
 
-$column_gap: 1.6% !default;
-$divider_size: 1px !default;
-$edge_space-large: 14vw !default;
-$edge_space-medium: 7vw !default;
-$main_column_count: 12 !default;
+$column-gap: 1.6% !default;
+$divider-size: 1px !default;
+$main-column-count: 12 !default;
 $max-inline-size: 1114px !default;
 $min-inline-size: 320px !default;
 
@@ -19,7 +17,7 @@ $min-inline-size: 320px !default;
   @include size.max-inline-size($max-inline-size);
   @include space.block($end: 0);
   @include space.margin(auto, inline);
-  @include space.padding($column_gap, inline);
+  @include space.padding($column-gap, inline);
   box-sizing: content-box;
 
   @supports (display: grid) and (--custom: property) {
@@ -32,17 +30,19 @@ $min-inline-size: 320px !default;
 }
 
 :root {
-  --GRID-COLUMN-GAP: #{$column_gap};
-  --GRID-EDGE-SPACE: #{$edge_space-medium};
-  --GRID-COLUMN-INLINE-SIZE: calc((100% - (var(--GRID-EDGE-SPACE) * 2) - (var(--GRID-COLUMN-GAP) * #{$main_column_count - 1})) / #{$main_column_count});
+  $_edge-space-large: 14vw !default;
+  $_edge-space-medium: 7vw !default;
+  --GRID-COLUMN-GAP: #{$column-gap};
+  --GRID-EDGE-SPACE: #{$_edge-space-medium};
+  --GRID-COLUMN-INLINE-SIZE: calc((100% - (var(--GRID-EDGE-SPACE) * 2) - (var(--GRID-COLUMN-GAP) * #{$main-column-count - 1})) / #{$main-column-count});
 
   @include media-query.mq($from: medium) {
-    --GRID-EDGE-SPACE: #{$edge_space-large};
+    --GRID-EDGE-SPACE: #{$_edge-space-large};
   }
 
   @include media-query.mq($from: extra-wide) {
-    --GRID-COLUMN-GAP: #{($max-inline-size * $column_gap) / 100%};
-    --GRID-COLUMN-INLINE-SIZE: calc((#{$max-inline-size} - (var(--GRID-COLUMN-GAP) * #{$main_column_count - 1})) / #{$main_column_count});
+    --GRID-COLUMN-GAP: #{($max-inline-size * $column-gap) / 100%};
+    --GRID-COLUMN-INLINE-SIZE: calc((#{$max-inline-size} - (var(--GRID-COLUMN-GAP) * #{$main-column-count - 1})) / #{$main-column-count});
   }
 
   @include logical.property(min, inline-size, $min-inline-size, $to-rem: false);

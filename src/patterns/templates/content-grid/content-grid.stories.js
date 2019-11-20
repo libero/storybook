@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 
-import contentGrid from './contentGrid.twig';
-import './contentGrid.scss';
+import contentGrid from './content-grid.twig';
+import './content-grid.scss';
 
 export default {
   title: 'Templates|Content grid',

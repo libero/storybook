@@ -94,7 +94,7 @@ The grid may be configured using the following Sass variables defined in `/src/s
 - `$main-column-count` the number of columns in the `main` area of the grid (default: `12`).
 - `$column-gap` the width between grid columns, also the minimum inline start / end page gutter when CSS grid is not supported by the browser; may be expressed in any css length unit (default: `1.6%`)  
 - `$edge-space-medium`: a medium sized inline start / end page gutter (default: `7vw`), usage controlled by a breakpoint
-- `$edge-space-large`: a large inline start / end page gutter (default: `14vw`), usage controlled by a breakpoint
+- `$edge-space-wide`: a large inline start / end page gutter (default: `14vw`), usage controlled by a breakpoint
 
 ## Sass
 

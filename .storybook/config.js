@@ -1,6 +1,5 @@
 import { addDecorator, addParameters, configure } from '@storybook/html';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import centered from '@storybook/addon-centered/html';
 import { twig } from 'twig';
 import { withA11y } from '@storybook/addon-a11y';
 
@@ -31,7 +30,6 @@ addParameters({
   },
 });
 
-addDecorator(centered);
 addDecorator(withA11y);
 
 configure(context, module);

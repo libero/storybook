@@ -954,11 +954,11 @@
     @include assert() {
 
       @include output {
-        @include logical.property(float, all, left);
+        @include logical.property(margin-inline, all, 16px);
       }
 
       @include expect {
-        _error: "Can't combine block and inline for 'float'";
+        _error: "Can't combine block and inline for 'margin-inline'";
       }
 
     }

@@ -930,7 +930,7 @@
       }
 
       @include contains {
-        _error: "'top' is a physical dimension, use its logical equivilant";
+        _error: "'top' is a physical dimension, use its logical equivalent";
       }
 
     }
@@ -954,11 +954,11 @@
     @include assert() {
 
       @include output {
-        @include logical.property(border, all, 16px);
+        @include logical.property(margin-inline, all, 16px);
       }
 
       @include expect {
-        _error: "Can't combine block and inline for 'border'";
+        _error: "Can't combine block and inline for 'margin-inline'";
       }
 
     }

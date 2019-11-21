@@ -1498,7 +1498,7 @@ $_baseline-unit: scale.$base * 0.375;
       }
 
       @include expect {
-        _error: "'top' is a physical dimension, use its logical equivilant";
+        _error: "'top' is a physical dimension, use its logical equivalent";
       }
 
     }
@@ -3011,7 +3011,7 @@ $_baseline-unit: scale.$base * 0.375;
       }
 
       @include expect {
-        _error: "'top' is a physical dimension, use its logical equivilant";
+        _error: "'top' is a physical dimension, use its logical equivalent";
       }
 
     }
@@ -3260,7 +3260,7 @@ $_baseline-unit: scale.$base * 0.375;
       }
 
       @include contains {
-        _error: "'top' is a physical dimension, use its logical equivilant";
+        _error: "'top' is a physical dimension, use its logical equivalent";
       }
 
     }

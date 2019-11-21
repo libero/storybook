@@ -106,7 +106,7 @@
     }
 
   } @else if index((top, bottom, left, right), $dimension) {
-    @include error.throw("'#{$dimension}' is a physical dimension, use its logical equivilant");
+    @include error.throw("'#{$dimension}' is a physical dimension, use its logical equivalent");
   } @else {
     @include error.throw("Unknown dimension '#{$dimension}'");
   }

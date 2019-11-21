@@ -177,7 +177,7 @@
 
     @if length($property-name) > 1 {
       @include error.throw("Expected a single property name");
-    } @else if not index(inset margin padding, $property-name) {
+    } @else if not index(inset margin padding border, $property-name) {
       @include error.throw("Can't combine block and inline for '#{$property-name}'");
     } @else {
 
@@ -274,7 +274,7 @@
     }
 
   } @else if index((top, bottom, left, right, width, height), $dimension) {
-    @include error.throw("'#{$dimension}' is a physical dimension, use its logical equivilant");
+    @include error.throw("'#{$dimension}' is a physical dimension, use its logical equivalent");
   } @else {
     @include error.throw("Unknown dimension '#{$dimension}'");
   }

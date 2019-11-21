@@ -5,6 +5,11 @@ import image from './images/5xx.svg';
 
 export default {
   title: 'Molecules|Error',
+  parameters: {
+    centered: {
+      disable: true,
+    },
+  },
 };
 
 export const ErrorEn = () => error(

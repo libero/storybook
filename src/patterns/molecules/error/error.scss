@@ -10,9 +10,9 @@
 
 .error {
   text-align: center;
-  @include size.max-inline-size(grid.$grid-max-width);
+  @include size.max-inline-size(grid.$max-inline-size);
   @include space.margin(auto, inline);
-  // TODO: Add padding mixin as grid needs to be done first.
+  @include space.padding(grid.$column_gap, inline);
   @include space.block($start: rem.calculate(baseline.for-units(12)), $end: rem.calculate(baseline.for-units(12)));
   @include media-query.mq($from: medium) {
     @include space.block($start: rem.calculate(baseline.for-units(20)), $end: rem.calculate(baseline.for-units(20)));

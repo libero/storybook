@@ -3,16 +3,6 @@
 @use "rem";
 @use "validate";
 
-@mixin max-inline-size($size) {
-  @include validation.expect_single_value($size) {
-    @include _constrain-inline-size($size, max);
-  }
-}
-
-@mixin _constrain-inline-size($size, $extreme) {
-  // TODO: Add Logical Properties when tests have been put in place.
-}
-
 @mixin block($size) {
   @include validate.expect-single-value($size) {
     @include logical.property("", block-size, ($size));

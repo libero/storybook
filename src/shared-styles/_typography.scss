@@ -3,7 +3,7 @@
 @use "font";
 @use "rem";
 @use "scale";
-@use "spacing";
+@use "space";
 @use "utilities";
 
 @mixin body() {
@@ -66,8 +66,7 @@
 }
 
 @mixin list-style-none() {
-  @include spacing.padding(0, inline-start);
+  @include space.padding(0, inline-start);
   // Overflow auto is so the bullet will be still read from a screen reader and will push the bullet off screen
   overflow-x: auto;
 }
-

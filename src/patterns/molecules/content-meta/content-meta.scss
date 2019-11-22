@@ -2,12 +2,12 @@
 @use "../../../shared-styles/color";
 @use "../../../shared-styles/font";
 @use "../../../shared-styles/link";
-@use "../../../shared-styles/spacing";
+@use "../../../shared-styles/space";
 @use "../../../shared-styles/typography";
 
 .content-meta {
   @include typography.list-style-none();
-  @include spacing.block-spacing();
+  @include space.block();
 }
 
 .content-meta__item {

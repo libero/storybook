@@ -1,8 +1,14 @@
+@use "font";
+@use "space";
 @use "typography";
 
 //----------------------------------------------------------------------------------------------------------------------
 // Typography.
 //
+
+html {
+  font-size: font.$size;
+}
 
 body {
   @include typography.body();
@@ -12,26 +18,32 @@ body {
 }
 
 h1 {
+  @include space.h1();
   @include typography.h1();
 }
 
 h2 {
+  @include space.h2();
   @include typography.h2();
 }
 
 h3 {
+  @include space.h3();
   @include typography.h3();
 }
 
 h4 {
+  @include space.h4();
   @include typography.h4();
 }
 
 h5 {
+  @include space.h5();
   @include typography.h5();
 }
 
 h6 {
+  @include space.h6();
   @include typography.h6();
 }
 
@@ -54,4 +66,8 @@ sup {
 b,
 strong {
   font-weight: bolder;
+}
+
+p {
+  @include space.block();
 }

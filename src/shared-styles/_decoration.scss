@@ -1,0 +1,8 @@
+@use "color";
+@use "error";
+@use "grid";
+@use "logical";
+
+@mixin border($dimension: all) {
+  @include logical.property(border, $dimension, (grid.$divider-size solid color.$text-dividers,), $to-rem: false);
+}

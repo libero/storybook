@@ -3,6 +3,11 @@ import './content-meta.scss';
 
 export default {
   title: 'Molecules|ContentMeta',
+  parameters: {
+    centered: {
+      disable: true,
+    },
+  },
 };
 
 export const Basic = () => content(

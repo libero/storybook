@@ -4,7 +4,6 @@
 @use "rem";
 @use "scale";
 @use "space";
-@use "utilities";
 
 @mixin body() {
   @include _typography();
@@ -40,19 +39,20 @@
 
 @mixin _label-typography($color, $uppercase: true) {
   color: $color;
+  $letterspacing: 0.5px !default;
   @include _typography($scale-point: -3, $font-family: font.$secondary);
-  letter-spacing: font.$letterspacing-label;
+  letter-spacing: $letterspacing;
   @if $uppercase {
     text-transform: uppercase;
   }
 }
 
-@mixin label-content-typography($color: color.$text-secondary, $uppercase: true) {
+@mixin label-as-content($color: color.$text-secondary, $uppercase: true) {
   @include _label-typography($color, $uppercase);
 }
 
-@mixin label-tag-typography() {
-  @include _label-typography($color-primary-normal);
+@mixin label-as-tag() {
+  @include _label-typography(color.$color-primary-normal);
 }
 
 @mixin _typography($scale-point: 0, $baseline-units: 4, $font-family: font.$primary, $font-weight: 400) {
@@ -63,10 +63,4 @@
   font-size: rem.calculate($_font-size);
   font-weight: $font-weight;
   line-height: $_baseline-size / $_font-size;
-}
-
-@mixin list-style-none() {
-  @include space.padding(0, inline-start);
-  // Overflow auto is so the bullet will be still read from a screen reader and will push the bullet off screen
-  overflow-x: auto;
 }

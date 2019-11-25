@@ -6,13 +6,13 @@
 @use "../../../shared-styles/typography";
 
 .content-meta {
-  @include typography.list-style-none();
+  @include normalize.list-style-none();
   @include space.block();
 }
 
 .content-meta__item {
   display: inline-block;
-  @include typography.label-content-typography();
+  @include typography.label-as-content();
 
   .content-meta--reverse & {
     color: inherit;

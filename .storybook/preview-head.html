@@ -1,13 +1,6 @@
 <script>
-  const getIntendedDir = () => {
-    return _getIntended('dir');
-  };
-
-  const getIntendedLang = () => {
-    return _getIntended('lang');
-  };
-
-  const _getIntended = (attribute) => {
+  // TODO: Document
+  const getIntendedAttributeValue = (attribute) => {
     const strWithInitialCapital = (str) => {
       const initialCapital = str.charAt(0).toUpperCase();
       return `${initialCapital}${str.substring(1)}`;
@@ -21,13 +14,10 @@
     return '';
   };
 
-  const updateHtmlAttrs = () => {
-    const dir = getIntendedDir();
-    document.querySelector('html').setAttribute('dir', dir);
-
-    const lang = getIntendedLang();
-    document.querySelector('html').setAttribute('lang', lang);
+  const updateHtmlAttributes = () => {
+    const attributeNames = ['dir', 'lang'];
+    attributeNames.forEach((name) => document.querySelector('html').setAttribute(name, getIntendedAttributeValue(name)));
   };
 
-  window.setTimeout(updateHtmlAttrs, 3000);
+  window.setTimeout(updateHtmlAttributes, 3000);
 </script>

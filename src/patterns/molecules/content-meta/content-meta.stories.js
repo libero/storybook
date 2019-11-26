@@ -2,7 +2,7 @@ import content from './content-meta.twig';
 import './content-meta.scss';
 
 export default {
-  title: 'Molecules|ContentMeta',
+  title: 'Molecules|Content meta',
   parameters: {
     centered: {
       disable: true,

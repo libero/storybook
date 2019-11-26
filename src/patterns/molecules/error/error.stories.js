@@ -47,8 +47,8 @@ export const ErrorAr = () => error(
   {
     attributes:
       {
-        dir: 'rtl',
-        lang: 'ar',
+        'data-storybook-only-dir': 'rtl',
+        'data-storybook-only-lang': 'ar',
       },
     image:
       {

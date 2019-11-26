@@ -1,3 +1,33 @@
 <script>
-  document.querySelector('html').setAttribute('dir', 'rtl');
+  const getIntendedDir = () => {
+    return _getIntended('dir');
+  };
+
+  const getIntendedLang = () => {
+    return _getIntended('lang');
+  };
+
+  const _getIntended = (attribute) => {
+    const strWithInitialCapital = (str) => {
+      const initialCapital = str.charAt(0).toUpperCase();
+      return `${initialCapital}${str.substring(1)}`;
+    };
+
+    const allowed = ['dir', 'lang'];
+    if (allowed.indexOf(attribute) > -1) {
+      const target = document.querySelector(`[data-storybook-only-${attribute}]`);
+      return target.dataset[`storybookOnly${strWithInitialCapital(attribute)}`];
+    }
+    return '';
+  };
+
+  const updateHtmlAttrs = () => {
+    const dir = getIntendedDir();
+    document.querySelector('html').setAttribute('dir', dir);
+
+    const lang = getIntendedLang();
+    document.querySelector('html').setAttribute('lang', lang);
+  };
+
+  window.setTimeout(updateHtmlAttrs, 3000);
 </script>

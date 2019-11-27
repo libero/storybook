@@ -34,10 +34,11 @@
    */
   const updateHtmlAttributes = function(toUpdate, allowed) {
     allowed.forEach(function(allowedAttribute) {
-      if (toUpdate === allowedAttribute) {
-        const value = findValue(allowedAttribute.name) || allowedAttribute.defaultValue;
+      const allowedName = allowedAttribute.name;
+      if (toUpdate.indexOf(allowedName) > -1) {
+        const value = findValue(allowedName) || allowedAttribute.defaultValue;
         if (value && value.length) {
-          document.querySelector('html').setAttribute(allowedAttribute, value);
+          document.querySelector('html').setAttribute(allowedName, value);
         }
       }
     });
@@ -59,8 +60,8 @@
     updateHtmlAttributes(['dir', 'lang'], allowedAttributes);
   }, 3000);
 
-  window.self.addEventListener('load', function() {
-    window.clearTimeout(timeout);
-    updateHtmlAttributes(['dir', 'lang'], allowedAttributes);
-  });
+  // window.self.addEventListener('load', function() {
+  //   window.clearTimeout(timeout);
+  //   updateHtmlAttributes(['dir', 'lang'], allowedAttributes);
+  // });
 </script>

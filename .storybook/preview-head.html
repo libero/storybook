@@ -7,7 +7,7 @@
 
     const attributeSource = document.querySelector(`[data-storybook-htmlattr-${attribute}]`);
     if (attributeSource) {
-      return attributeSource.dataset[`storybookHtmlattr${strWithInitialCapital(attribute)}`];
+      return attributeSource.dataset[`storybookHtmlattr${strWithInitialCapital(attribute)}`] || '';
     }
     return '';
   };

@@ -9,28 +9,28 @@
    * name of the desired attribute. If it finds it, it returns the value of that data attribute, or an empty string if
    * it does not have a value, or the value is empty.
    *
-   * @param {string} attribute
-   * @return {string} The value found to set for the attribute
+   * @param {string} htmlAttributeName
+   * @return {string} - The value found to set as htmlAttributeName
    */
-  const findValue = (attribute) => {
+  const findValue = (htmlAttributeName) => {
 
     const strWithInitialCapital = (str) => {
       return `${str.charAt(0).toUpperCase()}${str.substring(1)}`;
     };
 
-    const attributeSource = document.querySelector(`[data-storybook-htmlattr-${attribute}]`);
+    const attributeSource = document.querySelector(`[data-storybook-htmlattr-${htmlAttributeName}]`);
     if (attributeSource) {
-      return attributeSource.dataset[`storybookHtmlattr${strWithInitialCapital(attribute)}`] || '';
+      return attributeSource.dataset[`storybookHtmlattr${strWithInitialCapital(htmlAttributeName)}`] || '';
     }
     return '';
   };
 
   /**
-   * Iterates over a list of attributes to update on the <html> element, and updates them if they're permitted to be,
-   * either with the found value, or a default value if supplied.
+   * Iterates over a list of attributes to update on the <html> element, and if allowed updates them: either with the
+   * found value, or a default value if supplied.
    *
-   * @param {Array} toUpdate The attributes to set on <html>
-   * @param {Array} allowed The attributes permitted to be set, and an optional default value for each
+   * @param {Array} toUpdate - The attributes to set on <html>
+   * @param {Array} allowed - The attributes permitted to be set, and an optional default value for each
    */
   const updateHtmlAttributes = function(toUpdate, allowed) {
     allowed.forEach(function(allowedAttribute) {
@@ -55,6 +55,7 @@
     },
   ];
 
+  // Listening for an event doesn't work
    window.setTimeout(function () {
     updateHtmlAttributes(['dir', 'lang'], allowedAttributes);
   }, 3000);

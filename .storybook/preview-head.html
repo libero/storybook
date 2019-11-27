@@ -1,23 +1,38 @@
 <script>
-  // TODO: Document
-  const getIntendedAttributeValue = (attribute) => {
+  const findValue = (attribute) => {
+
     const strWithInitialCapital = (str) => {
-      const initialCapital = str.charAt(0).toUpperCase();
-      return `${initialCapital}${str.substring(1)}`;
+      return `${str.charAt(0).toUpperCase()}${str.substring(1)}`;
     };
 
-    const allowed = ['dir', 'lang'];
-    if (allowed.indexOf(attribute) > -1) {
-      const target = document.querySelector(`[data-storybook-only-${attribute}]`);
-      return target.dataset[`storybookOnly${strWithInitialCapital(attribute)}`];
+    const attributeSource = document.querySelector(`[data-storybook-htmlattr-${attribute}]`);
+    if (attributeSource) {
+      return attributeSource.dataset[`storybookHtmlattr${strWithInitialCapital(attribute)}`];
     }
     return '';
   };
 
-  const updateHtmlAttributes = () => {
-    const attributeNames = ['dir', 'lang'];
-    attributeNames.forEach((name) => document.querySelector('html').setAttribute(name, getIntendedAttributeValue(name)));
+  const updateHtmlAttributes = function(toUpdate, allowed) {
+    allowed.forEach(function(allowedAttribute) {
+      if (toUpdate === allowedAttribute) {
+        const value = findValue(allowedAttribute.name) || allowedAttribute.defaultValue;
+        if (value && value.length) {
+          document.querySelector('html').setAttribute(allowedAttribute, value);
+        }
+      }
+    });
   };
 
-  window.setTimeout(updateHtmlAttributes, 3000);
+  const allowedAttributes = [
+    {
+      name: 'lang',
+      defaultValue: 'en',
+    },
+    {
+      name: 'dir',
+      defaultValue: 'ltr',
+    },
+  ];
+
+  window.self.addEventListener('load', function() { updateHtmlAttributes(['dir', 'lang'], allowedAttributes); });
 </script>

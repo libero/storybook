@@ -33,5 +33,4 @@ addParameters({
 
 addDecorator(centered);
 addDecorator(withA11y);
-addParameters({ dir: 'ltr', lang: 'en' });
 configure(context, module);

@@ -33,4 +33,5 @@ addParameters({
 
 addDecorator(centered);
 addDecorator(withA11y);
+
 configure(context, module);

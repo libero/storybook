@@ -34,5 +34,13 @@
     },
   ];
 
-  window.self.addEventListener('load', function() { updateHtmlAttributes(['dir', 'lang'], allowedAttributes); });
+  // The event listener is flaky. Backed up with a 3s timeout if nothing's fired by then.
+  const timeout = window.setTimeout(function () {
+    updateHtmlAttributes(['dir', 'lang'], allowedAttributes);
+  }, 3000);
+
+  window.self.addEventListener('load', function() {
+    window.clearTimeout(timeout);
+    updateHtmlAttributes(['dir', 'lang'], allowedAttributes);
+  });
 </script>

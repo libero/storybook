@@ -1,4 +1,17 @@
 <script>
+  // TODO: Move Purpose & Motivation to README & expand upon it once nearly finalised
+  // Purpose: to allow specification of attributes for the <html> element of the iframe that loads a story
+  // Motivation: CSS selectors handling logical property rules depend on <html dir="[value]"...> but Storybook doesn't
+  //  allow easy configuration of these.
+
+  /**
+   * Searches for an element with a data attribute prefixed with "data-storybook-htmlattr-", and ending in the
+   * name of the desired attribute. If it finds it, it returns the value of that data attribute, or an empty string if
+   * it does not have a value, or the value is empty.
+   *
+   * @param {string} attribute
+   * @return {string} The value found to set for the attribute
+   */
   const findValue = (attribute) => {
 
     const strWithInitialCapital = (str) => {
@@ -12,6 +25,13 @@
     return '';
   };
 
+  /**
+   * Iterates over a list of attributes to update on the <html> element, and updates them if they're permitted to be,
+   * either with the found value, or a default value if supplied.
+   *
+   * @param {Array} toUpdate The attributes to set on <html>
+   * @param {Array} allowed The attributes permitted to be set, and an optional default value for each
+   */
   const updateHtmlAttributes = function(toUpdate, allowed) {
     allowed.forEach(function(allowedAttribute) {
       if (toUpdate === allowedAttribute) {

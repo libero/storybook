@@ -13,9 +13,9 @@
      * @param {string} htmlAttributeName
      * @return {string} - The value found to set as htmlAttributeName
      */
-    const findValue = (htmlAttributeName) => {
+    const findValue = function(htmlAttributeName) {
 
-      const strWithInitialCapital = (str) => {
+      const strWithInitialCapital = function(str) {
         return `${str.charAt(0).toUpperCase()}${str.substring(1)}`;
       };
 

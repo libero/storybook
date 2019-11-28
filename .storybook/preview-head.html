@@ -11,12 +11,12 @@
     const findValue = function(htmlAttributeName) {
 
       const strWithInitialCapital = function(str) {
-        return `${str.charAt(0).toUpperCase()}${str.substring(1)}`;
+        return str.charAt(0).toUpperCase() + str.substring(1);
       };
 
-      const attributeSource = document.querySelector(`[data-storybook-htmlattr-${htmlAttributeName}]`);
+      const attributeSource = document.querySelector('[data-storybook-htmlattr-' + htmlAttributeName + ']');
       if (attributeSource) {
-        return attributeSource.dataset[`storybookHtmlattr${strWithInitialCapital(htmlAttributeName)}`] || '';
+        return attributeSource.dataset['storybookHtmlattr' + strWithInitialCapital(htmlAttributeName)] || '';
       }
       return '';
     };

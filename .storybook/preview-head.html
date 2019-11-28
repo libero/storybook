@@ -1,0 +1,59 @@
+<script>
+  (function() {
+   /**
+     * Searches for an element with a data attribute prefixed with "data-storybook-htmlattr-", and ending in the
+     * name of the desired attribute. If it finds the data attribute, it returns its value, or an empty string if
+     * it doesn't have a value, or the value is empty.
+     *
+     * @param {string} htmlAttributeName
+     * @return {string} - The value found to set for htmlAttributeName
+     */
+    const findValue = function(htmlAttributeName) {
+
+      const strWithInitialCapital = function(str) {
+        return str.charAt(0).toUpperCase() + str.substring(1);
+      };
+
+      const attributeSource = document.querySelector('[data-storybook-htmlattr-' + htmlAttributeName + ']');
+      if (attributeSource) {
+        return attributeSource.dataset['storybookHtmlattr' + strWithInitialCapital(htmlAttributeName)] || '';
+      }
+      return '';
+    };
+
+    /**
+     * Iterates over a list of attributes to update on the <html> element, and if allowed updates them: either with the
+     * found value, or a default value if supplied.
+     *
+     * @param {Array} toUpdate - The attributes to set on <html>
+     * @param {Array} allowed - The attributes permitted to be set, and an optional default value for each
+     */
+    const updateHtmlAttributes = function(toUpdate, allowed) {
+      allowed.forEach(function(allowedAttribute) {
+        const allowedName = allowedAttribute.name;
+        if (toUpdate.indexOf(allowedName) > -1) {
+          const value = findValue(allowedName) || allowedAttribute.defaultValue;
+          if (value && value.length) {
+            document.querySelector('html').setAttribute(allowedName, value);
+          }
+        }
+      });
+    };
+
+    const allowedAttributes = [
+      {
+        name: 'lang',
+        defaultValue: 'en',
+      },
+      {
+        name: 'dir',
+        defaultValue: 'ltr',
+      },
+    ];
+
+    // Listening for an event doesn't work
+     window.setTimeout(function () {
+      updateHtmlAttributes(['dir', 'lang'], allowedAttributes);
+    }, 3000);
+  }());
+</script>

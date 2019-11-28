@@ -49,14 +49,16 @@ To lint the JavaScript (report and fix), execute:
 make fix
 ```
 
-## Grid system
+## Sass
 
-### Concept
+### Grid system
+
+#### Concept
 The grid comprises a full-viewport-width grid within which is a central section of 12<sup>*</sup> equal-sized columns. The central 12 columns are collectively known as the `main` part of the grid, which holds the content of the page. The full width of the grid from viewport edge to viewport edge is known as the `full` width grid. The `full` width grid exists in order to allow items of content to give the impression of breaking out of the (`main` part of the) grid. It should also make it easier to implement [subgrids](https://www.w3.org/TR/css-grid-2/#subgrids) when they get browser support.
 
 <sup>*</sup>12 is the default number of columns, but this can be configured. See "Configuring the grid" below. 
 
-### Implementation
+#### Implementation
 
 All grids are in `src/patterns/grids/`.  
 
@@ -68,26 +70,26 @@ In order to preserve the capabilities of seeming to break out of the grid, and o
 
 All nested levels of grid must conform to this `main` / `full` model in order to retain the benefits of this approach.
 
-#### Grid templates
+##### Grid templates
 
-##### `page-grid`
+###### `page-grid`
 The top level page grid. It sets up the rows of the top level explicit grid as named areas `start`, `main` and `end`. Typically `start` and `end` would be used to hold the site header and site footer respectively, with everything else located in the `main` row. This is the template to include directly in implementations. Lower level grids, into which the page content actually loads, should be included by `page-grid`.
 
-###### grid areas recommended usage
+####### grid areas recommended usage
 - `start`: put the site header here
 - `main`: put everything between the site header and footer here       
 - `end`: put the site footer here
 
-##### `content-grid`
+###### `content-grid`
 The grid for all content pages (i.e. not listing pages). In addition to the capability to specify if content spans the entirety of the `main` or `full` sections, this grid defines areas called `primary`, `secondary`, and `menu`. These names are used for both the CSS grid area names and the twig template section names. This grid lays out content with a very similar layout to that of an eLife article.
 
-###### grid areas recommended usage
+####### grid areas recommended usage
 - `primary`: the content that makes this page what it is
 - `secondary`: supplementary info, typically used for asides       
 - `menu`: a menu / navigation appropriate to the content level
    
 
-#### Configuring the grid
+##### Configuring the grid
 The grid may be configured using the following Sass variables defined in `/src/shared-styles/_grid.scss`:
 
 - `$max-inline-size` the max width of the `main` grid section in pixels (default: `1114px`)
@@ -95,8 +97,6 @@ The grid may be configured using the following Sass variables defined in `/src/s
 - `$column-gap` the width between grid columns, also the minimum inline start / end page gutter when CSS grid is not supported by the browser; may be expressed in any css length unit (default: `1.6%`)  
 - `$edge-space-medium`: a medium sized inline start / end page gutter (default: `7vw`), usage controlled by a breakpoint
 - `$edge-space-wide`: a large inline start / end page gutter (default: `14vw`), usage controlled by a breakpoint
-
-## Sass
 
 ### A note on logical property fallbacks
 Fallbacks for [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties) are implemented for horizontal writing directions (see [`_logical.scss`](https://github.com/libero/storybook/blob/master/src/shared-styles/_logical.scss)). At the moment they require the following treatment of HTML `dir` attributes:
@@ -121,7 +121,29 @@ Fallbacks for [logical properties](https://developer.mozilla.org/en-US/docs/Web/
 
 </div>
 
+```                   
+
+#### Setting `<html>` attributes in Storybook
+Storybook loads its stories into an iframe within the main UI. It's possible to set attributes on the `<html>` element of the iframe, this is required for setting logical properties correctly.
+
+To set `dir` on `<html>`, pass `'data-storybook-htmlattr-dir': '[value]'` in the `attributes` property passed to the pattern template. By default `<html dir="ltr"...>` will be set by default if a value isn't configured.    
+
+To set `lang` on `<html>`, pass `'data-storybook-htmlattr-lang': '[value]'` in the `attributes` property passed to the pattern template.
+
+By default `<html lang="en"...>` will be set by default if a value isn't configured.
+
+For example, to set `<html lang="ar" lang="rtl"...>`, pass
 ```
+    attributes:
+      {
+        'data-storybook-htmlattr-dir': 'rtl',
+        'data-storybook-htmlattr-lang': 'ar',
+        ...
+      },
+```
+
+Note that regular `dir` and `lang` attributes can still be set on the pattern itself.     
+
 Getting help
 ------------
 

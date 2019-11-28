@@ -140,7 +140,9 @@ For example, to set `<html lang="ar" lang="rtl"...>`, pass
         'data-storybook-htmlattr-lang': 'ar',
         ...
       },
-```     
+```
+
+Note that regular `dir` and `lang` attributes can still be set on the pattern itself.     
 
 Getting help
 ------------

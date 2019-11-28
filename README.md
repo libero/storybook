@@ -66,7 +66,7 @@ The grid is implemented using CSS grid. Non-supporting browsers will display a s
 
 Page templates implementing this grid system should use the page grid template. `page-grid.twig` sets up the rows of the top level explicit grid, and handles loading of the lower order grids that directly control content layout with respect to the grid columns (e.g. the content grid `content-grid.twig`).  
 
-[In order to preserve the capabilities of seeming to break out of the grid, and of attempting to be future-friendly to sub grids, every lower order grid (i.e. below the level of `page-grid`) must span the `full` width of the grid, and, in addition to anything else the template does, supply css classes to allow its items to span the `full` or `main` width of the grid. For example the `content-grid` provides the css classes `content-grid__item--full` and `content-grid__item--main` respectively.
+In order to preserve the capabilities of seeming to break out of the grid, and of attempting to be future-friendly to sub grids, every lower order grid (i.e. below the level of `page-grid`) must span the `full` width of the grid, and, in addition to anything else the template does, supply css classes to allow its items to span the `full` or `main` width of the grid. For example the `content-grid` provides the css classes `content-grid__item--full` and `content-grid__item--main` respectively.
 
 All nested levels of grid must conform to this `main` / `full` model in order to retain the benefits of this approach.
 

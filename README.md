@@ -75,7 +75,7 @@ All nested levels of grid must conform to this `main` / `full` model in order to
 ###### `page-grid`
 The top level page grid. It sets up the rows of the top level explicit grid as named areas `start`, `main` and `end`. Typically `start` and `end` would be used to hold the site header and site footer respectively, with everything else located in the `main` row. This is the template to include directly in implementations. Lower level grids, into which the page content actually loads, should be included by `page-grid`.
 
-####### grid areas recommended usage
+Recommended usage of grid areas:
 - `start`: put the site header here
 - `main`: put everything between the site header and footer here       
 - `end`: put the site footer here
@@ -83,7 +83,7 @@ The top level page grid. It sets up the rows of the top level explicit grid as n
 ###### `content-grid`
 The grid for all content pages (i.e. not listing pages). In addition to the capability to specify if content spans the entirety of the `main` or `full` sections, this grid defines areas called `primary`, `secondary`, and `menu`. These names are used for both the CSS grid area names and the twig template section names. This grid lays out content with a very similar layout to that of an eLife article.
 
-####### grid areas recommended usage
+Recommended usage of grid areas:
 - `primary`: the content that makes this page what it is
 - `secondary`: supplementary info, typically used for asides       
 - `menu`: a menu / navigation appropriate to the content level

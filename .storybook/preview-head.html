@@ -1,14 +1,9 @@
 <script>
   (function() {
-    // TODO: Move Purpose & Motivation to README & expand upon it once nearly finalised
-    // Purpose: to allow specification of attributes for the <html> element of the iframe that loads a story
-    // Motivation: CSS selectors handling logical property rules depend on <html dir="[value]"...> but Storybook doesn't
-    //  allow easy configuration of these.
-
-    /**
+   /**
      * Searches for an element with a data attribute prefixed with "data-storybook-htmlattr-", and ending in the
-     * name of the desired attribute. If it finds it, it returns the value of that data attribute, or an empty string if
-     * it does not have a value, or the value is empty.
+     * name of the desired attribute. If it finds the data attribute, it returns its value, or an empty string if
+     * it doesn't have a value, or the value is empty.
      *
      * @param {string} htmlAttributeName
      * @return {string} - The value found to set as htmlAttributeName

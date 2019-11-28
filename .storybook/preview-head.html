@@ -1,63 +1,64 @@
 <script>
-  // TODO: Move Purpose & Motivation to README & expand upon it once nearly finalised
-  // Purpose: to allow specification of attributes for the <html> element of the iframe that loads a story
-  // Motivation: CSS selectors handling logical property rules depend on <html dir="[value]"...> but Storybook doesn't
-  //  allow easy configuration of these.
+  (function() {
+    // TODO: Move Purpose & Motivation to README & expand upon it once nearly finalised
+    // Purpose: to allow specification of attributes for the <html> element of the iframe that loads a story
+    // Motivation: CSS selectors handling logical property rules depend on <html dir="[value]"...> but Storybook doesn't
+    //  allow easy configuration of these.
 
-  /**
-   * Searches for an element with a data attribute prefixed with "data-storybook-htmlattr-", and ending in the
-   * name of the desired attribute. If it finds it, it returns the value of that data attribute, or an empty string if
-   * it does not have a value, or the value is empty.
-   *
-   * @param {string} htmlAttributeName
-   * @return {string} - The value found to set as htmlAttributeName
-   */
-  const findValue = (htmlAttributeName) => {
+    /**
+     * Searches for an element with a data attribute prefixed with "data-storybook-htmlattr-", and ending in the
+     * name of the desired attribute. If it finds it, it returns the value of that data attribute, or an empty string if
+     * it does not have a value, or the value is empty.
+     *
+     * @param {string} htmlAttributeName
+     * @return {string} - The value found to set as htmlAttributeName
+     */
+    const findValue = (htmlAttributeName) => {
 
-    const strWithInitialCapital = (str) => {
-      return `${str.charAt(0).toUpperCase()}${str.substring(1)}`;
+      const strWithInitialCapital = (str) => {
+        return `${str.charAt(0).toUpperCase()}${str.substring(1)}`;
+      };
+
+      const attributeSource = document.querySelector(`[data-storybook-htmlattr-${htmlAttributeName}]`);
+      if (attributeSource) {
+        return attributeSource.dataset[`storybookHtmlattr${strWithInitialCapital(htmlAttributeName)}`] || '';
+      }
+      return '';
     };
 
-    const attributeSource = document.querySelector(`[data-storybook-htmlattr-${htmlAttributeName}]`);
-    if (attributeSource) {
-      return attributeSource.dataset[`storybookHtmlattr${strWithInitialCapital(htmlAttributeName)}`] || '';
-    }
-    return '';
-  };
-
-  /**
-   * Iterates over a list of attributes to update on the <html> element, and if allowed updates them: either with the
-   * found value, or a default value if supplied.
-   *
-   * @param {Array} toUpdate - The attributes to set on <html>
-   * @param {Array} allowed - The attributes permitted to be set, and an optional default value for each
-   */
-  const updateHtmlAttributes = function(toUpdate, allowed) {
-    allowed.forEach(function(allowedAttribute) {
-      const allowedName = allowedAttribute.name;
-      if (toUpdate.indexOf(allowedName) > -1) {
-        const value = findValue(allowedName) || allowedAttribute.defaultValue;
-        if (value && value.length) {
-          document.querySelector('html').setAttribute(allowedName, value);
+    /**
+     * Iterates over a list of attributes to update on the <html> element, and if allowed updates them: either with the
+     * found value, or a default value if supplied.
+     *
+     * @param {Array} toUpdate - The attributes to set on <html>
+     * @param {Array} allowed - The attributes permitted to be set, and an optional default value for each
+     */
+    const updateHtmlAttributes = function(toUpdate, allowed) {
+      allowed.forEach(function(allowedAttribute) {
+        const allowedName = allowedAttribute.name;
+        if (toUpdate.indexOf(allowedName) > -1) {
+          const value = findValue(allowedName) || allowedAttribute.defaultValue;
+          if (value && value.length) {
+            document.querySelector('html').setAttribute(allowedName, value);
+          }
         }
-      }
-    });
-  };
+      });
+    };
 
-  const allowedAttributes = [
-    {
-      name: 'lang',
-      defaultValue: 'en',
-    },
-    {
-      name: 'dir',
-      defaultValue: 'ltr',
-    },
-  ];
+    const allowedAttributes = [
+      {
+        name: 'lang',
+        defaultValue: 'en',
+      },
+      {
+        name: 'dir',
+        defaultValue: 'ltr',
+      },
+    ];
 
-  // Listening for an event doesn't work
-   window.setTimeout(function () {
-    updateHtmlAttributes(['dir', 'lang'], allowedAttributes);
-  }, 3000);
-
+    // Listening for an event doesn't work
+     window.setTimeout(function () {
+      updateHtmlAttributes(['dir', 'lang'], allowedAttributes);
+    }, 3000);
+  }());
 </script>

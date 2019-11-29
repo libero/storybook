@@ -42,7 +42,7 @@
 }
 
 @mixin label-as-tag() {
-  @include _label-typography(color.$color-primary-normal);
+  @include _label-typography(color.$primary-normal);
 }
 
 @mixin _typography($scale-point: 0, $baseline-units: 4, $font-family: font.$primary, $font-weight: 400) {
@@ -57,9 +57,10 @@
 
 @mixin _label-typography($color, $uppercase: true) {
   color: $color;
-  $letterspacing: 0.5px !default;
+  $_letterspacing: 0.5px;
+  letter-spacing: $_letterspacing;
   @include _typography($scale-point: -3, $font-family: font.$secondary);
-  letter-spacing: $letterspacing;
+
   @if $uppercase {
     text-transform: uppercase;
   }

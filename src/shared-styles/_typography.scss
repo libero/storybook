@@ -57,8 +57,7 @@
 
 @mixin _label-typography($color, $uppercase: true) {
   color: $color;
-  $_letterspacing: 0.5px;
-  letter-spacing: $_letterspacing;
+  letter-spacing: 0.5px;
   @include _typography($scale-point: -3, $font-family: font.$secondary);
 
   @if $uppercase {

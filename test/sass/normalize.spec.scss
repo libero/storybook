@@ -1,0 +1,34 @@
+@use "test" as *;
+@use "../../src/shared-styles/normalize";
+@use "../../src/shared-styles/space";
+@use "../../src/shared-styles/typography";
+
+@include describe("@mixin list-style-none") {
+
+  @include it("generates a value of zero for padding-inline") {
+
+    @include assert() {
+
+      @include output {
+        @include normalize.list-style-none();
+      }
+
+      @include expect {
+        overflow-x: auto;
+
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          padding-left: 0;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          padding-right: 0;
+        }
+        html[dir][dir] & {
+          padding-inline-start: 0;
+        }
+      }
+
+    }
+  }
+}

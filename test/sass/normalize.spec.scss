@@ -1,7 +1,6 @@
+/* stylelint-disable */
 @use "test" as *;
 @use "../../src/shared-styles/normalize";
-@use "../../src/shared-styles/space";
-@use "../../src/shared-styles/typography";
 
 @include describe("@mixin list-style-none") {
 

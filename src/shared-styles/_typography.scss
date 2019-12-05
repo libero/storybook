@@ -3,7 +3,6 @@
 @use "font";
 @use "rem";
 @use "scale";
-@use "space";
 
 @mixin body() {
   @include _typography();
@@ -39,10 +38,6 @@
 
 @mixin label-as-content($color: color.$text-secondary, $uppercase: true) {
   @include _label-typography($color, $uppercase);
-}
-
-@mixin label-as-tag() {
-  @include _label-typography(color.$primary-normal);
 }
 
 @mixin _typography($scale-point: 0, $baseline-units: 4, $font-family: font.$primary, $font-weight: 400) {

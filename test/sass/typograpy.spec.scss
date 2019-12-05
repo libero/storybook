@@ -16,9 +16,7 @@
   @return math.round($calculatedFontSize);
 }
 
-$primary: rgb(2, 119, 189) !default;
 $primary-normal: rgb(2, 136, 209) !default;
-$text-secondary: rgb(102, 102, 102) !default;
 
 
 @include describe('@mixin h1') {
@@ -167,7 +165,7 @@ $text-secondary: rgb(102, 102, 102) !default;
 
 @include describe('@mixin label-as-content') {
 
-  @include it('generates defaults for label-as-content') {
+  @include it('generates correct default styles') {
 
     @include assert() {
 
@@ -176,7 +174,7 @@ $text-secondary: rgb(102, 102, 102) !default;
       }
 
       @include expect {
-        color: $text-secondary;
+        color: rgb(102, 102, 102);
         letter-spacing: 0.5px;
         font-family: "Noto Sans", Arial, Helvetica, sans-serif;
         font-size: 0.6875rem;
@@ -189,16 +187,16 @@ $text-secondary: rgb(102, 102, 102) !default;
 
   }
 
-  @include it('generates different color for text and default text-transform') {
+  @include it('allows the color to be overridden') {
 
     @include assert() {
 
       @include output {
-        @include typography.label-as-content($primary);
+        @include typography.label-as-content($color: rgb(2, 119, 189));
       }
 
       @include expect {
-        color: $primary;
+        color: rgb(2, 119, 189);
         letter-spacing: 0.5px;
         font-family: "Noto Sans", Arial, Helvetica, sans-serif;
         font-size: 0.6875rem;
@@ -220,7 +218,7 @@ $text-secondary: rgb(102, 102, 102) !default;
       }
 
       @include expect {
-        color: $text-secondary;
+        color: rgb(102, 102, 102);
         letter-spacing: 0.5px;
         font-family: "Noto Sans", Arial, Helvetica, sans-serif;
         font-size: 0.6875rem;
@@ -237,11 +235,11 @@ $text-secondary: rgb(102, 102, 102) !default;
     @include assert() {
 
       @include output {
-        @include typography.label-as-content($color: $primary, $uppercase: false);
+        @include typography.label-as-content($color: rgb(2, 119, 189), $uppercase: false);
       }
 
       @include expect {
-        color: $primary;
+        color: rgb(2, 119, 189);
         letter-spacing: 0.5px;
         font-family: "Noto Sans", Arial, Helvetica, sans-serif;
         font-size: 0.6875rem;
@@ -253,29 +251,4 @@ $text-secondary: rgb(102, 102, 102) !default;
 
   }
 
-}
-
-@include describe('@mixin label-as-tag') {
-
-  @include it('generates defaults for label-as-tag') {
-
-    @include assert() {
-
-      @include output {
-        @include typography.label-as-tag();
-      }
-
-      @include expect {
-        color: $primary-normal;
-        letter-spacing: 0.5px;
-        font-family: "Noto Sans", Arial, Helvetica, sans-serif;
-        font-size: 0.6875rem;
-        font-weight: 400;
-        line-height: 2.1818181818;
-        text-transform: uppercase;
-      }
-
-    }
-
-  }
 }

@@ -212,14 +212,12 @@
 
     @include assert() {
 
-      $_acolor: rgb(102, 102, 102);
-
       @include output {
         @include typography.label-as-content($uppercase: false);
       }
 
       @include expect {
-        color: $_acolor;
+        color: rgb(102, 102, 102);
         letter-spacing: 0.5px;
         font-family: "Noto Sans", Arial, Helvetica, sans-serif;
         font-size: 0.6875rem;

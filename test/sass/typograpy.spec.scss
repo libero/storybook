@@ -16,9 +16,6 @@
   @return math.round($calculatedFontSize);
 }
 
-$primary-normal: rgb(2, 136, 209) !default;
-
-
 @include describe('@mixin h1') {
 
   @include it('has correct typography') {
@@ -191,12 +188,14 @@ $primary-normal: rgb(2, 136, 209) !default;
 
     @include assert() {
 
+      $acolor: rgb(2, 119, 189);
+
       @include output {
-        @include typography.label-as-content($color: rgb(2, 119, 189));
+        @include typography.label-as-content($color: $acolor);
       }
 
       @include expect {
-        color: rgb(2, 119, 189);
+        color: $acolor;
         letter-spacing: 0.5px;
         font-family: "Noto Sans", Arial, Helvetica, sans-serif;
         font-size: 0.6875rem;
@@ -234,12 +233,14 @@ $primary-normal: rgb(2, 136, 209) !default;
 
     @include assert() {
 
+      $acolor: rgb(2, 119, 189);
+
       @include output {
-        @include typography.label-as-content($color: rgb(2, 119, 189), $uppercase: false);
+        @include typography.label-as-content($color: $acolor, $uppercase: false);
       }
 
       @include expect {
-        color: rgb(2, 119, 189);
+        color: $acolor;
         letter-spacing: 0.5px;
         font-family: "Noto Sans", Arial, Helvetica, sans-serif;
         font-size: 0.6875rem;

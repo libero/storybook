@@ -208,16 +208,18 @@
 
   }
 
-  @include it('generates default color and the text-transform is false') {
+  @include it('allows the text-transform to be overridden') {
 
     @include assert() {
+
+      $_acolor: rgb(102, 102, 102);
 
       @include output {
         @include typography.label-as-content($uppercase: false);
       }
 
       @include expect {
-        color: rgb(102, 102, 102);
+        color: $_acolor;
         letter-spacing: 0.5px;
         font-family: "Noto Sans", Arial, Helvetica, sans-serif;
         font-size: 0.6875rem;

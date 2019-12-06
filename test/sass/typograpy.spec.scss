@@ -188,14 +188,14 @@
 
     @include assert() {
 
-      $acolor: rgb(2, 119, 189);
+      $_acolor: rgb(2, 119, 189);
 
       @include output {
-        @include typography.label-as-content($color: $acolor);
+        @include typography.label-as-content($color: $_acolor);
       }
 
       @include expect {
-        color: $acolor;
+        color: $_acolor;
         letter-spacing: 0.5px;
         font-family: "Noto Sans", Arial, Helvetica, sans-serif;
         font-size: 0.6875rem;
@@ -233,14 +233,14 @@
 
     @include assert() {
 
-      $acolor: rgb(2, 119, 189);
+      $_acolor: rgb(2, 119, 189);
 
       @include output {
-        @include typography.label-as-content($color: $acolor, $uppercase: false);
+        @include typography.label-as-content($color: $_acolor, $uppercase: false);
       }
 
       @include expect {
-        color: $acolor;
+        color: $_acolor;
         letter-spacing: 0.5px;
         font-family: "Noto Sans", Arial, Helvetica, sans-serif;
         font-size: 0.6875rem;

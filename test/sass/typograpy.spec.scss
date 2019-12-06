@@ -229,7 +229,7 @@
 
   }
 
-  @include it('generates different color and the text-transform is false') {
+  @include it('allows both the color and the text-transform to be overridden') {
 
     @include assert() {
 

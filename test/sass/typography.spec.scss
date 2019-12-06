@@ -159,3 +159,97 @@
   }
 
 }
+
+@include describe('@mixin label-as-content') {
+
+  @include it('generates correct default styles') {
+
+    @include assert() {
+
+      @include output {
+        @include typography.label-as-content();
+      }
+
+      @include expect {
+        color: rgb(102, 102, 102);
+        letter-spacing: 0.5px;
+        font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+        font-size: 0.6875rem;
+        font-weight: 400;
+        line-height: 2.1818181818;
+        text-transform: uppercase;
+      }
+
+    }
+
+  }
+
+  @include it('allows the color to be overridden') {
+
+    @include assert() {
+
+      $_acolor: rgb(2, 119, 189);
+
+      @include output {
+        @include typography.label-as-content($color: $_acolor);
+      }
+
+      @include expect {
+        color: $_acolor;
+        letter-spacing: 0.5px;
+        font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+        font-size: 0.6875rem;
+        font-weight: 400;
+        line-height: 2.1818181818;
+        text-transform: uppercase;
+      }
+
+    }
+
+  }
+
+  @include it('allows the text-transform to be overridden') {
+
+    @include assert() {
+
+      @include output {
+        @include typography.label-as-content($uppercase: false);
+      }
+
+      @include expect {
+        color: rgb(102, 102, 102);
+        letter-spacing: 0.5px;
+        font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+        font-size: 0.6875rem;
+        font-weight: 400;
+        line-height: 2.1818181818;
+      }
+
+    }
+
+  }
+
+  @include it('allows both the color and the text-transform to be overridden') {
+
+    @include assert() {
+
+      $_acolor: rgb(2, 119, 189);
+
+      @include output {
+        @include typography.label-as-content($color: $_acolor, $uppercase: false);
+      }
+
+      @include expect {
+        color: $_acolor;
+        letter-spacing: 0.5px;
+        font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+        font-size: 0.6875rem;
+        font-weight: 400;
+        line-height: 2.1818181818;
+      }
+
+    }
+
+  }
+
+}

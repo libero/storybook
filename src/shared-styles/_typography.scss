@@ -1,4 +1,5 @@
 @use "baseline";
+@use "color";
 @use "font";
 @use "rem";
 @use "scale";
@@ -35,6 +36,10 @@
   @include _typography($scale-point, $baseline-units, font.$secondary, 600);
 }
 
+@mixin label-as-content($color: color.$text-secondary, $uppercase: true) {
+  @include _label-typography($color, $uppercase);
+}
+
 @mixin _typography($scale-point: 0, $baseline-units: 4, $font-family: font.$primary, $font-weight: 400) {
   $_font-size: scale.at-point($scale-point);
   $_baseline-size: baseline.for-units($baseline-units);
@@ -43,4 +48,14 @@
   font-size: rem.calculate($_font-size);
   font-weight: $font-weight;
   line-height: $_baseline-size / $_font-size;
+}
+
+@mixin _label-typography($color, $uppercase: true) {
+  color: $color;
+  letter-spacing: 0.5px;
+  @include _typography($scale-point: -3, $font-family: font.$secondary);
+
+  @if $uppercase {
+    text-transform: uppercase;
+  }
 }
